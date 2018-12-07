@@ -28,9 +28,9 @@
                     <v-treeview
                       v-if="!loadingTree"
                         v-model="active"
-                        :open="open"
                         :active.sync = "tt"
                         :items="items"
+                        selectable
                         activatable
                         @update="test()"
                         @open="test()"
@@ -76,17 +76,6 @@ export default {
         loadingTree : false,
         active : [],
         tt: [],
-        open: ['public'],
-        files: {
-          html: 'language-html5',
-          js: 'nodejs',
-          json: 'json',
-          md: 'markdown',
-          pdf: 'file-pdf',
-          png: 'file-image',
-          txt: 'file-document-outline',
-          xls: 'file-excel'
-        },
         tree: [],
         items: []
   }),

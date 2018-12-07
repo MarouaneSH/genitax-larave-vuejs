@@ -73698,17 +73698,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       loadingTree: false,
       active: [],
       tt: [],
-      open: ['public'],
-      files: {
-        html: 'language-html5',
-        js: 'nodejs',
-        json: 'json',
-        md: 'markdown',
-        pdf: 'file-pdf',
-        png: 'file-image',
-        txt: 'file-document-outline',
-        xls: 'file-excel'
-      },
       tree: [],
       items: []
     };
@@ -73809,9 +73798,9 @@ var render = function() {
               !_vm.loadingTree
                 ? _c("v-treeview", {
                     attrs: {
-                      open: _vm.open,
                       active: _vm.tt,
                       items: _vm.items,
+                      selectable: "",
                       activatable: "",
                       "item-text": "titre",
                       "open-on-click": ""
