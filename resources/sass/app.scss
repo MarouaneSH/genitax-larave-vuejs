@@ -1,14 +1,116 @@
 
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@import "~vuetify/dist/vuetify.min.css";
 
-// Variables
-@import 'variables';
+.search_input {
+  margin-top: 50px !important;
+  .v-input__slot{
+    border-radius: 50px !important;
+    padding: 0 29px !important;
+    input::placeholder {
+      color: #2c4983 !important;
+    }
+  }
+}
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+.app_drawer {
+  background-color: #2c4983 !important;
+  padding: 20px;
+}
 
-.navbar-laravel {
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+#sidebar_toggle {
+  flex-wrap: wrap;
+  width: 100%;
+  background: none;
+  box-shadow: none !important;
+  .v-btn:before {
+    border-radius: 40px;
+  }
+  .v-btn {
+    width: 50% !important;
+    white-space: normal !important;
+    height: auto;;
+    .v-btn__content{
+      height: auto;
+      flex-direction: column;
+      /* word-break: break-all; */
+      padding: 20px 10px;
+      white-space: normal;
+      color: white;
+      opacity: 1;
+      i {
+        font-size: 60px;
+      }
+      h5 {
+        font-size: 26px;
+      }
+      p {
+        font-size: 8px;
+      }
+    }
+  }
+}
+
+
+.logo {
+  width: 200px;
+}
+
+.box-gtax {
+  width: 80%;
+  background: #4471cb;
+  display: flex;
+  padding: 10px 30px;
+  border-radius: 50px;
+  justify-content: center;
+  color: white;
+  margin-top: 40px;
+  h5 {
+    margin: 0 10px;
+    font-size: 20px
+  }
+  &__article {
+    display: flex;
+    align-items: center;
+  }
+  &__search {
+    .v-input__slot{
+      max-width: 200px;
+      border-radius: 50px !important;
+    }
+    .v-input__control{
+      height: 20px;
+    }
+  }
+  &__toggle_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  &__toggle {
+    background: #3e66b8 !important;
+    box-shadow: none;
+    border-radius: 20px;
+    padding: 0px 10px;
+    .v-btn {
+      padding: 0 20px;
+      margin: 5px 0px;
+    }
+    .v-btn--active:before, .v-btn:focus:before, .v-btn:hover:before {
+      background-color: #4471cb !important;
+      border-radius: 20px;
+      padding: 0 20px;
+      opacity: 1;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+    h6 {
+      font-size: 14px;
+    }
+  }
+}
+
+.treeview_wrapper {
+  width: 100%;
+  margin-top: 70px;
 }
