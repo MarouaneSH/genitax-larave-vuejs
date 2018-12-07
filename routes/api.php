@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 
 
 
-Route::get('test',"ApiController@test");
+Route::get('categories',"ApiController@getCategory");
 
 
 
