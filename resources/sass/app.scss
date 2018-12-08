@@ -57,12 +57,23 @@
   width: 200px;
 }
 
+
+.tree_header {
+  font-size: 17px;
+  color: #737373;
+}
+.content_html {
+  padding-top: 50px;
+}
 .box-gtax {
   width: 80%;
+  flex-direction: column;
+  align-items: center;
   background: #4471cb;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   display: flex;
   padding: 10px 30px;
-  border-radius: 50px;
+  border-radius: 150px;
   justify-content: center;
   color: white;
   margin-top: 40px;
@@ -87,6 +98,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-top: 20px
   }
   &__toggle {
     background: #3e66b8 !important;

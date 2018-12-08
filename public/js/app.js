@@ -72950,32 +72950,72 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
         var _this2 = this;
 
-        this.$emit("sd");
         this.loadingTree = true;
-        axios.get('/categories').then(function (result) {
-            _this2.items = result.data;
-            _this2.loadingTree = false;
+        axios.get("/headerCategories/type=cgi").then(function (result) {
+            _this2.headerCategories = result.data.categories;
+            _this2.toggle_header = result.data.categories[0].id;
+            _this2.fetch_categories();
         });
     },
 
     data: function data() {
         return {
-            toggle_exclusive: "CGI",
+            toggle_header: null,
             loadingTree: false,
             active: [],
+            loadingDialog: false,
+            toggle_html_type: "article",
+            selectedArticle: null,
+            headerCategories: [],
+            contentHTML: null,
             items: [],
+            dialog: false,
             open: [],
+            tree: [],
             selected: null
         };
     },
     methods: {
-        test: function test(d) {
-            console.log(d);
+        fetch_categories: function fetch_categories() {
+            var _this3 = this;
+
+            this.loadingTree = true;
+            axios.get("/categories/parent=" + this.toggle_header).then(function (result) {
+                _this3.items = result.data.categories;
+                _this3.loadingTree = false;
+            });
         },
         search: function search(arr, id) {
             var _this = this;
@@ -72990,17 +73030,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             });
 
             return _this.selected;
+        },
+        openDialog: function openDialog() {
+            var _this4 = this;
+
+            this.dialog = true;
+            this.loadingDialog = true;
+            axios.get("article/id=" + this.selectedArticle.id + "&type=" + this.toggle_html_type).then(function (result) {
+                _this4.contentHTML = result.data.article.content_html;
+                _this4.loadingDialog = false;
+            });
         }
     },
-    computed: {
-        selectedArticle: function selectedArticle() {
+
+    watch: {
+        active: function active() {
             if (!this.active.length) return undefined;
             var id = this.active[0];
             var selectedArticle = this.search(this.items, id);
             if (selectedArticle.articles && selectedArticle.articles.length) {
+                this.selectedArticle = {
+                    name: selectedArticle.titre,
+                    id: selectedArticle.articles[0].id
+                };
+                this.openDialog();
                 return true;
             }
             return null;
+        }
+    },
+    computed: {
+        selectedHeaderName: function selectedHeaderName() {
+            var _this5 = this;
+
+            if (!this.headerCategories.length) return null;
+            return this.headerCategories.filter(function (e) {
+                return e.id == _this5.toggle_header;
+            })[0].titre;
         }
     }
 
@@ -73031,7 +73097,7 @@ var render = function() {
         [
           _c(
             "v-flex",
-            { staticClass: "box-gtax__article", attrs: { xs6: "" } },
+            { staticClass: "box-gtax__article", attrs: { xs12: "" } },
             [
               _c("h5", [_vm._v(" Nº Article")]),
               _vm._v(" "),
@@ -73050,7 +73116,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-flex",
-            { staticClass: "box-gtax__toggle_wrapper", attrs: { xs6: "" } },
+            { staticClass: "box-gtax__toggle_wrapper", attrs: { xs12: "" } },
             [
               _c(
                 "v-btn-toggle",
@@ -73058,23 +73124,20 @@ var render = function() {
                   staticClass: "box-gtax__toggle",
                   attrs: { dark: "" },
                   model: {
-                    value: _vm.toggle_exclusive,
+                    value: _vm.toggle_header,
                     callback: function($$v) {
-                      _vm.toggle_exclusive = $$v
+                      _vm.toggle_header = $$v
                     },
-                    expression: "toggle_exclusive"
+                    expression: "toggle_header"
                   }
                 },
-                [
-                  _c("v-btn", { attrs: { flat: "", value: "CGI" } }, [
-                    _c("h6", [_vm._v("CGI")])
-                  ]),
-                  _vm._v(" "),
-                  _c("v-btn", { attrs: { flat: "", value: "CIRCULAIRE" } }, [
-                    _c("h6", [_vm._v("Circulaire LF 2018")])
-                  ])
-                ],
-                1
+                _vm._l(_vm.headerCategories, function(cat) {
+                  return _c(
+                    "v-btn",
+                    { key: cat.id, attrs: { flat: "", value: cat.id } },
+                    [_c("h6", [_vm._v(" " + _vm._s(cat.titre) + " ")])]
+                  )
+                })
               )
             ],
             1
@@ -73091,74 +73154,189 @@ var render = function() {
             "v-app",
             { attrs: { id: "inspire" } },
             [
-              _c("v-treeview", {
-                staticClass: "grey lighten-5",
-                attrs: {
-                  active: _vm.active,
-                  items: _vm.items,
-                  activatable: "",
-                  "item-text": "titre",
-                  "item-key": "id",
-                  "active-class": "primary--text",
-                  transition: ""
-                },
-                on: {
-                  "update:active": function($event) {
-                    _vm.active = $event
-                  }
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "prepend",
-                    fn: function(ref) {
-                      var item = ref.item
-                      var open = ref.open
-                      var leaf = ref.leaf
-                      return [
-                        !item.parent_id
-                          ? _c("v-icon", [
-                              _vm._v(
-                                "\n                              " +
-                                  _vm._s(open ? "folder_open" : "folder") +
-                                  "\n                          "
-                              )
-                            ])
-                          : _c("v-icon", [
-                              _vm._v(
-                                "\n                              list_alt\n                          "
-                              )
-                            ]),
-                        _vm._v(" "),
-                        item.articles && item.articles.length
-                          ? [
-                              _vm._v(
-                                "\n                              view\n                          "
-                              )
-                            ]
-                          : _vm._e()
-                      ]
-                    }
-                  }
-                ])
-              }),
+              _c("h5", { staticClass: "tree_header" }, [
+                _vm._v(_vm._s(_vm.selectedHeaderName) + " ")
+              ]),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "text-xs-center" },
-                [
-                  _c("v-progress-circular", {
-                    attrs: { indeterminate: "", color: "primary" }
+              !_vm.loadingTree
+                ? _c("v-treeview", {
+                    staticClass: "grey lighten-5",
+                    attrs: {
+                      active: _vm.active,
+                      items: _vm.items,
+                      activatable: "",
+                      "item-text": "titre",
+                      "item-key": "id",
+                      transition: ""
+                    },
+                    on: {
+                      "update:active": function($event) {
+                        _vm.active = $event
+                      }
+                    },
+                    scopedSlots: _vm._u([
+                      {
+                        key: "prepend",
+                        fn: function(ref) {
+                          var item = ref.item
+                          var open = ref.open
+                          var leaf = ref.leaf
+                          return [
+                            _c(
+                              "v-icon",
+                              [
+                                item.icon_type == 1
+                                  ? [
+                                      _vm._v(
+                                        "  " +
+                                          _vm._s(
+                                            open ? "folder_open" : "folder"
+                                          ) +
+                                          " "
+                                      )
+                                    ]
+                                  : item.icon_type == 2
+                                  ? [_vm._v("list_alt")]
+                                  : item.icon_type == 3
+                                  ? [_vm._v("library_books")]
+                                  : item.icon_type == 4
+                                  ? [_vm._v("list")]
+                                  : item.icon_type == 5
+                                  ? [_vm._v("subdirectory_arrow_right")]
+                                  : _vm._e()
+                              ],
+                              2
+                            )
+                          ]
+                        }
+                      }
+                    ]),
+                    model: {
+                      value: _vm.tree,
+                      callback: function($$v) {
+                        _vm.tree = $$v
+                      },
+                      expression: "tree"
+                    }
                   })
-                ],
-                1
-              )
+                : _c(
+                    "div",
+                    { staticClass: "text-xs-center" },
+                    [
+                      _c("v-progress-circular", {
+                        attrs: { indeterminate: "", color: "primary" }
+                      })
+                    ],
+                    1
+                  )
             ],
             1
           )
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: {
+            fullscreen: "",
+            "hide-overlay": "",
+            transition: "dialog-bottom-transition"
+          },
+          model: {
+            value: _vm.dialog,
+            callback: function($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c(
+                "v-toolbar",
+                { attrs: { dark: "", color: "primary" } },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { icon: "", dark: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [_c("v-icon", [_vm._v("close")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm.selectedArticle
+                    ? _c("v-toolbar-title", [
+                        _vm._v(_vm._s(_vm.selectedArticle.name) + " ")
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("v-spacer"),
+                  _vm._v(" "),
+                  _c(
+                    "v-btn-toggle",
+                    {
+                      attrs: { light: "" },
+                      on: { change: _vm.openDialog },
+                      model: {
+                        value: _vm.toggle_html_type,
+                        callback: function($$v) {
+                          _vm.toggle_html_type = $$v
+                        },
+                        expression: "toggle_html_type"
+                      }
+                    },
+                    [
+                      _c("v-btn", { attrs: { flat: "", value: "article" } }, [
+                        _c("h6", [_vm._v(" Article ")])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        { attrs: { flat: "", value: "circulaire" } },
+                        [_c("h6", [_vm._v(" Circulaire ")])]
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm.loadingDialog
+                ? _c(
+                    "div",
+                    { staticClass: "text-xs-center" },
+                    [
+                      _c("v-progress-circular", {
+                        attrs: { indeterminate: "", color: "primary" }
+                      })
+                    ],
+                    1
+                  )
+                : [
+                    _c("div", {
+                      staticClass: "content_html",
+                      domProps: { innerHTML: _vm._s(_vm.contentHTML) }
+                    })
+                  ]
+            ],
+            2
+          )
+        ],
+        1
       )
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []

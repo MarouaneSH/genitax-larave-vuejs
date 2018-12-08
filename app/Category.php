@@ -27,7 +27,7 @@ class Category extends Model
     // recursive, loads all descendants
     public function children()
     {
-         return $this->parent_child()->with('children:id,parent_id,titre',"children.articles:id,categorie_id")->orderBy("level");
+         return $this->parent_child()->with('children:id,parent_id,titre,icon_type',"children.articles:id,categorie_id")->orderBy("level");
     }
 
     public function articles() {

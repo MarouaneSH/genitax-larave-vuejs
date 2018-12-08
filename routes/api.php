@@ -15,7 +15,9 @@ use Illuminate\Http\Request;
 
 
 
-Route::get('categories',"ApiController@getCategory");
+Route::get('categories/parent={parent_id}',"ApiController@getCategory");
+Route::get('headerCategories/type={type}',"ApiController@getHeaderCategory");
+Route::get('article/id={id}&type={type}',"ApiController@getArticle");
 
 
 
