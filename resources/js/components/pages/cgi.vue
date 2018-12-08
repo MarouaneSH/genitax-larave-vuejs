@@ -26,17 +26,15 @@
         <div class="treeview_wrapper">
                 <v-app id="inspire">
                     <v-treeview
-                      v-if="!loadingTree"
-                        v-model="active"
-                        :active.sync = "tt"
+                        :active.sync="active"
                         :items="items"
-                        selectable
                         activatable
-                        @update="test()"
-                        @open="test()"
                         item-text="titre"
-                        open-on-click>
-                        <template slot="prepend" slot-scope="{ item,  leaf }" >
+                        item-key="id"
+                        active-class="primary--text"
+                        class="grey lighten-5"
+                        transition>
+                        <template slot="prepend" slot-scope="{ item, open,  leaf }" >
                               <v-icon v-if="!item.parent_id">
                                   {{ open ? 'folder_open' : 'folder' }}
                               </v-icon>
@@ -49,7 +47,7 @@
                         </template>
                     </v-treeview>
 
-                    <div   v-else class="text-xs-center">
+                    <div  class="text-xs-center">
                          <v-progress-circular
                             indeterminate
                             color="primary"
@@ -75,14 +73,40 @@ export default {
         toggle_exclusive : "CGI",
         loadingTree : false,
         active : [],
-        tt: [],
-        tree: [],
-        items: []
+        items: [],
+        open: [],
+        selected : null
   }),
   methods : {
-    test() {
-      alet("dsds");
+    test(d) {
+        console.log(d);
+    },
+    search(arr, id) {
+         let _this = this;
+         let article = null;
+         arr.filter(function(obj) {
+            if (obj.id == id) {
+               _this.selected = obj;
+            }
+            if (obj.children && obj.children.length > 0) {
+                    return _this.search(obj.children, id);
+            }
+        });
+
+        return  _this.selected;
     }
+  },
+  computed : {
+      selectedArticle() {
+        if (!this.active.length) return undefined
+        let id = this.active[0];
+        let selectedArticle = this.search(this.items,id);
+        if(selectedArticle.articles && selectedArticle.articles.length) {
+            return true;
+        }
+        return null;
+
+      }
   }
 
 }
