@@ -8,6 +8,7 @@ use App\CgiTaxLocale;
 use App\ArticleCirculaire;
 use App\Faq;
 use App\QuestionResponse;
+use App\Info;
 
 class ApiController extends Controller
 {
@@ -74,13 +75,19 @@ class ApiController extends Controller
     }
 
     public function faqs_questions($id) {
-        $questions = QuestionResponse::select("faq_id","id","question","created_at")->where("faq_id",$id)->get();
+        $questions = QuestionResponse::select("faq_id","id","question","created_at")->where("faq_id",$id)->orderByDesc("created_at")->get();
         return response()->json(["questions" => $questions]);
     }
 
     public function question($id) {
         $question = QuestionResponse::select("response","question")->find($id);
         return response()->json(["question" => $question]);
+    }
+
+
+    public function infos() {
+        $info = Info::first();
+        return response()->json(["info" => $info]);
     }
 
 }

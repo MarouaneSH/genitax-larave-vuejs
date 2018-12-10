@@ -37,10 +37,6 @@
           box-shadow: none !important;
 }
 
-#sidebar_toggle .v-btn:before {
-  border-radius: 40px;
-}
-
 #sidebar_toggle .v-btn {
   width: 50% !important;
   white-space: normal !important;

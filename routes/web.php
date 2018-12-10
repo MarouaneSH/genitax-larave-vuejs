@@ -16,6 +16,14 @@ Route::get('/', function () {
 });
 
 
+
+Route::get('/test', function () {
+    return App\Category::whereDoesntHave("children")
+                         ->where("parent_id", "!=", null)
+                         ->get();
+});
+
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });

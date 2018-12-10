@@ -1,6 +1,7 @@
 import CGI from '.././components/pages/cgi';
 import TAXES from '.././components/pages/taxes';
 import faqs from '.././components/pages/faqs';
+import infos from '.././components/pages/infos';
 
 
 export const routes = [
@@ -18,5 +19,10 @@ export const routes = [
         path : "/faqs", 
         component : faqs, 
         name : "faqs",
+    },
+    {
+        path : "/infos", 
+        component : infos, 
+        name : "infos",
     }
 ];

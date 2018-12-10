@@ -19,10 +19,8 @@
                                         ></v-img>
                                     </v-avatar>
                             </div>
-                            <v-card-title primary-title>
-                                <div>
+                            <v-card-title class="text-xs-center" primary-title>
                                     <h3 class="headline mb-0">{{faq.titre_categories}} </h3>
-                                </div>
                             </v-card-title>
                     </v-card>
                   </v-flex>
@@ -114,6 +112,7 @@ export default {
 .card__questions {
     padding: 20px;
     width: 100%;
+    cursor: pointer;
 }
 
 .arrow__back {
@@ -128,5 +127,9 @@ export default {
 .card__content  .flex {
         width: 50%;
 }
+.card__faqs h3{
+    width: 100%;
+}
+
 
 </style>

@@ -28,5 +28,7 @@ Route::get('faqs/{id}/questions',"ApiController@faqs_questions");
 
 Route::get('questions/{id}',"ApiController@question");
 
+Route::get('infos',"ApiController@infos");
+
 
 
