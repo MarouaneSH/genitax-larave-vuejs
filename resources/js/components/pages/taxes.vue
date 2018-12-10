@@ -1,6 +1,6 @@
 <template>
     <div class="app-content">
-        <app-tax-cgi type="cgi"></app-tax-cgi>
+        <app-tax-cgi type="taxes"></app-tax-cgi>
     </div>
 </template>
 

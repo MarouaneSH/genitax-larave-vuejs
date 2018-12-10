@@ -16,12 +16,17 @@ use Illuminate\Http\Request;
 
 
 Route::get('categories/parent={parent_id}',"ApiController@getCategory");
-Route::get('headerCategories/type={type}',"ApiController@getHeaderCategory");
+Route::get('caregories/cgi/header',"ApiController@cgiHeaderCategories");
+Route::get('caregories/taxes',"ApiController@getTaxesCategories");
+
 Route::get('article/id={id}&type={type}',"ApiController@getArticle");
+Route::get('article/num={id}&type={type}&category={category}',"ApiController@getArticleByNum");
+
+
+Route::get('faqs',"ApiController@faqs");
+Route::get('faqs/{id}/questions',"ApiController@faqs_questions");
+
+Route::get('questions/{id}',"ApiController@question");
 
 
 
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});

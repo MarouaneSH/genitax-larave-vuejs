@@ -7,18 +7,18 @@
             solo
             append-icon="search"
         ></v-text-field>
-        <v-btn-toggle v-model="toggle_exclusive" id="sidebar_toggle">
-              <v-btn flat value="CGI">
+        <v-btn-toggle id="sidebar_toggle">
+              <v-btn to="/" flat>
                 <v-icon>library_books</v-icon>
                 <h5>CGI</h5>
                 <p>Code Général des Impôts</p>
               </v-btn>
-              <v-btn flat>
+              <v-btn to="/taxes" flat>
                 <v-icon>vertical_split</v-icon>
                 <h5>TAXES</h5>
                 <p>Locales</p>
               </v-btn>
-              <v-btn flat>
+              <v-btn to="/faqs" flat>
                 <v-icon>chat</v-icon>
                 <h5>FAQ</h5>
                 <p>Faire Aux Questions</p>
@@ -39,10 +39,6 @@
 
 <script>
     export default {
-        data() {
-            return {
-                toggle_exclusive : "CGI",
-            }
-        }
+
     }
 </script>
