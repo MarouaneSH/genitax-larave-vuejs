@@ -75119,12 +75119,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             loading: false,
-            coefficients: []
+            coefficients: [],
+            nomenclatures: []
         };
     },
 
@@ -75136,6 +75154,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if (data == "coefficients") {
                 axios.get("outils/coefficients").then(function (response) {
                     _this.coefficients = response.data.coefficients;
+                    _this.loading = false;
+                });
+            } else if (data == "nomenclatures") {
+                axios.get("outils/nomenclatures").then(function (response) {
+                    _this.nomenclatures = response.data.nomenclatures;
                     _this.loading = false;
                 });
             }
@@ -75238,7 +75261,7 @@ var render = function() {
             {
               on: {
                 input: function($event) {
-                  _vm.fetch_data("dssd")
+                  _vm.fetch_data("nomenclatures")
                 },
                 click: function($event) {
                   _vm.fetch_data("coefficients")
@@ -75266,11 +75289,70 @@ var render = function() {
                         ],
                         1
                       )
-                    : _c("v-card-text", [
-                        _vm._v(
-                          "\n                        COEFFICIENTS APPLICABLES AU CHIFFRE D4AFFAIRE POUR LA Détermination du Bénéfice forfaitaire a l'ir\n                    "
-                        )
-                      ])
+                    : _c(
+                        "v-card-text",
+                        _vm._l(_vm.nomenclatures, function(item) {
+                          return _c(
+                            "div",
+                            { key: item.id, staticClass: "coefficient_box" },
+                            [
+                              _c("div", { staticClass: "coefficient_item" }, [
+                                _c("strong", [_vm._v("ACTIVITES: ")]),
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(item.activites) +
+                                    "\n                                "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              item.classe_3
+                                ? _c(
+                                    "div",
+                                    { staticClass: "coefficient_item" },
+                                    [
+                                      _c("strong", [_vm._v("class 3 (10%) ")]),
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(item.classe_3) +
+                                          "\n                                "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.classe_2
+                                ? _c(
+                                    "div",
+                                    { staticClass: "coefficient_item" },
+                                    [
+                                      _c("strong", [_vm._v("class 2 (20%) ")]),
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(item.classe_2) +
+                                          "\n                                "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              item.classe_1
+                                ? _c(
+                                    "div",
+                                    { staticClass: "coefficient_item" },
+                                    [
+                                      _c("strong", [_vm._v("class 1 (10%) ")]),
+                                      _vm._v(
+                                        "\n                                    " +
+                                          _vm._s(item.classe_1) +
+                                          "\n                                "
+                                      )
+                                    ]
+                                  )
+                                : _vm._e()
+                            ]
+                          )
+                        })
+                      )
                 ],
                 1
               )
