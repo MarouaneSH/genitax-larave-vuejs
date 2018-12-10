@@ -31,4 +31,8 @@ Route::get('questions/{id}',"ApiController@question");
 Route::get('infos',"ApiController@infos");
 
 
+Route::get("outils/coefficients","ApiController@coefficients");
+Route::get("outils/nomenclatures","ApiController@nomenclatures");
+
+
 

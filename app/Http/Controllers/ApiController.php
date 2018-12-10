@@ -9,6 +9,8 @@ use App\ArticleCirculaire;
 use App\Faq;
 use App\QuestionResponse;
 use App\Info;
+use App\OutilsNomenclature;
+use App\OutilsCoefficient;
 
 class ApiController extends Controller
 {
@@ -88,6 +90,17 @@ class ApiController extends Controller
     public function infos() {
         $info = Info::first();
         return response()->json(["info" => $info]);
+    }
+
+
+    public function coefficients() {
+        $coefficients = OutilsCoefficient::all();
+        return response()->json(["coefficients" => $coefficients]);
+    }
+
+    public function nomenclatures() {
+        $nomenclature = OutilsNomenclature::all();
+        return response()->json(["nomenclature" => $nomenclature]);
     }
 
 }

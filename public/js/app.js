@@ -72836,6 +72836,9 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_pages_faqs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_pages_faqs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_pages_infos__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_pages_infos___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_pages_infos__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients__ = __webpack_require__(78);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients__);
+
 
 
 
@@ -72857,6 +72860,10 @@ var routes = [{
     path: "/infos",
     component: __WEBPACK_IMPORTED_MODULE_3__components_pages_infos___default.a,
     name: "infos"
+}, {
+    path: "/outils",
+    component: __WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients___default.a,
+    name: "coefficients"
 }];
 
 /***/ }),
@@ -74964,6 +74971,326 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-118af97f", module.exports)
+  }
+}
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(79)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(81)
+/* template */
+var __vue_template__ = __webpack_require__(82)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/pages/outils/coefficients.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0d3b0ab6", Component.options)
+  } else {
+    hotAPI.reload("data-v-0d3b0ab6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(80);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(53)("18bb734a", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0d3b0ab6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./coefficients.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0d3b0ab6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./coefficients.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(52)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.coefficient_box{\n      -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);\n              box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);\n    padding: 20px;\n    margin: 20px 0;\n}\n.coefficient_item strong{\n color: #5284e2;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            loading: false,
+            coefficients: []
+        };
+    },
+
+    methods: {
+        fetch_data: function fetch_data(data) {
+            var _this = this;
+
+            this.loading = true;
+            if (data == "coefficients") {
+                axios.get("outils/coefficients").then(function (response) {
+                    _this.coefficients = response.data.coefficients;
+                    _this.loading = false;
+                });
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-layout",
+    { attrs: { column: "" } },
+    [
+      _c(
+        "v-expansion-panel",
+        { attrs: { popout: "" } },
+        [
+          _c(
+            "v-expansion-panel-content",
+            {
+              on: {
+                input: function($event) {
+                  _vm.fetch_data("coefficients")
+                }
+              }
+            },
+            [
+              _c("div", { attrs: { slot: "header" }, slot: "header" }, [
+                _vm._v(
+                  "COEFFICIENTS APPLICABLES AU CHIFFRE D4AFFAIRE POUR LA Détermination du Bénéfice forfaitaire a l'ir"
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card",
+                [
+                  _vm.loading
+                    ? _c(
+                        "div",
+                        { staticClass: "text-xs-center p-5" },
+                        [
+                          _c("v-progress-circular", {
+                            attrs: { indeterminate: "", color: "primary" }
+                          })
+                        ],
+                        1
+                      )
+                    : _c(
+                        "v-card-text",
+                        _vm._l(_vm.coefficients, function(coef) {
+                          return _c(
+                            "div",
+                            { key: coef.id, staticClass: "coefficient_box" },
+                            [
+                              _c("div", { staticClass: "coefficient_item" }, [
+                                _c("strong", [_vm._v("PROFESSION: ")]),
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(coef.profession) +
+                                    "\n                                "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "coefficient_item" }, [
+                                _c("strong", [_vm._v("N.M.A.E: ")]),
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(coef.nmae) +
+                                    "\n                                "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "coefficient_item" }, [
+                                _c("strong", [_vm._v("Taux: ")]),
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(coef.taux) +
+                                    " %\n                                "
+                                )
+                              ])
+                            ]
+                          )
+                        })
+                      )
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "v-expansion-panel-content",
+            {
+              on: {
+                input: function($event) {
+                  _vm.fetch_data("dssd")
+                },
+                click: function($event) {
+                  _vm.fetch_data("coefficients")
+                }
+              }
+            },
+            [
+              _c("div", { attrs: { slot: "header" }, slot: "header" }, [
+                _vm._v(
+                  "COEFFICIENTS APPLICABLES AU CHIFFRE D4AFFAIRE POUR LA Détermination du Bénéfice forfaitaire a l'ir"
+                )
+              ]),
+              _vm._v(" "),
+              _c(
+                "v-card",
+                [
+                  _vm.loading
+                    ? _c(
+                        "div",
+                        { staticClass: "text-xs-center" },
+                        [
+                          _c("v-progress-circular", {
+                            attrs: { indeterminate: "", color: "primary" }
+                          })
+                        ],
+                        1
+                      )
+                    : _c("v-card-text", [
+                        _vm._v(
+                          "\n                        COEFFICIENTS APPLICABLES AU CHIFFRE D4AFFAIRE POUR LA Détermination du Bénéfice forfaitaire a l'ir\n                    "
+                        )
+                      ])
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0d3b0ab6", module.exports)
   }
 }
 

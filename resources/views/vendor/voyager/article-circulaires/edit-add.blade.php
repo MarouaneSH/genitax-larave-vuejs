@@ -72,10 +72,14 @@
                                                           ->where("parent_id", "!=", null)
                                                           ->get(); 
                                         ?>
+                                         
                                         <select class="form-control select2 select2-hidden-accessible" name="categorie_id" tabindex="-1" aria-hidden="true">
-                                                    <option value="">Aucun</option>
-                                                    <option value="1">CGI</option>
-                                            </select>  
+                                                <option value="">Aucun</option>
+                                                @foreach($category as $cat)
+                                                        <option value="{{$cat->id}} ">{{$cat->titre}} </option>
+                                                @endforeach
+                                        </select>  
+                                          
                                         @else
                                             {!! app('voyager')->formField($row, $dataType, $dataTypeContent) !!}
                                         @endif

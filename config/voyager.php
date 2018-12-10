@@ -165,7 +165,6 @@ return [
         ],
 
         'widgets' => [
-            'App\\Widgets\\TaxWidget',
             'App\\Widgets\\FaqsWidget',
             'App\\Widgets\\CategorieWidget',
         ],
