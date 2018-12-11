@@ -1,6 +1,10 @@
 <template>
     <v-layout column>
         <v-expansion-panel popout>
+            <v-expansion-panel-content @input="fetch_data('tarif_fiscals')">
+                <div CL slot="header">Tarif fiscal</div>
+                <app-tarif-fiscal :loading-tree="loading" :items="tarif_fiscals"></app-tarif-fiscal>
+            </v-expansion-panel-content>
             <v-expansion-panel-content @input="fetch_data('coefficients')">
                 <div CL slot="header">COEFFICIENTS APPLICABLES AU CHIFFRE D'AFFAIRE POUR LA Détermination du Bénéfice forfaitaire a l'ir</div>
                     <v-card>
@@ -64,12 +68,15 @@
 </template>
 
 <script>
+import appTarifFiscal from "./tarif-fiscal";
+
 export default {
     data() {
         return {
             loading : false,
             coefficients : [],
             nomenclatures : [],
+            tarif_fiscals : []
         }
     },
     methods: {
@@ -85,8 +92,16 @@ export default {
                     this.nomenclatures = response.data.nomenclature;
                     this.loading = false;
                 })
+            } else if( data == "tarif_fiscals") {
+                axios.get("outils/tarif-fiscal").then((response)=> {
+                    this.tarif_fiscals = response.data.categories;
+                    this.loading = false;
+                })
             }
         }
+    },
+    components : {
+        appTarifFiscal
     }
 }
 </script>

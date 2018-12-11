@@ -11,6 +11,8 @@ use App\QuestionResponse;
 use App\Info;
 use App\OutilsNomenclature;
 use App\OutilsCoefficient;
+use App\OutilsTarifsFiscalCategory;
+use App\OutilsTarifsFiscalArticle;
 
 class ApiController extends Controller
 {
@@ -102,5 +104,21 @@ class ApiController extends Controller
         $nomenclature = OutilsNomenclature::all();
         return response()->json(["nomenclature" => $nomenclature]);
     }
+    
 
+    public function tarifFiscal() {
+        //
+        $categories = OutilsTarifsFiscalCategory::select("id","parent_id","titre","level","icon_type")
+                    ->with('children:id,parent_id,titre,level,icon_type')
+                    ->orderBy("level")
+                    ->whereNull("parent_id")
+                    ->get();
+        return response()->json(["categories" =>$categories]);
+        
+    }
+    
+    public function tarifFiscal_artilce($id) {
+        $articles = OutilsTarifsFiscalArticle::where("id",$id);
+        return response()->json(["article" => $articles->first()]);
+    }
 }

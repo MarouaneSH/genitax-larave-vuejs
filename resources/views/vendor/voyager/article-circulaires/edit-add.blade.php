@@ -3,7 +3,6 @@
 @section('css')
     <meta name="csrf-token" content="{{ csrf_token() }}">
 @stop
-
 @section('page_title', __('voyager::generic.'.(!is_null($dataTypeContent->getKey()) ? 'edit' : 'add')).' '.$dataType->display_name_singular)
 
 @section('page_header')
@@ -71,12 +70,18 @@
                                                $category = App\Category::whereDoesntHave("children")
                                                           ->where("parent_id", "!=", null)
                                                           ->get(); 
+
+                                              $selectedCategory = App\ArticleCirculaire::where("id",$dataTypeContent->getKey());
+                                              if($selectedCategory) {
+                                                $selectedCategory = $selectedCategory->first()->categorie_id;
+                                              }
                                         ?>
                                          
+                                    
                                         <select class="form-control select2 select2-hidden-accessible" name="categorie_id" tabindex="-1" aria-hidden="true">
                                                 <option value="">Aucun</option>
                                                 @foreach($category as $cat)
-                                                        <option value="{{$cat->id}} ">{{$cat->titre}} </option>
+                                                        <option value="{{$cat->id}}" @if($cat->id == $selectedCategory)  selected @endif>{{$cat->titre}} </option>
                                                 @endforeach
                                         </select>  
                                           

@@ -73473,7 +73473,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.dialog = true;
             this.loadingDialog = true;
             axios.get("article/id=" + this.selectedArticle.id + "&type=" + this.toggle_html_type).then(function (result) {
-                _this4.contentHTML = result.data.article.content_html;
+                _this4.generateHtml(result.data.article.content_html);
                 _this4.loadingDialog = false;
             });
         },
@@ -73495,6 +73495,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     name: result.data.article.category.titre,
                     id: result.data.article.id
                 };
+            });
+        },
+        generateHtml: function generateHtml(htmlContent) {
+            this.contentHTML = htmlContent;
+            var html = document.createElement('div');
+            html.innerHTML = htmlContent;
+            Array.from(html.querySelectorAll("a")).forEach(function (e) {
+                if (e.href.includes("article")) {
+                    e.href = "#" + e.href;
+                }
             });
         }
     },
@@ -74692,6 +74702,12 @@ exports.push([module.i, "\n.coefficient_box{\n      -webkit-box-shadow: 0 10px 2
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tarif_fiscal__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tarif_fiscal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__tarif_fiscal__);
+//
+//
+//
+//
 //
 //
 //
@@ -74758,12 +74774,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
             loading: false,
             coefficients: [],
-            nomenclatures: []
+            nomenclatures: [],
+            tarif_fiscals: []
         };
     },
 
@@ -74782,8 +74801,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.nomenclatures = response.data.nomenclature;
                     _this.loading = false;
                 });
+            } else if (data == "tarif_fiscals") {
+                axios.get("outils/tarif-fiscal").then(function (response) {
+                    _this.tarif_fiscals = response.data.categories;
+                    _this.loading = false;
+                });
             }
         }
+    },
+    components: {
+        appTarifFiscal: __WEBPACK_IMPORTED_MODULE_0__tarif_fiscal___default.a
     }
 });
 
@@ -74803,6 +74830,27 @@ var render = function() {
         "v-expansion-panel",
         { attrs: { popout: "" } },
         [
+          _c(
+            "v-expansion-panel-content",
+            {
+              on: {
+                input: function($event) {
+                  _vm.fetch_data("tarif_fiscals")
+                }
+              }
+            },
+            [
+              _c("div", { attrs: { slot: "header", CL: "" }, slot: "header" }, [
+                _vm._v("Tarif fiscal")
+              ]),
+              _vm._v(" "),
+              _c("app-tarif-fiscal", {
+                attrs: { "loading-tree": _vm.loading, items: _vm.tarif_fiscals }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c(
             "v-expansion-panel-content",
             {
@@ -75371,6 +75419,404 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(88)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(86)
+/* template */
+var __vue_template__ = __webpack_require__(90)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-e68354a0"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/pages/outils/tarif-fiscal.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e68354a0", Component.options)
+  } else {
+    hotAPI.reload("data-v-e68354a0", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 84 */,
+/* 85 */,
+/* 86 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ["loadingTree", "items"],
+    data: function data() {
+        return {
+            tree: [],
+            active: [],
+            dialog: false,
+            loadingDialog: false,
+            contentHTML: null,
+            selectedArticle: null
+        };
+    },
+
+    methods: {
+        search: function search(arr, id) {
+            var _this = this;
+            var article = null;
+            arr.filter(function (obj) {
+                if (obj.id == id) {
+                    _this.selected = obj;
+                }
+                if (obj.children && obj.children.length > 0) {
+                    return _this.search(obj.children, id);
+                }
+            });
+
+            return _this.selected;
+        },
+        openDialog: function openDialog() {
+            var _this2 = this;
+
+            this.dialog = true;
+            this.loadingDialog = true;
+            axios.get("outils/tarif-fiscal/article=" + this.selectedArticle.id).then(function (result) {
+                _this2.contentHTML = result.data.article.contenu_html;
+                _this2.loadingDialog = false;
+            });
+        }
+    },
+    watch: {
+        active: function active() {
+            if (!this.active.length) return undefined;
+            var id = this.active[0];
+            var selectedArticle = this.search(this.items, id);
+            if (selectedArticle.articles && selectedArticle.articles.length) {
+                this.selectedArticle = {
+                    name: selectedArticle.titre,
+                    id: selectedArticle.articles[0].id
+                };
+                this.openDialog();
+                return true;
+            }
+            return null;
+        },
+        dialog: function dialog() {
+            if (!this.dialog) {
+                this.active = [];
+            }
+        }
+    }
+});
+
+/***/ }),
+/* 87 */,
+/* 88 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(89);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("8082befa", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e68354a0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./tarif-fiscal.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e68354a0\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./tarif-fiscal.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.treeview_wrapper_fiscal[data-v-e68354a0] {\n    padding: 20px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "app_tarif_fiscal" } },
+    [
+      _c(
+        "div",
+        { staticClass: "treeview_wrapper_fiscal" },
+        [
+          !_vm.loadingTree
+            ? _c("v-treeview", {
+                staticClass: "grey lighten-5",
+                attrs: {
+                  active: _vm.active,
+                  items: _vm.items,
+                  activatable: "",
+                  "item-text": "titre",
+                  "item-key": "id",
+                  transition: ""
+                },
+                on: {
+                  "update:active": function($event) {
+                    _vm.active = $event
+                  }
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "prepend",
+                    fn: function(ref) {
+                      var item = ref.item
+                      var open = ref.open
+                      var leaf = ref.leaf
+                      return [
+                        _c(
+                          "v-icon",
+                          [
+                            item.icon_type == 1
+                              ? [
+                                  _vm._v(
+                                    "  " +
+                                      _vm._s(open ? "folder_open" : "folder") +
+                                      " "
+                                  )
+                                ]
+                              : item.icon_type == 2
+                              ? [_vm._v("list_alt")]
+                              : item.icon_type == 3
+                              ? [_vm._v("library_books")]
+                              : item.icon_type == 4
+                              ? [_vm._v("list")]
+                              : item.icon_type == 5
+                              ? [_vm._v("subdirectory_arrow_right")]
+                              : _vm._e()
+                          ],
+                          2
+                        )
+                      ]
+                    }
+                  }
+                ]),
+                model: {
+                  value: _vm.tree,
+                  callback: function($$v) {
+                    _vm.tree = $$v
+                  },
+                  expression: "tree"
+                }
+              })
+            : _c(
+                "div",
+                { staticClass: "text-xs-center" },
+                [
+                  _c("v-progress-circular", {
+                    attrs: { indeterminate: "", color: "primary" }
+                  })
+                ],
+                1
+              )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: {
+            fullscreen: "",
+            "hide-overlay": "",
+            transition: "dialog-bottom-transition"
+          },
+          model: {
+            value: _vm.dialog,
+            callback: function($$v) {
+              _vm.dialog = $$v
+            },
+            expression: "dialog"
+          }
+        },
+        [
+          _c(
+            "v-card",
+            [
+              _c(
+                "v-toolbar",
+                { attrs: { dark: "", color: "primary" } },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { icon: "", dark: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialog = false
+                        }
+                      }
+                    },
+                    [_c("v-icon", [_vm._v("close")])],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm.selectedArticle
+                    ? _c("v-toolbar-title", [
+                        _vm._v(_vm._s(_vm.selectedArticle.name) + " ")
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("v-spacer")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm.loadingDialog
+                ? _c(
+                    "div",
+                    { staticClass: "text-xs-center" },
+                    [
+                      _c("v-progress-circular", {
+                        attrs: { indeterminate: "", color: "primary" }
+                      })
+                    ],
+                    1
+                  )
+                : [
+                    _c("div", {
+                      staticClass: "content_html",
+                      domProps: { innerHTML: _vm._s(_vm.contentHTML) }
+                    })
+                  ]
+            ],
+            2
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e68354a0", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

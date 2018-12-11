@@ -165,7 +165,7 @@ export default {
         this.dialog = true;
         this.loadingDialog = true;
         axios.get(`article/id=${this.selectedArticle.id}&type=${this.toggle_html_type}`).then((result)=> {
-            this.contentHTML = result.data.article.content_html;
+            this.generateHtml(result.data.article.content_html);
             this.loadingDialog = false;
         })
     },
@@ -186,6 +186,16 @@ export default {
                 id : result.data.article.id
             } 
           
+        })
+    },
+    generateHtml(htmlContent) {
+        this.contentHTML = htmlContent;
+        let html = document.createElement('div');
+        html.innerHTML = htmlContent;
+        Array.from(html.querySelectorAll("a")).forEach((e) => { 
+            if(e.href.includes("article")) {
+                e.href = "#"+e.href;
+            }
         })
     }
   },

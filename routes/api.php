@@ -33,6 +33,7 @@ Route::get('infos',"ApiController@infos");
 
 Route::get("outils/coefficients","ApiController@coefficients");
 Route::get("outils/nomenclatures","ApiController@nomenclatures");
-
+Route::get("outils/tarif-fiscal","ApiController@tarifFiscal");
+Route::get("outils/tarif-fiscal/article={id}","ApiController@tarifFiscal_artilce");
 
 
