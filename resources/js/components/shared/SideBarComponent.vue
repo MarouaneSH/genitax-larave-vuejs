@@ -23,12 +23,12 @@
                 <h5>FAQ</h5>
                 <p>Faire Aux Questions</p>
               </v-btn>
-              <v-btn  to="outils"flat>
+              <v-btn  to="/outils" flat>
                 <v-icon>equalizer</v-icon>
                 <h5>OUTILS</h5>
                 <p>Divers</p>
               </v-btn>
-              <v-btn to="infos" flat>
+              <v-btn to="/infos" flat>
                 <v-icon>info</v-icon>
                 <h5>INFO</h5>
                 <p>Taux sur GaniTax</p>

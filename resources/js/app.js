@@ -10,7 +10,7 @@ window.Vue = require('vue');
 Vue.use(VueRouter);
 Vue.use(Vuetify)
 
-window.axios.defaults.baseURL ="http://genitax.test/api";
+window.axios.defaults.baseURL ="http://genitax.marouane.me/api";
 
 const router = new VueRouter({
     routes

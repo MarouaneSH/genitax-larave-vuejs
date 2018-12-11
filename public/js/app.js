@@ -25375,7 +25375,7 @@ window.Vue = __webpack_require__(14);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vuetify___default.a);
 
-window.axios.defaults.baseURL = "http://genitax.test/api";
+window.axios.defaults.baseURL = "http://genitax.marouane.me/api";
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: __WEBPACK_IMPORTED_MODULE_2__routes_routes__["a" /* routes */]
@@ -73195,8 +73195,17 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_pages_infos___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_pages_infos__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_pages_article_single__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_pages_article_single___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_pages_article_single__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_pages_outils_tarif_fiscal__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_pages_outils_tarif_fiscal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_pages_outils_tarif_fiscal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_pages_outils_nomenclature__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_pages_outils_nomenclature___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_pages_outils_nomenclature__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_pages_outils_index__ = __webpack_require__(96);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_pages_outils_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_pages_outils_index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_pages_article_single__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_pages_article_single___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_pages_article_single__);
+
+
+
 
 
 
@@ -73221,13 +73230,29 @@ var routes = [{
     component: __WEBPACK_IMPORTED_MODULE_3__components_pages_infos___default.a,
     name: "infos"
 }, {
+    path: "/article/:num/:type",
+    component: __WEBPACK_IMPORTED_MODULE_8__components_pages_article_single___default.a,
+    name: "ArticleByNum"
+}, {
+    path: "/articles/:id",
+    component: __WEBPACK_IMPORTED_MODULE_8__components_pages_article_single___default.a,
+    name: "ArticleById"
+}, {
     path: "/outils",
+    component: __WEBPACK_IMPORTED_MODULE_7__components_pages_outils_index___default.a,
+    name: "outil"
+}, {
+    path: "/outils/tarif-fiscal",
+    component: __WEBPACK_IMPORTED_MODULE_5__components_pages_outils_tarif_fiscal___default.a,
+    name: "tarif-fiscal"
+}, {
+    path: "/outils/coefficients",
     component: __WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients___default.a,
     name: "coefficients"
 }, {
-    path: "/article/:num/:type",
-    component: __WEBPACK_IMPORTED_MODULE_5__components_pages_article_single___default.a,
-    name: "SingleArticle"
+    path: "/outils/nomenclature",
+    component: __WEBPACK_IMPORTED_MODULE_6__components_pages_outils_nomenclature___default.a,
+    name: "nomenclature"
 }];
 
 /***/ }),
@@ -73475,44 +73500,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return _this.selected;
         },
         openDialog: function openDialog() {
-            var _this4 = this;
-
-            this.dialog = true;
-            this.loadingDialog = true;
-            axios.get("article/id=" + this.selectedArticle.id + "&type=" + this.toggle_html_type).then(function (result) {
-                _this4.generateHtml(result.data.article.content_html);
-                _this4.loadingDialog = false;
-            });
+            this.$router.push({ name: "ArticleById", params: { id: this.selectedArticle.id }, query: { category: this.type } });
         },
         searchArticle: function searchArticle() {
-            var _this5 = this;
+            var _this4 = this;
 
             this.loadingArticle = true;
             this.articleNotFound = false;
             axios.get("article/num=" + this.article + "&type=" + this.toggle_html_type + "&category=" + this.type).then(function (result) {
-                _this5.loadingArticle = false;
+                _this4.loadingArticle = false;
                 if (!result.data.article) {
-                    _this5.articleNotFound = true;
+                    _this4.articleNotFound = true;
                     return;
                 }
-                _this5.dialog = true;
-                _this5.generateHtml(result.data.article.content_html);
-                _this5.loadingDialog = false;
-                _this5.selectedArticle = {
+                _this4.dialog = true;
+                _this4.generateHtml(result.data.article.content_html);
+                _this4.loadingDialog = false;
+                _this4.selectedArticle = {
                     name: result.data.article.category.titre,
                     id: result.data.article.id
                 };
             });
         },
         generateHtml: function generateHtml(htmlContent) {
-            var _this6 = this;
+            var _this5 = this;
 
             var html = document.createElement('div');
             html.innerHTML = htmlContent;
             Array.from(html.querySelectorAll("a")).forEach(function (e) {
                 if (e.href.includes("article")) {
                     var article_id = e.href.split("/").reverse()[0];
-                    e.href = "#/article/" + article_id + "/" + _this6.type;
+                    e.href = "#/article/" + article_id + "/" + _this5.$route.query.category;
                 }
             });
             this.contentHTML = html.innerHTML;
@@ -73537,11 +73555,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         selectedHeaderName: function selectedHeaderName() {
-            var _this7 = this;
+            var _this6 = this;
 
             if (!this.headerCategories.length) return null;
             return this.headerCategories.filter(function (e) {
-                return e.id == _this7.toggle_header;
+                return e.id == _this6.toggle_header;
             })[0].titre;
         }
     }
@@ -74712,8 +74730,6 @@ exports.push([module.i, "\n.coefficient_box{\n      -webkit-box-shadow: 0 10px 2
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tarif_fiscal__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tarif_fiscal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__tarif_fiscal__);
 //
 //
 //
@@ -74740,88 +74756,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        var _this = this;
+
+        this.loading = true;
+        axios.get("outils/coefficients").then(function (response) {
+            _this.coefficients = response.data.coefficients;
+            _this.loading = false;
+        });
+    },
     data: function data() {
         return {
             loading: false,
-            coefficients: [],
-            nomenclatures: [],
-            tarif_fiscals: []
+            coefficients: []
         };
     },
 
-    methods: {
-        fetch_data: function fetch_data(data) {
-            var _this = this;
+    methods: {}
 
-            this.loading = true;
-            if (data == "coefficients") {
-                axios.get("outils/coefficients").then(function (response) {
-                    _this.coefficients = response.data.coefficients;
-                    _this.loading = false;
-                });
-            } else if (data == "nomenclatures") {
-                axios.get("outils/nomenclatures").then(function (response) {
-                    _this.nomenclatures = response.data.nomenclature;
-                    _this.loading = false;
-                });
-            } else if (data == "tarif_fiscals") {
-                axios.get("outils/tarif-fiscal").then(function (response) {
-                    _this.tarif_fiscals = response.data.categories;
-                    _this.loading = false;
-                });
-            }
-        }
-    },
-    components: {
-        appTarifFiscal: __WEBPACK_IMPORTED_MODULE_0__tarif_fiscal___default.a
-    }
 });
 
 /***/ }),
@@ -74833,216 +74788,55 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "v-layout",
-    { attrs: { column: "" } },
+    "div",
+    { staticClass: "coefficient_wrapper" },
     [
       _c(
-        "v-expansion-panel",
-        { attrs: { popout: "" } },
-        [
-          _c(
-            "v-expansion-panel-content",
-            {
-              on: {
-                input: function($event) {
-                  _vm.fetch_data("tarif_fiscals")
-                }
-              }
-            },
+        "v-icon",
+        {
+          staticClass: "arrow__back",
+          on: {
+            click: function($event) {
+              _vm.$router.go(-1)
+            }
+          }
+        },
+        [_vm._v("arrow_back")]
+      ),
+      _vm._v(" "),
+      _vm.loading
+        ? _c(
+            "div",
+            { staticClass: "text-xs-center" },
             [
-              _c("div", { attrs: { slot: "header", CL: "" }, slot: "header" }, [
-                _vm._v("Tarif fiscal")
-              ]),
-              _vm._v(" "),
-              _c("app-tarif-fiscal", {
-                attrs: { "loading-tree": _vm.loading, items: _vm.tarif_fiscals }
+              _c("v-progress-circular", {
+                attrs: { indeterminate: "", color: "primary" }
               })
             ],
             1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-expansion-panel-content",
-            {
-              on: {
-                input: function($event) {
-                  _vm.fetch_data("coefficients")
-                }
-              }
-            },
-            [
-              _c("div", { attrs: { slot: "header", CL: "" }, slot: "header" }, [
-                _vm._v(
-                  "COEFFICIENTS APPLICABLES AU CHIFFRE D'AFFAIRE POUR LA Détermination du Bénéfice forfaitaire a l'ir"
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "v-card",
-                [
-                  _vm.loading
-                    ? _c(
-                        "div",
-                        { staticClass: "text-xs-center p-5" },
-                        [
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "primary" }
-                          })
-                        ],
-                        1
-                      )
-                    : _c(
-                        "v-card-text",
-                        _vm._l(_vm.coefficients, function(coef) {
-                          return _c(
-                            "div",
-                            { key: coef.id, staticClass: "coefficient_box" },
-                            [
-                              _c("div", { staticClass: "coefficient_item" }, [
-                                _c("strong", [_vm._v("PROFESSION: ")]),
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(coef.profession) +
-                                    "\n                                "
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "coefficient_item" }, [
-                                _c("strong", [_vm._v("N.M.A.E: ")]),
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(coef.nmae) +
-                                    "\n                                "
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "coefficient_item" }, [
-                                _c("strong", [_vm._v("Taux: ")]),
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(coef.taux) +
-                                    " %\n                                "
-                                )
-                              ])
-                            ]
-                          )
-                        })
-                      )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-expansion-panel-content",
-            {
-              on: {
-                input: function($event) {
-                  _vm.fetch_data("nomenclatures")
-                },
-                click: function($event) {
-                  _vm.fetch_data("nomenclatures")
-                }
-              }
-            },
-            [
-              _c("div", { attrs: { slot: "header" }, slot: "header" }, [
-                _vm._v(
-                  "NOMENCLATURE DES ACTIVITés PASSIBLES DE LA TAXE PROFESSIONNELLE"
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "v-card",
-                [
-                  _vm.loading
-                    ? _c(
-                        "div",
-                        { staticClass: "text-xs-center" },
-                        [
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "primary" }
-                          })
-                        ],
-                        1
-                      )
-                    : _c(
-                        "v-card-text",
-                        _vm._l(_vm.nomenclatures, function(item) {
-                          return _c(
-                            "div",
-                            { key: item.id, staticClass: "coefficient_box" },
-                            [
-                              _c("div", { staticClass: "coefficient_item" }, [
-                                _c("strong", [_vm._v("ACTIVITES: ")]),
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(item.activites) +
-                                    "\n                                "
-                                )
-                              ]),
-                              _vm._v(" "),
-                              item.classe_3
-                                ? _c(
-                                    "div",
-                                    { staticClass: "coefficient_item" },
-                                    [
-                                      _c("strong", [_vm._v("CLASSE 3 (10%) ")]),
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(item.classe_3) +
-                                          "\n                                "
-                                      )
-                                    ]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              item.classe_2
-                                ? _c(
-                                    "div",
-                                    { staticClass: "coefficient_item" },
-                                    [
-                                      _c("strong", [_vm._v("CLASSE 2 (20%) ")]),
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(item.classe_2) +
-                                          "\n                                "
-                                      )
-                                    ]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              item.classe_1
-                                ? _c(
-                                    "div",
-                                    { staticClass: "coefficient_item" },
-                                    [
-                                      _c("strong", [_vm._v("CLASSE 1 (10%) ")]),
-                                      _vm._v(
-                                        "\n                                    " +
-                                          _vm._s(item.classe_1) +
-                                          "\n                                "
-                                      )
-                                    ]
-                                  )
-                                : _vm._e()
-                            ]
-                          )
-                        })
-                      )
-                ],
-                1
-              )
-            ],
-            1
           )
-        ],
-        1
-      )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.coefficients, function(coef) {
+        return _c("div", { key: coef.id, staticClass: "coefficient_box" }, [
+          _c("div", { staticClass: "coefficient_item" }, [
+            _c("strong", [_vm._v("PROFESSION: ")]),
+            _vm._v("\n            " + _vm._s(coef.profession) + "\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "coefficient_item" }, [
+            _c("strong", [_vm._v("N.M.A.E: ")]),
+            _vm._v("\n            " + _vm._s(coef.nmae) + "\n        ")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "coefficient_item" }, [
+            _c("strong", [_vm._v("Taux: ")]),
+            _vm._v("\n            " + _vm._s(coef.taux) + " %\n        ")
+          ])
+        ])
+      })
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -75217,7 +75011,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-btn",
-            { attrs: { to: "outils", flat: "" } },
+            { attrs: { to: "/outils", flat: "" } },
             [
               _c("v-icon", [_vm._v("equalizer")]),
               _vm._v(" "),
@@ -75230,7 +75024,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "v-btn",
-            { attrs: { to: "infos", flat: "" } },
+            { attrs: { to: "/infos", flat: "" } },
             [
               _c("v-icon", [_vm._v("info")]),
               _vm._v(" "),
@@ -75549,9 +75343,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    props: ["loadingTree", "items"],
+    mounted: function mounted() {
+        var _this2 = this;
+
+        this.loading = true;
+        axios.get("outils/tarif-fiscal").then(function (response) {
+            _this2.items = response.data.categories;
+            _this2.loading = false;
+        });
+    },
     data: function data() {
         return {
             tree: [],
@@ -75559,7 +75362,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             dialog: false,
             loadingDialog: false,
             contentHTML: null,
-            selectedArticle: null
+            loading: false,
+            selectedArticle: null,
+            items: []
         };
     },
 
@@ -75579,13 +75384,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return _this.selected;
         },
         openDialog: function openDialog() {
-            var _this2 = this;
+            var _this3 = this;
 
             this.dialog = true;
             this.loadingDialog = true;
             axios.get("outils/tarif-fiscal/article=" + this.selectedArticle.id).then(function (result) {
-                _this2.contentHTML = result.data.article.contenu_html;
-                _this2.loadingDialog = false;
+                _this3.contentHTML = result.data.article.contenu_html;
+                _this3.loadingDialog = false;
             });
         }
     },
@@ -75666,10 +75471,23 @@ var render = function() {
     { attrs: { id: "app_tarif_fiscal" } },
     [
       _c(
+        "v-icon",
+        {
+          staticClass: "arrow__back",
+          on: {
+            click: function($event) {
+              _vm.$router.go(-1)
+            }
+          }
+        },
+        [_vm._v("arrow_back")]
+      ),
+      _vm._v(" "),
+      _c(
         "div",
         { staticClass: "treeview_wrapper_fiscal" },
         [
-          !_vm.loadingTree
+          !_vm.loading
             ? _c("v-treeview", {
                 staticClass: "grey lighten-5",
                 attrs: {
@@ -75914,7 +75732,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -75925,6 +75743,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -75960,9 +75780,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+/* harmony default export */ __webpack_exports__["default"] = (_defineProperty({
     mounted: function mounted() {
-        this.fetch_article();
+        var article_id = this.$route.params.id;
+        if (article_id) {
+            this.isSearchablebyId = true;
+            this.fetchArticleById();
+        } else {
+            this.fetchArticleByName();
+        }
+    },
+    data: function data() {
+        return {
+            isSearchablebyId: false
+        };
     },
 
     methods: {
@@ -75973,13 +75804,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             html.innerHTML = htmlContent;
             Array.from(html.querySelectorAll("a")).forEach(function (e) {
                 if (e.href.includes("article")) {
-                    var article_id = e.href.split("/").reverse()[0];
-                    e.href = "#/article/" + article_id + "/" + _this.type;
+                    var article_num = e.href.split("/").reverse()[0];
+                    e.href = "#/article/" + article_num + "/" + _this.$route.query.category;
                 }
             });
             this.contentHTML = html.innerHTML;
         },
-        fetch_article: function fetch_article() {
+        fetchArticleByName: function fetchArticleByName() {
             var _this2 = this;
 
             this.loadingDialog = true;
@@ -75998,18 +75829,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     id: result.data.article.id
                 };
             });
+        },
+        fetchArticleById: function fetchArticleById() {
+            var _this3 = this;
+
+            var article_id = this.$route.params.id;
+
+            this.loadingDialog = true;
+            axios.get("article/id=" + article_id + "&type=" + this.toggle_html_type).then(function (result) {
+                if (!result.data.article) {
+                    _this3.articleNotFound = true;
+                    return;
+                }
+                _this3.generateHtml(result.data.article.content_html);
+                _this3.loadingDialog = false;
+                _this3.selectedArticle = {
+                    name: result.data.article.category.titre,
+                    id: result.data.article.id
+                };
+            });
         }
-    },
-    data: function data() {
-        return {
-            dialog: true,
-            loadingDialog: true,
-            toggle_html_type: "article",
-            articleNotFound: false,
-            selectedArticle: null
-        };
     }
-});
+}, "data", function data() {
+    return {
+        dialog: true,
+        loadingDialog: true,
+        toggle_html_type: "article",
+        articleNotFound: false,
+        selectedArticle: null
+    };
+}));
 
 /***/ }),
 /* 95 */
@@ -76069,7 +75918,13 @@ var render = function() {
                 "v-btn-toggle",
                 {
                   attrs: { light: "" },
-                  on: { change: _vm.fetch_article },
+                  on: {
+                    change: function($event) {
+                      _vm.isSearchablebyId
+                        ? _vm.fetchArticleById()
+                        : _vm.fetchArticleByName()
+                    }
+                  },
                   model: {
                     value: _vm.toggle_html_type,
                     callback: function($$v) {
@@ -76132,6 +75987,456 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-1a453a75", module.exports)
+  }
+}
+
+/***/ }),
+/* 96 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(101)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(99)
+/* template */
+var __vue_template__ = __webpack_require__(103)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-4a24201b"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/pages/outils/index.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4a24201b", Component.options)
+  } else {
+    hotAPI.reload("data-v-4a24201b", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 97 */,
+/* 98 */,
+/* 99 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        var _this = this;
+
+        axios.get("/outils").then(function (response) {
+            _this.outils = response.data.outils;
+            _this.loading = false;
+        });
+    },
+    data: function data() {
+        return {
+            outils: [],
+            loading: true
+        };
+    }
+});
+
+/***/ }),
+/* 100 */,
+/* 101 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(102);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("723833f6", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4a24201b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4a24201b\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./index.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 102 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.outil_card[data-v-4a24201b] {\n  padding: 30px 40px;\n  border-radius: 60px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  color: white;\n  margin-top: 15px;\n  cursor: pointer;\n  -webkit-transition: all .3s ease-in;\n  transition: all .3s ease-in;\n}\n.outil_card[data-v-4a24201b]:hover {\n    -webkit-transform: scale(1.03);\n            transform: scale(1.03);\n}\n.outil_card img[data-v-4a24201b] {\n    max-width: 50px;\n}\n.outil_card_title[data-v-4a24201b] {\n    margin-left: 10px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 103 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "outils_wrapper" } }, [
+    _vm.loading
+      ? _c(
+          "div",
+          { staticClass: "text-xs-center mt-5" },
+          [
+            _c("v-progress-circular", {
+              attrs: { indeterminate: "", color: "primary" }
+            })
+          ],
+          1
+        )
+      : _c(
+          "div",
+          { staticClass: "outils_container" },
+          _vm._l(_vm.outils, function(outil) {
+            return _c(
+              "div",
+              {
+                key: outil.id,
+                staticClass: "outil_card",
+                style: { backgroundColor: outil.coleur },
+                on: {
+                  click: function($event) {
+                    _vm.$router.push({ name: outil.component })
+                  }
+                }
+              },
+              [
+                _c("img", { attrs: { src: "storage/" + outil.icon, alt: "" } }),
+                _vm._v(" "),
+                _c("div", { staticClass: "outil_card_title" }, [
+                  _vm._v(_vm._s(outil.titre) + " ")
+                ])
+              ]
+            )
+          })
+        )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4a24201b", module.exports)
+  }
+}
+
+/***/ }),
+/* 104 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(109)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(107)
+/* template */
+var __vue_template__ = __webpack_require__(111)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-04030bbe"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/pages/outils/nomenclature.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-04030bbe", Component.options)
+  } else {
+    hotAPI.reload("data-v-04030bbe", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 105 */,
+/* 106 */,
+/* 107 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        var _this = this;
+
+        this.loading = true;
+        axios.get("outils/nomenclatures").then(function (response) {
+            _this.nomenclatures = response.data.nomenclature;
+            _this.loading = false;
+        });
+    },
+    data: function data() {
+        return {
+            loading: false,
+            nomenclatures: []
+        };
+    }
+});
+
+/***/ }),
+/* 108 */,
+/* 109 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(110);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("3a78dba1", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-04030bbe\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nomenclature.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-04030bbe\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./nomenclature.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 110 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.coefficient_box[data-v-04030bbe]{\n      -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);\n              box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);\n    padding: 20px;\n    margin: 20px 0;\n}\n.coefficient_item strong[data-v-04030bbe]{\n color: #5284e2;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 111 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-card",
+    [
+      _c(
+        "v-icon",
+        {
+          staticClass: "arrow__back p-5",
+          on: {
+            click: function($event) {
+              _vm.$router.go(-1)
+            }
+          }
+        },
+        [_vm._v("arrow_back")]
+      ),
+      _vm._v(" "),
+      _vm.loading
+        ? _c(
+            "div",
+            { staticClass: "text-xs-center" },
+            [
+              _c("v-progress-circular", {
+                attrs: { indeterminate: "", color: "primary" }
+              })
+            ],
+            1
+          )
+        : _c(
+            "v-card-text",
+            _vm._l(_vm.nomenclatures, function(item) {
+              return _c(
+                "div",
+                { key: item.id, staticClass: "coefficient_box" },
+                [
+                  _c("div", { staticClass: "coefficient_item" }, [
+                    _c("strong", [_vm._v("ACTIVITES: ")]),
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(item.activites) +
+                        "\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  item.classe_3
+                    ? _c("div", { staticClass: "coefficient_item" }, [
+                        _c("strong", [_vm._v("CLASSE 3 (10%) ")]),
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(item.classe_3) +
+                            "\n                "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  item.classe_2
+                    ? _c("div", { staticClass: "coefficient_item" }, [
+                        _c("strong", [_vm._v("CLASSE 2 (20%) ")]),
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(item.classe_2) +
+                            "\n                "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  item.classe_1
+                    ? _c("div", { staticClass: "coefficient_item" }, [
+                        _c("strong", [_vm._v("CLASSE 1 (10%) ")]),
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(item.classe_1) +
+                            "\n                "
+                        )
+                      ])
+                    : _vm._e()
+                ]
+              )
+            })
+          )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-04030bbe", module.exports)
   }
 }
 

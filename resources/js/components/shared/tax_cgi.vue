@@ -162,12 +162,7 @@ export default {
         return  _this.selected;
     },
     openDialog() {
-        this.dialog = true;
-        this.loadingDialog = true;
-        axios.get(`article/id=${this.selectedArticle.id}&type=${this.toggle_html_type}`).then((result)=> {
-            this.generateHtml(result.data.article.content_html);
-            this.loadingDialog = false;
-        })
+        this.$router.push({name : "ArticleById", params : { id : this.selectedArticle.id} , query : {category : this.type}})
     },
     searchArticle() {
         this.loadingArticle = true;
@@ -193,7 +188,7 @@ export default {
         Array.from(html.querySelectorAll("a")).forEach((e) => { 
             if(e.href.includes("article")) {
                let article_id = e.href.split("/").reverse()[0];
-               e.href = "#/article/"+article_id+"/"+this.type;
+               e.href = "#/article/"+article_id+"/"+this.$route.query.category;
             }
         })
         this.contentHTML = html.innerHTML;

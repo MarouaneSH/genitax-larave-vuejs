@@ -7,7 +7,7 @@
                             </v-btn>
                             <v-toolbar-title v-if="selectedArticle">{{selectedArticle.name}} </v-toolbar-title>
                             <v-spacer></v-spacer>
-                            <v-btn-toggle light v-model="toggle_html_type" @change="fetch_article" >
+                            <v-btn-toggle light v-model="toggle_html_type" @change="isSearchablebyId ? fetchArticleById() : fetchArticleByName ()" >
                                     <v-btn flat value="article">
                                         <h6> Article </h6>
                                     </v-btn>
@@ -35,7 +35,19 @@
 <script>
 export default {
     mounted(){
-       this.fetch_article();
+      let article_id = this.$route.params.id;
+      if(article_id) {
+          this.isSearchablebyId = true;
+          this.fetchArticleById();
+      } else {
+          this.fetchArticleByName();
+      }
+        
+    },
+    data() {
+       return {
+            isSearchablebyId : false
+       }
     },
     methods : {
         generateHtml(htmlContent) {
@@ -43,14 +55,14 @@ export default {
             html.innerHTML = htmlContent;
             Array.from(html.querySelectorAll("a")).forEach((e) => { 
                 if(e.href.includes("article")) {
-                   let article_id = e.href.split("/").reverse()[0];
-                   e.href = "#/article/"+article_id+"/"+this.type;
+                let article_num = e.href.split("/").reverse()[0];
+                e.href = "#/article/"+article_num+"/"+this.$route.query.category;
                 }
             })
             this.contentHTML = html.innerHTML;
         },
-        fetch_article(){
-             this.loadingDialog = true;
+        fetchArticleByName(){
+            this.loadingDialog = true;
             let num_article = this.$route.params.num;
             let type = this.$route.params.type;
 
@@ -66,7 +78,24 @@ export default {
                     id : result.data.article.id
                 }
             })
-        }
+        },
+        fetchArticleById(){
+            let article_id = this.$route.params.id;
+
+            this.loadingDialog = true;
+            axios.get(`article/id=${article_id}&type=${this.toggle_html_type}`).then((result)=> {
+                if(!result.data.article) {
+                    this.articleNotFound = true;
+                    return;
+                }
+                this.generateHtml(result.data.article.content_html);
+                this.loadingDialog = false;
+                this.selectedArticle = {
+                    name :  result.data.article.category.titre,
+                    id : result.data.article.id
+                }
+            })
+        } 
     },
     data() {
         return {

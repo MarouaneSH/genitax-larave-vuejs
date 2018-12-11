@@ -13,6 +13,7 @@ use App\OutilsNomenclature;
 use App\OutilsCoefficient;
 use App\OutilsTarifsFiscalCategory;
 use App\OutilsTarifsFiscalArticle;
+use App\Outil;
 
 class ApiController extends Controller
 {
@@ -43,11 +44,8 @@ class ApiController extends Controller
 
     public function getArticle($id,$type) {
         $articles = ArticleCirculaire::where("id",$id);
-        if($type == "article") {
-            $articles->select("contenu_html_article as content_html");
-        } else {
-            $articles->select("contenu_html_circulaire as content_html");
-        }
+        $articles->select("contenu_html_$type as content_html","categorie_id","id");
+        $articles->with("category:id,titre");
 
         return response()->json(["article" => $articles->first()]);
     }
@@ -95,6 +93,12 @@ class ApiController extends Controller
     }
 
 
+    public function outils() {
+        $outils = Outil::all();
+        return response()->json(["outils" => $outils]);
+    }
+
+
     public function coefficients() {
         $coefficients = OutilsCoefficient::all();
         return response()->json(["coefficients" => $coefficients]);
@@ -121,4 +125,5 @@ class ApiController extends Controller
         $articles = OutilsTarifsFiscalArticle::where("id",$id);
         return response()->json(["article" => $articles->first()]);
     }
+    
 }

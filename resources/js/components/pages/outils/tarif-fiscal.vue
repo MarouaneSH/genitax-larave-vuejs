@@ -1,8 +1,9 @@
 <template>
     <div id="app_tarif_fiscal">
+        <v-icon @click="$router.go(-1)" class="arrow__back">arrow_back</v-icon>
          <div class="treeview_wrapper_fiscal">
                     <v-treeview
-                        v-if="!loadingTree"
+                        v-if="!loading"
                         v-model="tree"
                         :active.sync="active"
                         :items="items"
@@ -56,7 +57,13 @@
 
 <script>
 export default {
-    props : ["loadingTree","items"],
+    mounted() {
+        this.loading = true;
+        axios.get("outils/tarif-fiscal").then((response)=> {
+            this.items = response.data.categories;
+            this.loading = false;
+        })
+    },
     data() {
         return {
             tree : [],
@@ -64,7 +71,9 @@ export default {
             dialog : false,
             loadingDialog : false,
             contentHTML : null,
-            selectedArticle : null
+            loading  : false,
+            selectedArticle : null,
+            items : []
         }
     },
     methods : {
