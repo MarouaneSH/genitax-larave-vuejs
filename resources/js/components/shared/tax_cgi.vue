@@ -179,24 +179,24 @@ export default {
                 return;
             }
             this.dialog = true;
-            this.contentHTML = result.data.article.content_html;
+            this.generateHtml(result.data.article.content_html);
             this.loadingDialog = false;
             this.selectedArticle = {
                 name :  result.data.article.category.titre,
                 id : result.data.article.id
-            } 
-          
+            }
         })
     },
     generateHtml(htmlContent) {
-        this.contentHTML = htmlContent;
         let html = document.createElement('div');
         html.innerHTML = htmlContent;
         Array.from(html.querySelectorAll("a")).forEach((e) => { 
             if(e.href.includes("article")) {
-                e.href = "#"+e.href;
+               let article_id = e.href.split("/").reverse()[0];
+               e.href = "#/article/"+article_id+"/"+this.type;
             }
         })
+        this.contentHTML = html.innerHTML;
     }
   },
 
