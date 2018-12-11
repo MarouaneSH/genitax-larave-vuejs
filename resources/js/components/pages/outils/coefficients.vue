@@ -2,7 +2,7 @@
     <v-layout column>
         <v-expansion-panel popout>
             <v-expansion-panel-content @input="fetch_data('coefficients')">
-                <div slot="header">COEFFICIENTS APPLICABLES AU CHIFFRE D4AFFAIRE POUR LA Détermination du Bénéfice forfaitaire a l'ir</div>
+                <div CL slot="header">COEFFICIENTS APPLICABLES AU CHIFFRE D'AFFAIRE POUR LA Détermination du Bénéfice forfaitaire a l'ir</div>
                     <v-card>
                         <div class="text-xs-center p-5" v-if="loading">
                                    <v-progress-circular
@@ -28,8 +28,8 @@
                         </v-card-text>
                     </v-card>
             </v-expansion-panel-content>
-            <v-expansion-panel-content @input="fetch_data('nomenclatures')"  @click="fetch_data('coefficients')">
-                <div slot="header">COEFFICIENTS APPLICABLES AU CHIFFRE D4AFFAIRE POUR LA Détermination du Bénéfice forfaitaire a l'ir</div>
+            <v-expansion-panel-content @input="fetch_data('nomenclatures')"  @click="fetch_data('nomenclatures')">
+                <div slot="header">NOMENCLATURE DES ACTIVITés PASSIBLES DE LA TAXE PROFESSIONNELLE</div>
                     <v-card>
                         <div class="text-xs-center" v-if="loading">
                                    <v-progress-circular
@@ -44,15 +44,15 @@
                                         {{item.activites}}
                                     </div>
                                     <div v-if="item.classe_3" class="coefficient_item">
-                                        <strong>class 3 (10%) </strong>
+                                        <strong>CLASSE 3 (10%) </strong>
                                         {{item.classe_3}}
                                     </div>
                                     <div v-if="item.classe_2" class="coefficient_item">
-                                        <strong>class 2 (20%) </strong>
+                                        <strong>CLASSE 2 (20%) </strong>
                                         {{item.classe_2}}
                                     </div>
                                     <div v-if="item.classe_1" class="coefficient_item">
-                                        <strong>class 1 (10%) </strong>
+                                        <strong>CLASSE 1 (10%) </strong>
                                         {{item.classe_1}}
                                     </div>
                                 </div>
@@ -82,7 +82,7 @@ export default {
                 })
             } else if( data == "nomenclatures") {
                 axios.get("outils/nomenclatures").then((response)=> {
-                    this.nomenclatures = response.data.nomenclatures;
+                    this.nomenclatures = response.data.nomenclature;
                     this.loading = false;
                 })
             }
