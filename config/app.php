@@ -162,7 +162,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Nestable\NestableServiceProvider::class,
+        Laravel\Scout\ScoutServiceProvider::class,
 
+        ScoutElastic\ScoutElasticServiceProvider::class,
         /*
          * Package Service Providers...
          */

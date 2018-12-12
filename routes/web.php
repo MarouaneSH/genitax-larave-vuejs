@@ -18,9 +18,7 @@ Route::get('/', function () {
 
 
 Route::get('/test', function () {
-    return App\Category::whereDoesntHave("children")
-                         ->where("parent_id", "!=", null)
-                         ->get();
+    return App\Category::search('Live')->get();
 });
 
 

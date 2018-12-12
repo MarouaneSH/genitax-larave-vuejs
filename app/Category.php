@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Nestable\NestableTrait;
+use Laravel\Scout\Searchable;
 
 
 class Category extends Model
 {
+
+    use Searchable;
 
 
     public function parent()
@@ -28,5 +31,10 @@ class Category extends Model
 
     public function articles() {
         return $this->hasMany('App\ArticleCirculaire',"categorie_id");
+    }
+
+    public function searchableAs()
+    {
+        return 'titre';
     }
 }
