@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 
 Route::get('/test', function () {
-    return App\Category::search('Live')->get();
+    return App\Category::search('Circulaire LF 2017')->get();
 });
 
 

@@ -4,13 +4,24 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Nestable\NestableTrait;
-use Laravel\Scout\Searchable;
+use ScoutElastic\Searchable;
 
 
 class Category extends Model
 {
 
     use Searchable;
+
+    protected $indexConfigurator = TestIndexConfigurator::class;
+
+   protected $mapping = [
+        'properties' => [
+            'titre' => [
+                'type' => 'text',
+                'analyzer' => 'english',
+            ],
+        ]
+    ];
 
 
     public function parent()
