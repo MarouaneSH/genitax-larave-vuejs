@@ -1,24 +1,31 @@
 <template>
   <v-navigation-drawer  app class="app_drawer" width="350" >
-        <v-text-field
-            label="Solo"
-            placeholder="Search"
-            class="search_input"
-            solo
-            append-icon="search"
-        ></v-text-field>
 
+      <v-autocomplete
+        v-model="selectedArticle"
+        :items="items"
+        :loading="isLoading"
+         class="search_input"
+        :search-input.sync="search"
+        color="red"
+        solo
+        :filter="test"
+        append-icon="search"
+        no-data-text="Aucun article trouvé"
+        item-text="titre"
+        item-value="articles[0].id"
+        @input.native="searchArticle"
+        label="Public APIs"
+        placeholder="Chercher une article"
+      >  
 
-        <ais-index app-id="BAMRXQFLDL"
-                      api-key="9e13904fdad59b67f5599444894d857d"
-                      index-name="titre">
-
-                      <ais-input placeholder="Search contacts..."></ais-input>
-
-                      <ais-results></ais-results>
-
-            </ais-index>
-
+       <template
+        slot="item"
+        slot-scope="{ item, tile }"
+      >
+        <template> {{ item.titre }} </template>
+      </template>
+      </v-autocomplete>
 
 
         <v-btn-toggle id="sidebar_toggle">
@@ -52,7 +59,55 @@
 </template>
 
 <script>
-    export default {
+  export default {
+    data: () => ({
+      descriptionLimit: 60,
+      articles: [],
+      isLoading: false,
+      selectedArticle: null,
+      search: null
+    }),
+    methods : {
+      test(t) {
+        return t;
+      },
+      xxx() {
+        console.log("dsdsds");
+      },
+      searchArticle : _.debounce(function(){
+        this.isLoading = true
+        if(!this.search) return;
+        // Lazily load input items
+        axios.get('article/query='+ this.search)
+          .then(res => {
+            this.articles = res.data.articles
+          })
+          .catch(err => {
+            console.log(err)
+          })
+          .finally(() => (this.isLoading = false))
 
+
+      }, 500)
+    },
+    computed: {
+      items () {
+        return this.articles.map(article => {
+          const Description = article.titre.length > this.descriptionLimit
+            ? article.titre.slice(0, this.descriptionLimit) + '...'
+            : article.titre
+
+          return Object.assign({}, article, { Description })
+        })
+      }
+    },
+
+    watch: {
+      selectedArticle (val) {
+        if(!val) return;
+        let category = (this.$route.name == "CGI") ? "cgi" : "taxe";
+        this.$router.push({ name: 'ArticleById', params: { id: val } , query : {category : category} })
+      }
     }
+  }
 </script>

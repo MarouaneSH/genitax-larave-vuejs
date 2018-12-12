@@ -71,6 +71,20 @@ class ApiController extends Controller
     }
 
 
+    public function searchArticle($query) {
+        $matching_category = Category::search($query)->get()->pluck("id");
+        $matching_articles = ArticleCirculaire::search($query)->get()->pluck("categorie_id");
+        $all_matching = $matching_category->merge($matching_articles);
+
+        $articles = Category::whereIn("id", $all_matching->unique())
+                    ->with("articles:id,categorie_id")
+                    ->whereHas('articles')
+                    ->get();
+    
+        return response()->json(["articles" => $articles]);
+    }
+
+
     public function faqs() {
         $faqs = Faq::all();
         return response()->json(["faqs" => $faqs]);

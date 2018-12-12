@@ -75794,7 +75794,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -75862,6 +75862,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         generateHtml: function generateHtml(htmlContent) {
             var _this = this;
 
+            console.log("dsds");
             var html = document.createElement('div');
             html.innerHTML = htmlContent;
             Array.from(html.querySelectorAll("a")).forEach(function (e) {
@@ -76158,8 +76159,67 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      descriptionLimit: 60,
+      articles: [],
+      isLoading: false,
+      selectedArticle: null,
+      search: null
+    };
+  },
+  methods: {
+    test: function test(t) {
+      return t;
+    },
+    xxx: function xxx() {
+      console.log("dsdsds");
+    },
+
+    searchArticle: _.debounce(function () {
+      var _this = this;
+
+      this.isLoading = true;
+      if (!this.search) return;
+      // Lazily load input items
+      axios.get('article/query=' + this.search).then(function (res) {
+        _this.articles = res.data.articles;
+      }).catch(function (err) {
+        console.log(err);
+      }).finally(function () {
+        return _this.isLoading = false;
+      });
+    }, 500)
+  },
+  computed: {
+    items: function items() {
+      var _this2 = this;
+
+      return this.articles.map(function (article) {
+        var Description = article.titre.length > _this2.descriptionLimit ? article.titre.slice(0, _this2.descriptionLimit) + '...' : article.titre;
+
+        return Object.assign({}, article, { Description: Description });
+      });
+    }
+  },
+
+  watch: {
+    selectedArticle: function selectedArticle(val) {
+      if (!val) return;
+      var category = this.$route.name == "CGI" ? "cgi" : "taxe";
+      this.$router.push({ name: 'ArticleById', params: { id: val }, query: { category: category } });
+    }
+  }
+});
 
 /***/ }),
 /* 92 */
@@ -76173,32 +76233,50 @@ var render = function() {
     "v-navigation-drawer",
     { staticClass: "app_drawer", attrs: { app: "", width: "350" } },
     [
-      _c("v-text-field", {
+      _c("v-autocomplete", {
         staticClass: "search_input",
         attrs: {
-          label: "Solo",
-          placeholder: "Search",
+          items: _vm.items,
+          loading: _vm.isLoading,
+          "search-input": _vm.search,
+          color: "red",
           solo: "",
-          "append-icon": "search"
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "ais-index",
-        {
-          attrs: {
-            "app-id": "BAMRXQFLDL",
-            "api-key": "9e13904fdad59b67f5599444894d857d",
-            "index-name": "titre"
+          filter: _vm.test,
+          "append-icon": "search",
+          "no-data-text": "Aucun article trouvé",
+          "item-text": "titre",
+          "item-value": "articles[0].id",
+          label: "Public APIs",
+          placeholder: "Chercher une article"
+        },
+        on: {
+          "update:searchInput": function($event) {
+            _vm.search = $event
           }
         },
-        [
-          _c("ais-input", { attrs: { placeholder: "Search contacts..." } }),
-          _vm._v(" "),
-          _c("ais-results")
-        ],
-        1
-      ),
+        nativeOn: {
+          input: function($event) {
+            return _vm.searchArticle($event)
+          }
+        },
+        scopedSlots: _vm._u([
+          {
+            key: "item",
+            fn: function(ref) {
+              var item = ref.item
+              var tile = ref.tile
+              return [[_vm._v(" " + _vm._s(item.titre) + " ")]]
+            }
+          }
+        ]),
+        model: {
+          value: _vm.selectedArticle,
+          callback: function($$v) {
+            _vm.selectedArticle = $$v
+          },
+          expression: "selectedArticle"
+        }
+      }),
       _vm._v(" "),
       _c(
         "v-btn-toggle",

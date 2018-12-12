@@ -51,12 +51,13 @@ export default {
     },
     methods : {
         generateHtml(htmlContent) {
+            console.log("dsds");
             let html = document.createElement('div');
             html.innerHTML = htmlContent;
             Array.from(html.querySelectorAll("a")).forEach((e) => { 
                 if(e.href.includes("article")) {
-                let article_num = e.href.split("/").reverse()[0];
-                e.href = "#/article/"+article_num+"/"+this.$route.query.category;
+                  let article_num = e.href.split("/").reverse()[0];
+                 e.href = "#/article/"+article_num+"/"+this.$route.query.category;
                 }
             })
             this.contentHTML = html.innerHTML;
