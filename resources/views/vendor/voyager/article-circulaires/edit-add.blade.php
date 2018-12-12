@@ -71,9 +71,9 @@
                                                           ->where("parent_id", "!=", null)
                                                           ->get(); 
 
-                                              $selectedCategory = App\ArticleCirculaire::where("id",$dataTypeContent->getKey());
+                                              $selectedCategory = App\ArticleCirculaire::where("id",$dataTypeContent->getKey())->first();
                                               if($selectedCategory) {
-                                                $selectedCategory = $selectedCategory->first()->categorie_id;
+                                                $selectedCategory = $selectedCategory->categorie_id;
                                               }
                                         ?>
                                          

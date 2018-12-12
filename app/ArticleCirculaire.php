@@ -15,11 +15,11 @@ class ArticleCirculaire extends Model
         'properties' => [
             'contenu_html_article' => [
                 'type' => 'text',
-                'analyzer' => 'english',
+                'analyzer' => 'french',
             ],
             'contenu_html_circulaire' => [
                 'type' => 'text',
-                'analyzer' => 'english',
+                'analyzer' => 'french',
             ],
         ]
     ];
