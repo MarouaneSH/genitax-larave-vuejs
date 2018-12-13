@@ -21,7 +21,7 @@
             </v-flex>
             <v-flex xs12 class="box-gtax__toggle_wrapper">
                     <v-btn-toggle dark v-model="toggle_header" class="box-gtax__toggle" @change="fetch_categories">
-                            <v-btn flat v-for="cat in headerCategories" :value="cat.id" :key="cat.id" >
+                            <v-btn flat v-for="cat in headerCategories" :value="cat.id " :key="cat.id" >
                                 <h6> {{cat.titre}} </h6>
                             </v-btn>
                     </v-btn-toggle>
@@ -62,35 +62,6 @@
                     
                 </v-app>
         </div>
-
-          <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-                <v-card>
-                        <v-toolbar dark color="primary">
-                            <v-btn icon dark @click="dialog = false">
-                                <v-icon>close</v-icon>
-                            </v-btn>
-                            <v-toolbar-title v-if="selectedArticle">{{selectedArticle.name}} </v-toolbar-title>
-                            <v-spacer></v-spacer>
-                            <v-btn-toggle light v-model="toggle_html_type" @change="openDialog" >
-                                    <v-btn flat value="article">
-                                        <h6> Article </h6>
-                                    </v-btn>
-                                    <v-btn flat value="circulaire">
-                                        <h6> Circulaire </h6>
-                                    </v-btn>
-                            </v-btn-toggle>
-                        </v-toolbar>
-                            <div v-if="loadingDialog" class="text-xs-center">
-                                <v-progress-circular
-                                    indeterminate
-                                    color="primary"
-                                ></v-progress-circular>
-                            </div>
-                            <template v-else>
-                                <div class="content_html"  v-html="contentHTML"></div>
-                            </template>
-                    </v-card>
-            </v-dialog>
     </v-layout>
 </template>
 
@@ -107,7 +78,12 @@ export default {
         if(this.type == "cgi") {
             axios.get(`/caregories/cgi/header`).then((result) => {
                 this.headerCategories = result.data.categories;
-                this.toggle_header = result.data.categories[0].id;
+                if(this.$route.query.id) {
+                    this.toggle_header = parseInt(this.$route.query.id);
+                } else {
+                     this.toggle_header = result.data.categories[0].id;
+                }
+               
                 this.fetch_categories();
             });
         } else {
@@ -138,6 +114,8 @@ export default {
       this.loadingTree = true;
       let url;
       if(this.type == "cgi") {
+         let titre = this.headerCategories.filter((e) => e.id == this.toggle_header)[0].titre;
+         this.$router.push({ query: { id: this.toggle_header, titre:  titre}})
          url = `/categories/parent=${this.toggle_header}`;
       } else {
          url = "/caregories/taxes"
@@ -165,6 +143,7 @@ export default {
         this.$router.push({name : "ArticleById", params : { id : this.selectedArticle.id} , query : {category : this.type}})
     },
     searchArticle() {
+        console.log("sdds");
         this.loadingArticle = true;
         this.articleNotFound = false;
         axios.get(`article/num=${this.article}&type=${this.toggle_html_type}&category=${this.type}`).then((result)=> {
@@ -173,13 +152,13 @@ export default {
                 this.articleNotFound = true;
                 return;
             }
-            this.dialog = true;
             this.generateHtml(result.data.article.content_html);
             this.loadingDialog = false;
             this.selectedArticle = {
                 name :  result.data.article.category.titre,
                 id : result.data.article.id
             }
+            this.openDialog();
         })
     },
     generateHtml(htmlContent) {
@@ -214,7 +193,7 @@ export default {
   computed : {
       selectedHeaderName() {
           if(!this.headerCategories.length) return null;
-          return this.headerCategories.filter((e) => e.id == this.toggle_header)[0].titre;
+         return this.headerCategories.filter((e) => e.id == this.toggle_header)[0].titre;
       }
   }
 

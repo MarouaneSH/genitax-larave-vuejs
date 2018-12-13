@@ -67,21 +67,23 @@
                                         @if($row->type == 'relationship')
                                         
                                         <?php 
-                                               $category = App\Category::whereDoesntHave("children")
+                                               $category = App\Category::whereDoesntHave("articles")
                                                           ->where("parent_id", "!=", null)
                                                           ->get(); 
-
                                               $selectedCategory = App\ArticleCirculaire::where("id",$dataTypeContent->getKey())->first();
                                               if($selectedCategory) {
-                                                $selectedCategory = $selectedCategory->categorie_id;
+                                                $selectedCategory= $selectedCategory->category;
                                               }
                                         ?>
                                          
                                     
                                         <select class="form-control select2 select2-hidden-accessible" name="categorie_id" tabindex="-1" aria-hidden="true">
                                                 <option value="">Aucun</option>
+                                                @if($selectedCategory)
+                                                    <option value="{{$selectedCategory->id}}" selected>{{$selectedCategory->titre}} </option>
+                                                @endif
                                                 @foreach($category as $cat)
-                                                        <option value="{{$cat->id}}" @if($cat->id == $selectedCategory)  selected @endif>{{$cat->titre}} </option>
+                                                        <option value="{{$cat->id}}">{{$cat->titre}} </option>
                                                 @endforeach
                                         </select>  
                                           

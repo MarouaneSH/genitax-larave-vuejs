@@ -12,6 +12,10 @@ import SingleArticle from '.././components/pages/article-single';
 export const routes = [
     {
         path : "/", 
+        redirect : "/cgi", 
+    },
+    {
+        path : "/cgi", 
         component : CGI, 
         name : "CGI",
     },

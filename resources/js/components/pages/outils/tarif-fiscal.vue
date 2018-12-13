@@ -1,7 +1,13 @@
 <template>
     <div id="app_tarif_fiscal">
-        <v-icon @click="$router.go(-1)" class="arrow__back">arrow_back</v-icon>
-         <div class="treeview_wrapper_fiscal">
+        <div class="app_outils_header" :style="{backgroundColor : outil_info.color}">
+            <v-icon @click="$router.go(-1)" class="arrow__back">arrow_back</v-icon>
+            <div class="app_outils_header_content" >
+                <img :src="'storage/'+outil_info.icon" alt="">
+                <div class="app_outils_header_title">{{outil_info.title}} </div>
+            </div>
+        </div>
+        <div class="treeview_wrapper_fiscal">
                     <v-treeview
                         v-if="!loading"
                         v-model="tree"
@@ -57,6 +63,7 @@
 
 <script>
 export default {
+    props : ["icon","color","title"],
     mounted() {
         this.loading = true;
         axios.get("outils/tarif-fiscal").then((response)=> {
@@ -99,6 +106,15 @@ export default {
                 this.loadingDialog = false;
             })
         },
+    },
+    computed : {
+            outil_info() {
+                return {
+                    icon : this.$route.query.icon,
+                    color : this.$route.query.color,
+                    title : this.$route.query.title,
+                }
+            }
     },
     watch : {
       active : function() {

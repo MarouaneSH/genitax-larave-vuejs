@@ -10,7 +10,7 @@
             <div class="outil_card" 
                  v-for="outil in outils" :key="outil.id"
                  :style="{backgroundColor : outil.coleur}"
-                 @click="$router.push({ name: outil.component})">
+                 @click="navigateTo(outil)">
 
                 <img :src="'storage/' + outil.icon" alt="">
                 <div class="outil_card_title">{{outil.titre}} </div>
@@ -32,6 +32,17 @@ export default {
         return {
             outils : [],
             loading : true
+        }
+    },
+    methods : {
+        navigateTo(outil) {
+            this.$router.push({ name: outil.component , 
+                                query :  {   
+                                    icon : outil.icon, 
+                                    color : outil.coleur , 
+                                    title : outil.titre
+                                }
+                            })
         }
     }
 }

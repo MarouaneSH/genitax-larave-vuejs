@@ -126,3 +126,26 @@
   width: 100%;
   margin-top: 70px;
 }
+
+.app_outils_header {
+  display: flex;
+  color: white;
+  align-items: center;
+  padding: 15px 30px;
+  .arrow__back {
+      color: white !important;
+  }
+  img {
+    width: 50px;
+    align-self: center;
+  }
+  &_content {
+    display: flex;
+    align-items: center;
+    flex:2;
+    padding-left: 15px;
+  }
+  &_title {
+    padding: 0 10px;
+  }
+}

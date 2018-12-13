@@ -6,7 +6,7 @@
                     <div class="text-xs-center">
                            <img class="logo" src="/img/logo.jpg" alt="">
                     </div>
-                  <router-view></router-view>
+                  <router-view :key="$route.fullPath"></router-view>
             </v-container>
         </v-content>
 </v-app>

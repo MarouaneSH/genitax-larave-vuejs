@@ -2,14 +2,15 @@
   <v-navigation-drawer  app class="app_drawer" width="350" >
 
       <v-autocomplete
+        v-if="diplaySearch"
         v-model="selectedArticle"
         :items="items"
         :loading="isLoading"
          class="search_input"
         :search-input.sync="search"
-        color="red"
+        color="primary"
         solo
-        :filter="test"
+        :filter="filtred"
         append-icon="search"
         no-data-text="Aucun article trouvé"
         item-text="titre"
@@ -29,7 +30,7 @@
 
 
         <v-btn-toggle id="sidebar_toggle">
-              <v-btn to="/" flat>
+              <v-btn to="/cgi" flat>
                 <v-icon>library_books</v-icon>
                 <h5>CGI</h5>
                 <p>Code Général des Impôts</p>
@@ -65,20 +66,18 @@
       articles: [],
       isLoading: false,
       selectedArticle: null,
-      search: null
+      search: null,
+      type_search : null
     }),
     methods : {
-      test(t) {
+      filtred(t) {
         return t;
-      },
-      xxx() {
-        console.log("dsdsds");
       },
       searchArticle : _.debounce(function(){
         this.isLoading = true
         if(!this.search) return;
         // Lazily load input items
-        axios.get('article/query='+ this.search)
+        axios.get('article/query='+ this.search +"&type_search="+this.type_search)
           .then(res => {
             this.articles = res.data.articles
           })
@@ -99,6 +98,12 @@
 
           return Object.assign({}, article, { Description })
         })
+      },
+      diplaySearch() {
+        const route = this.$route.name;
+        this.type_search = route.toLowerCase();
+        this.articles = [];
+        return route == "CGI" || route == "TAXES" || route == "faqs";
       }
     },
 

@@ -44,14 +44,14 @@ class ApiController extends Controller
 
     public function getArticle($id,$type) {
         $articles = ArticleCirculaire::where("id",$id);
-        $articles->select("contenu_html_$type as content_html","categorie_id","id");
+        $articles->select("contenu_html_$type as content_html","categorie_id","id","num_$type");
         $articles->with("category:id,titre");
 
         return response()->json(["article" => $articles->first()]);
     }
 
     public function getArticleByNum($num,$type,$category) {
-        $article = ArticleCirculaire::select("contenu_html_$type as content_html","categorie_id","id")
+        $article = ArticleCirculaire::select("contenu_html_$type as content_html","categorie_id","id","num_$type")
                    ->where(function($query) use($num){
                        $query->where("num_article",$num);
                        $query->orWhere("num_circulaire",$num);
@@ -71,7 +71,10 @@ class ApiController extends Controller
     }
 
 
-    public function searchArticle($query) {
+    public function searchArticle($query,$type_search) {
+        
+        $type_search = ($type_search == "cgi") ? 1 : 2;
+
         $matching_category = Category::search($query)->get()->pluck("id");
         $matching_articles = ArticleCirculaire::search($query)->get()->pluck("categorie_id");
         $all_matching = $matching_category->merge($matching_articles);
@@ -79,6 +82,7 @@ class ApiController extends Controller
         $articles = Category::whereIn("id", $all_matching->unique())
                     ->with("articles:id,categorie_id")
                     ->whereHas('articles')
+                    ->where("cgi_taxlocale_id",$type_search)
                     ->get();
     
         return response()->json(["articles" => $articles]);

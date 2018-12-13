@@ -7,7 +7,7 @@
                             </v-btn>
                             <v-toolbar-title v-if="selectedArticle">{{selectedArticle.name}} </v-toolbar-title>
                             <v-spacer></v-spacer>
-                            <v-btn-toggle light v-model="toggle_html_type" @change="isSearchablebyId ? fetchArticleById() : fetchArticleByName ()" >
+                            <v-btn-toggle v-if="!hideToggle" light v-model="toggle_html_type" @change="isSearchablebyId ? fetchArticleById() : fetchArticleByName ()" >
                                     <v-btn flat value="article">
                                         <h6> Article </h6>
                                     </v-btn>
@@ -26,6 +26,7 @@
                                 ></v-progress-circular>
                             </div>
                             <template v-else>
+                                 <h3 class="article_header"> {{getArticleHeader}}  : {{selectedArticle.num}} </h3>
                                 <div class="content_html"  v-html="contentHTML"></div>
                             </template>
                     </v-card>
@@ -51,13 +52,18 @@ export default {
     },
     methods : {
         generateHtml(htmlContent) {
-            console.log("dsds");
             let html = document.createElement('div');
             html.innerHTML = htmlContent;
             Array.from(html.querySelectorAll("a")).forEach((e) => { 
                 if(e.href.includes("article")) {
                   let article_num = e.href.split("/").reverse()[0];
-                 e.href = "#/article/"+article_num+"/"+this.$route.query.category;
+                  let category;
+                  if(this.$route.query.category) {
+                      category = this.$route.query.category;
+                  } else {
+                      category = this.$route.params.type;
+                  }
+                  e.href = "#/article/"+article_num+"/"+ category;
                 }
             })
             this.contentHTML = html.innerHTML;
@@ -74,9 +80,20 @@ export default {
                 }
                 this.generateHtml(result.data.article.content_html);
                 this.loadingDialog = false;
+
+                let num;
+                if(this.toggle_html_type == "article") {
+                    num = result.data.article.num_article
+                } else {
+                    num = result.data.article.num_circulaire
+                }
+    
+                if(!result.data.article.has_circulaire)  this.hideToggle = true;
+
                 this.selectedArticle = {
                     name :  result.data.article.category.titre,
-                    id : result.data.article.id
+                    id : result.data.article.id,
+                    num :num
                 }
             })
         },
@@ -89,11 +106,29 @@ export default {
                     this.articleNotFound = true;
                     return;
                 }
+
+                if(!result.data.article.content_html) {
+                    this.toggle_html_type = "circulaire";
+                    this.hideToggle = true;
+                    this.fetchArticleById();
+                }
+
+                if(!result.data.article.has_circulaire)  this.hideToggle = true;
+
                 this.generateHtml(result.data.article.content_html);
                 this.loadingDialog = false;
+
+                let num;
+                if(this.toggle_html_type == "article") {
+                    num = result.data.article.num_article
+                } else {
+                    num = result.data.article.num_circulaire
+                }
+
                 this.selectedArticle = {
                     name :  result.data.article.category.titre,
-                    id : result.data.article.id
+                    id : result.data.article.id,
+                    num : num
                 }
             })
         } 
@@ -104,12 +139,24 @@ export default {
             loadingDialog : true,
             toggle_html_type : "article",
             articleNotFound : false,
-            selectedArticle : null
+            selectedArticle : null,
+            hideToggle : false,
+        }
+    }, 
+    computed : {
+        getArticleHeader() {
+            return this.toggle_html_type.charAt(0).toUpperCase() + this.toggle_html_type.slice(1);
         }
     }
 }
 </script>
 
-<style>
-
+<style scoped>
+.article_header {
+    color: #1976d1;
+    padding: 40px;
+}
+.content_html {
+    padding: 0 40px;
+}
 </style>
