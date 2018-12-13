@@ -3,7 +3,7 @@
 
       <v-autocomplete
         v-if="diplaySearch"
-        v-model="selectedArticle"
+        v-model="selectedItem"
         :items="items"
         :loading="isLoading"
          class="search_input"
@@ -12,19 +12,24 @@
         solo
         :filter="filtred"
         append-icon="search"
-        no-data-text="Aucun article trouvé"
+        :no-data-text="'Aucun ' + getLabelName + ' trouvé'"
         item-text="titre"
-        item-value="articles[0].id"
+        :item-value="getItemValue"
         @input.native="searchArticle"
         label="Public APIs"
-        placeholder="Chercher une article"
+        :placeholder="'Chercher une ' + getLabelName"
       >  
 
        <template
         slot="item"
         slot-scope="{ item, tile }"
       >
-        <template> {{ item.titre }} </template>
+        <template v-if='currentRoute == "cgi" ||currentRoute == "taxes"'> 
+          {{ item.titre }} 
+        </template>
+        <template v-else>
+           {{ item.question }} 
+        </template>
       </template>
       </v-autocomplete>
 
@@ -63,11 +68,12 @@
   export default {
     data: () => ({
       descriptionLimit: 60,
-      articles: [],
+      searchedItems: [],
       isLoading: false,
-      selectedArticle: null,
+      selectedItem: null,
       search: null,
-      type_search : null
+      urlToSearch : "",
+      currentRoute : null,
     }),
     methods : {
       filtred(t) {
@@ -77,41 +83,84 @@
         this.isLoading = true
         if(!this.search) return;
         // Lazily load input items
-        axios.get('article/query='+ this.search +"&type_search="+this.type_search)
-          .then(res => {
-            this.articles = res.data.articles
-          })
-          .catch(err => {
-            console.log(err)
-          })
-          .finally(() => (this.isLoading = false))
+
+        if(this.currentRoute == "cgi" || this.currentRoute == "taxes") {
+              axios.get("article/query="+ this.search +"&type_search="+this.currentRoute)
+              .then(res => {
+                this.searchedItems = res.data.search_result
+              })
+              .catch(err => {
+                console.log(err)
+              })
+              .finally(() => (this.isLoading = false))
+        } 
+        else {
+             axios.get("faqs/questions/query="+ this.search)
+              .then(res => {
+                this.searchedItems = res.data.search_result
+              })
+              .catch(err => {
+                console.log(err)
+              })
+              .finally(() => (this.isLoading = false))
+        }
+        
 
 
       }, 500)
     },
     computed: {
       items () {
-        return this.articles.map(article => {
-          const Description = article.titre.length > this.descriptionLimit
-            ? article.titre.slice(0, this.descriptionLimit) + '...'
-            : article.titre
+          if(this.currentRoute == "cgi" || this.currentRoute == "taxes") { 
+            return this.searchedItems.map(article => {
+              const Description = article.titre.length > this.descriptionLimit
+                ? article.titre.slice(0, this.descriptionLimit) + '...'
+                : article.titre
 
-          return Object.assign({}, article, { Description })
-        })
+              return Object.assign({}, article, { Description })
+            })
+          } else {
+              return this.searchedItems.map(article => {
+              const Description = article.question.length > this.descriptionLimit
+                ? article.question.slice(0, this.descriptionLimit) + '...'
+                : article.question
+
+              return Object.assign({}, article, { Description })
+            })
+          }
+        
       },
       diplaySearch() {
         const route = this.$route.name;
-        this.type_search = route.toLowerCase();
-        this.articles = [];
-        return route == "CGI" || route == "TAXES" || route == "faqs";
+        this.searchedItems = [];
+        this.currentRoute = route.toLowerCase();;
+
+        return route == "CGI" || route == "TAXES" || route == "faqs" || route == "faqs_single";
+      },
+      getItemValue() {
+        if(this.currentRoute == "cgi" || this.currentRoute == "taxes") {
+            return "articles[0].id";
+        } else {
+          return "id";
+        }
+      },
+      getLabelName() {
+        if(this.currentRoute == "cgi" || this.currentRoute == "taxes") {
+            return "article";
+        } else {
+          return "question";
+        }
       }
     },
 
     watch: {
-      selectedArticle (val) {
+      selectedItem(val) {
         if(!val) return;
-        let category = (this.$route.name == "CGI") ? "cgi" : "taxe";
-        this.$router.push({ name: 'ArticleById', params: { id: val } , query : {category : category} })
+        if(this.currentRoute == "cgi" || this.currentRoute == "taxes") {
+           this.$router.push({ name: 'ArticleById', params: { id: val } , query : {category : this.currentRoute} })
+        } else {
+             this.$router.push({name: "faqs_question" , params : {id : val }})
+        }
       }
     }
   }

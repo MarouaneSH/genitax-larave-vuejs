@@ -7,56 +7,20 @@
                     ></v-progress-circular>
             </div>
             <div v-else class="card__content">
-                 <v-flex x6 
-                        v-show="!displayQuestion" 
-                        v-for="faq in faqs" :key="faq.id" >
-                    <v-card @click="fetch_questions(faq.id)"
-                            class="card__faqs">
-                            <div class="text-xs-center">
+                 <div class="card__content_item"  v-for="faq in faqs" :key="faq.id" >
+                        <div class="card__content_item_card" @click="navigateTo(faq)"
+                                :style="{backgroundColor : faq.couleur}">
+                                <div class="text-xs-center">
                                     <v-avatar :size="100">
                                         <v-img
                                         :src="'storage/'+faq.icone"
                                         ></v-img>
                                     </v-avatar>
-                            </div>
-                            <v-card-title class="text-xs-center" primary-title>
-                                    <h3 class="headline mb-0">{{faq.titre_categories}} </h3>
-                            </v-card-title>
-                    </v-card>
-                  </v-flex>
-                  <div v-show="displayQuestion">
-                      <v-icon @click="displayQuestion = false" class="arrow__back">arrow_back</v-icon>
-                      <v-card class="card__questions" 
-                             v-for="(q,index) in questions" 
-                             @click="show_question(q.id,q.question)"
-                             :key="index" >
-                          <v-layout column>
-                                <h3 class="headline mb-0">{{q.question}} </h3>
-                                <p class="lead">{{q.created_at}}</p>
-                            </v-layout>
-                      </v-card>
-                  </div>
+                                </div>
+                        </div>
+                        <h3 class="mb-0">{{faq.titre_categories}} </h3>
+                 </div>
             </div>
-            <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
-                <v-card>
-                        <v-toolbar dark color="primary">
-                            <v-btn icon dark @click="dialog = false">
-                                <v-icon>close</v-icon>
-                            </v-btn>
-                            <v-toolbar-title v-if="selectedQuestion">{{selectedQuestion}} </v-toolbar-title>
-                            <v-spacer></v-spacer>
-                        </v-toolbar>
-                            <div v-if="loadingDialog" class="text-xs-center">
-                                <v-progress-circular
-                                    indeterminate
-                                    color="primary"
-                                ></v-progress-circular>
-                            </div>
-                            <template v-else>
-                                <div class="content_html"  v-html="contentHTML"></div>
-                            </template>
-                    </v-card>
-            </v-dialog>
       </v-layout>
 </template>
 
@@ -82,28 +46,22 @@ export default {
         }
     },
     methods : {
-        fetch_questions(id) {
-             this.loading = true;
-             axios.get(`/faqs/${id}/questions`).then((response)=> {
-                this.loading = false;
-                this.displayQuestion = true;
-                this.questions = response.data.questions;
-             })
+        navigateTo(faq) {
+            this.$router.push({
+                name : "faqs_single", 
+                params : {id :faq.id},
+                query :  {   
+                    title : faq.titre_categories,
+                    icon : faq.icone, 
+                    color : faq.couleur , 
+                }
+            });
         },
-        show_question(id,name) {
-            this.dialog = true;
-            this.loadingDialog = true;
-            this.selectedQuestion = name;
-            axios.get(`questions/${id}`).then((response)=> {
-                 this.contentHTML = response.data.question.response;
-                 this.loadingDialog = false;
-            })
-        }
     }
 }
 </script>
 
-<style>
+<style lang="scss">
 .card__faqs {
     margin: 5px;
     cursor: pointer;
@@ -123,13 +81,25 @@ export default {
 .card__content  {
     display: flex;
     flex-wrap: wrap;
-}
-.card__content  .flex {
+    cursor: pointer;
+    &_item {
         width: 50%;
+        padding: 15px;
+        text-align: center;
+        h3 {
+        color: #2c4983;
+        font-size: 14px;
+        margin-top: 10px;
+        }
+        &_card {
+        padding: 17px;
+           border-radius: 33px;
+           max-width: 150px;
+           margin: 0 auto;
+        }
+    }
 }
-.card__faqs h3{
-    width: 100%;
-}
+
 
 
 </style>

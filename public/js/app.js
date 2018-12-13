@@ -73191,18 +73191,24 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_pages_taxes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_pages_taxes__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_pages_faqs__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_pages_faqs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_pages_faqs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_pages_infos__ = __webpack_require__(60);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_pages_infos___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_pages_infos__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_pages_outils_tarif_fiscal__ = __webpack_require__(70);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_pages_outils_tarif_fiscal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_pages_outils_tarif_fiscal__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_pages_outils_nomenclature__ = __webpack_require__(75);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_pages_outils_nomenclature___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_pages_outils_nomenclature__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_pages_outils_index__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_pages_outils_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_pages_outils_index__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_pages_article_single__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_pages_article_single___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_pages_article_single__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_pages_faqs_single__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_pages_faqs_single___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_pages_faqs_single__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_pages_faqs_question__ = __webpack_require__(115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_pages_faqs_question___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_pages_faqs_question__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_pages_infos__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_pages_infos___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_pages_infos__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_pages_outils_coefficients__ = __webpack_require__(65);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_pages_outils_coefficients___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_pages_outils_coefficients__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_pages_outils_tarif_fiscal__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_pages_outils_tarif_fiscal___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_pages_outils_tarif_fiscal__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_pages_outils_nomenclature__ = __webpack_require__(75);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_pages_outils_nomenclature___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_pages_outils_nomenclature__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_pages_outils_index__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_pages_outils_index___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_pages_outils_index__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_pages_article_single__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_pages_article_single___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_pages_article_single__);
+
+
 
 
 
@@ -73229,32 +73235,40 @@ var routes = [{
     component: __WEBPACK_IMPORTED_MODULE_2__components_pages_faqs___default.a,
     name: "faqs"
 }, {
+    path: "/faqs/:id",
+    component: __WEBPACK_IMPORTED_MODULE_3__components_pages_faqs_single___default.a,
+    name: "faqs_single"
+}, {
+    path: "/faqs/questions/:id",
+    component: __WEBPACK_IMPORTED_MODULE_4__components_pages_faqs_question___default.a,
+    name: "faqs_question"
+}, {
     path: "/infos",
-    component: __WEBPACK_IMPORTED_MODULE_3__components_pages_infos___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_5__components_pages_infos___default.a,
     name: "infos"
 }, {
     path: "/article/:num/:type",
-    component: __WEBPACK_IMPORTED_MODULE_8__components_pages_article_single___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_10__components_pages_article_single___default.a,
     name: "ArticleByNum"
 }, {
     path: "/articles/:id",
-    component: __WEBPACK_IMPORTED_MODULE_8__components_pages_article_single___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_10__components_pages_article_single___default.a,
     name: "ArticleById"
 }, {
     path: "/outils",
-    component: __WEBPACK_IMPORTED_MODULE_7__components_pages_outils_index___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_9__components_pages_outils_index___default.a,
     name: "outil"
 }, {
     path: "/outils/tarif-fiscal",
-    component: __WEBPACK_IMPORTED_MODULE_5__components_pages_outils_tarif_fiscal___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_7__components_pages_outils_tarif_fiscal___default.a,
     name: "tarif-fiscal"
 }, {
     path: "/outils/coefficients",
-    component: __WEBPACK_IMPORTED_MODULE_4__components_pages_outils_coefficients___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_6__components_pages_outils_coefficients___default.a,
     name: "coefficients"
 }, {
     path: "/outils/nomenclature",
-    component: __WEBPACK_IMPORTED_MODULE_6__components_pages_outils_nomenclature___default.a,
+    component: __WEBPACK_IMPORTED_MODULE_8__components_pages_outils_nomenclature___default.a,
     name: "nomenclature"
 }];
 
@@ -73875,7 +73889,7 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(55)
+  __webpack_require__(106)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
@@ -73920,46 +73934,8 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 55 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(56);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("2ee1f356", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ae15fda\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./faqs.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ae15fda\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./faqs.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.card__faqs {\n    margin: 5px;\n    cursor: pointer;\n}\n.card__questions {\n    padding: 20px;\n    width: 100%;\n    cursor: pointer;\n}\n.arrow__back {\n    font-size: 29px;\n    margin: 15px 0;\n    cursor: pointer;\n}\n.card__content  {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.card__content  .flex {\n        width: 50%;\n}\n.card__faqs h3{\n    width: 100%;\n}\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 55 */,
+/* 56 */,
 /* 57 */
 /***/ (function(module, exports) {
 
@@ -74024,42 +74000,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -74085,25 +74025,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     methods: {
-        fetch_questions: function fetch_questions(id) {
-            var _this2 = this;
-
-            this.loading = true;
-            axios.get('/faqs/' + id + '/questions').then(function (response) {
-                _this2.loading = false;
-                _this2.displayQuestion = true;
-                _this2.questions = response.data.questions;
-            });
-        },
-        show_question: function show_question(id, name) {
-            var _this3 = this;
-
-            this.dialog = true;
-            this.loadingDialog = true;
-            this.selectedQuestion = name;
-            axios.get('questions/' + id).then(function (response) {
-                _this3.contentHTML = response.data.question.response;
-                _this3.loadingDialog = false;
+        navigateTo: function navigateTo(faq) {
+            this.$router.push({
+                name: "faqs_single",
+                params: { id: faq.id },
+                query: {
+                    title: faq.titre_categories,
+                    icon: faq.icone,
+                    color: faq.couleur
+                }
             });
         }
     }
@@ -74135,205 +74065,51 @@ var render = function() {
         : _c(
             "div",
             { staticClass: "card__content" },
-            [
-              _vm._l(_vm.faqs, function(faq) {
-                return _c(
-                  "v-flex",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: !_vm.displayQuestion,
-                        expression: "!displayQuestion"
-                      }
-                    ],
-                    key: faq.id,
-                    attrs: { x6: "" }
-                  },
-                  [
-                    _c(
-                      "v-card",
-                      {
-                        staticClass: "card__faqs",
-                        on: {
-                          click: function($event) {
-                            _vm.fetch_questions(faq.id)
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "text-xs-center" },
-                          [
-                            _c(
-                              "v-avatar",
-                              { attrs: { size: 100 } },
-                              [
-                                _c("v-img", {
-                                  attrs: { src: "storage/" + faq.icone }
-                                })
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-card-title",
-                          {
-                            staticClass: "text-xs-center",
-                            attrs: { "primary-title": "" }
-                          },
-                          [
-                            _c("h3", { staticClass: "headline mb-0" }, [
-                              _vm._v(_vm._s(faq.titre_categories) + " ")
-                            ])
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              }),
-              _vm._v(" "),
-              _c(
+            _vm._l(_vm.faqs, function(faq) {
+              return _c(
                 "div",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.displayQuestion,
-                      expression: "displayQuestion"
-                    }
-                  ]
-                },
+                { key: faq.id, staticClass: "card__content_item" },
                 [
                   _c(
-                    "v-icon",
-                    {
-                      staticClass: "arrow__back",
-                      on: {
-                        click: function($event) {
-                          _vm.displayQuestion = false
-                        }
-                      }
-                    },
-                    [_vm._v("arrow_back")]
-                  ),
-                  _vm._v(" "),
-                  _vm._l(_vm.questions, function(q, index) {
-                    return _c(
-                      "v-card",
-                      {
-                        key: index,
-                        staticClass: "card__questions",
-                        on: {
-                          click: function($event) {
-                            _vm.show_question(q.id, q.question)
-                          }
-                        }
-                      },
-                      [
-                        _c("v-layout", { attrs: { column: "" } }, [
-                          _c("h3", { staticClass: "headline mb-0" }, [
-                            _vm._v(_vm._s(q.question) + " ")
-                          ]),
-                          _vm._v(" "),
-                          _c("p", { staticClass: "lead" }, [
-                            _vm._v(_vm._s(q.created_at))
-                          ])
-                        ])
-                      ],
-                      1
-                    )
-                  })
-                ],
-                2
-              )
-            ],
-            2
-          ),
-      _vm._v(" "),
-      _c(
-        "v-dialog",
-        {
-          attrs: {
-            fullscreen: "",
-            "hide-overlay": "",
-            transition: "dialog-bottom-transition"
-          },
-          model: {
-            value: _vm.dialog,
-            callback: function($$v) {
-              _vm.dialog = $$v
-            },
-            expression: "dialog"
-          }
-        },
-        [
-          _c(
-            "v-card",
-            [
-              _c(
-                "v-toolbar",
-                { attrs: { dark: "", color: "primary" } },
-                [
-                  _c(
-                    "v-btn",
-                    {
-                      attrs: { icon: "", dark: "" },
-                      on: {
-                        click: function($event) {
-                          _vm.dialog = false
-                        }
-                      }
-                    },
-                    [_c("v-icon", [_vm._v("close")])],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _vm.selectedQuestion
-                    ? _c("v-toolbar-title", [
-                        _vm._v(_vm._s(_vm.selectedQuestion) + " ")
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("v-spacer")
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm.loadingDialog
-                ? _c(
                     "div",
-                    { staticClass: "text-xs-center" },
+                    {
+                      staticClass: "card__content_item_card",
+                      style: { backgroundColor: faq.couleur },
+                      on: {
+                        click: function($event) {
+                          _vm.navigateTo(faq)
+                        }
+                      }
+                    },
                     [
-                      _c("v-progress-circular", {
-                        attrs: { indeterminate: "", color: "primary" }
-                      })
-                    ],
-                    1
-                  )
-                : [
-                    _c("div", {
-                      staticClass: "content_html",
-                      domProps: { innerHTML: _vm._s(_vm.contentHTML) }
-                    })
-                  ]
-            ],
-            2
+                      _c(
+                        "div",
+                        { staticClass: "text-xs-center" },
+                        [
+                          _c(
+                            "v-avatar",
+                            { attrs: { size: 100 } },
+                            [
+                              _c("v-img", {
+                                attrs: { src: "storage/" + faq.icone }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("h3", { staticClass: "mb-0" }, [
+                    _vm._v(_vm._s(faq.titre_categories) + " ")
+                  ])
+                ]
+              )
+            })
           )
-        ],
-        1
-      )
-    ],
-    1
+    ]
   )
 }
 var staticRenderFns = []
@@ -75642,9 +75418,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         navigateTo: function navigateTo(outil) {
             this.$router.push({ name: outil.component,
                 query: {
+                    title: outil.titre,
                     icon: outil.icon,
-                    color: outil.coleur,
-                    title: outil.titre
+                    color: outil.coleur
                 }
             });
         }
@@ -76043,16 +75819,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       descriptionLimit: 60,
-      articles: [],
+      searchedItems: [],
       isLoading: false,
-      selectedArticle: null,
+      selectedItem: null,
       search: null,
-      type_search: null
+      urlToSearch: "",
+      currentRoute: null
     };
   },
   methods: {
@@ -76066,38 +75848,75 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.isLoading = true;
       if (!this.search) return;
       // Lazily load input items
-      axios.get('article/query=' + this.search + "&type_search=" + this.type_search).then(function (res) {
-        _this.articles = res.data.articles;
-      }).catch(function (err) {
-        console.log(err);
-      }).finally(function () {
-        return _this.isLoading = false;
-      });
+
+      if (this.currentRoute == "cgi" || this.currentRoute == "taxes") {
+        axios.get("article/query=" + this.search + "&type_search=" + this.currentRoute).then(function (res) {
+          _this.searchedItems = res.data.search_result;
+        }).catch(function (err) {
+          console.log(err);
+        }).finally(function () {
+          return _this.isLoading = false;
+        });
+      } else {
+        axios.get("faqs/questions/query=" + this.search).then(function (res) {
+          _this.searchedItems = res.data.search_result;
+        }).catch(function (err) {
+          console.log(err);
+        }).finally(function () {
+          return _this.isLoading = false;
+        });
+      }
     }, 500)
   },
   computed: {
     items: function items() {
       var _this2 = this;
 
-      return this.articles.map(function (article) {
-        var Description = article.titre.length > _this2.descriptionLimit ? article.titre.slice(0, _this2.descriptionLimit) + '...' : article.titre;
+      if (this.currentRoute == "cgi" || this.currentRoute == "taxes") {
+        return this.searchedItems.map(function (article) {
+          var Description = article.titre.length > _this2.descriptionLimit ? article.titre.slice(0, _this2.descriptionLimit) + '...' : article.titre;
 
-        return Object.assign({}, article, { Description: Description });
-      });
+          return Object.assign({}, article, { Description: Description });
+        });
+      } else {
+        return this.searchedItems.map(function (article) {
+          var Description = article.question.length > _this2.descriptionLimit ? article.question.slice(0, _this2.descriptionLimit) + '...' : article.question;
+
+          return Object.assign({}, article, { Description: Description });
+        });
+      }
     },
     diplaySearch: function diplaySearch() {
       var route = this.$route.name;
-      this.type_search = route.toLowerCase();
-      this.articles = [];
-      return route == "CGI" || route == "TAXES" || route == "faqs";
+      this.searchedItems = [];
+      this.currentRoute = route.toLowerCase();;
+
+      return route == "CGI" || route == "TAXES" || route == "faqs" || route == "faqs_single";
+    },
+    getItemValue: function getItemValue() {
+      if (this.currentRoute == "cgi" || this.currentRoute == "taxes") {
+        return "articles[0].id";
+      } else {
+        return "id";
+      }
+    },
+    getLabelName: function getLabelName() {
+      if (this.currentRoute == "cgi" || this.currentRoute == "taxes") {
+        return "article";
+      } else {
+        return "question";
+      }
     }
   },
 
   watch: {
-    selectedArticle: function selectedArticle(val) {
+    selectedItem: function selectedItem(val) {
       if (!val) return;
-      var category = this.$route.name == "CGI" ? "cgi" : "taxe";
-      this.$router.push({ name: 'ArticleById', params: { id: val }, query: { category: category } });
+      if (this.currentRoute == "cgi" || this.currentRoute == "taxes") {
+        this.$router.push({ name: 'ArticleById', params: { id: val }, query: { category: this.currentRoute } });
+      } else {
+        this.$router.push({ name: "faqs_question", params: { id: val } });
+      }
     }
   }
 });
@@ -76125,11 +75944,11 @@ var render = function() {
               solo: "",
               filter: _vm.filtred,
               "append-icon": "search",
-              "no-data-text": "Aucun article trouvé",
+              "no-data-text": "Aucun " + _vm.getLabelName + " trouvé",
               "item-text": "titre",
-              "item-value": "articles[0].id",
+              "item-value": _vm.getItemValue,
               label: "Public APIs",
-              placeholder: "Chercher une article"
+              placeholder: "Chercher une " + _vm.getLabelName
             },
             on: {
               "update:searchInput": function($event) {
@@ -76147,16 +75966,28 @@ var render = function() {
                 fn: function(ref) {
                   var item = ref.item
                   var tile = ref.tile
-                  return [[_vm._v(" " + _vm._s(item.titre) + " ")]]
+                  return [
+                    _vm.currentRoute == "cgi" || _vm.currentRoute == "taxes"
+                      ? [
+                          _vm._v(
+                            " \n        " + _vm._s(item.titre) + " \n      "
+                          )
+                        ]
+                      : [
+                          _vm._v(
+                            "\n         " + _vm._s(item.question) + " \n      "
+                          )
+                        ]
+                  ]
                 }
               }
             ]),
             model: {
-              value: _vm.selectedArticle,
+              value: _vm.selectedItem,
               callback: function($$v) {
-                _vm.selectedArticle = $$v
+                _vm.selectedItem = $$v
               },
-              expression: "selectedArticle"
+              expression: "selectedItem"
             }
           })
         : _vm._e(),
@@ -76604,6 +76435,543 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-1a453a75", module.exports)
+  }
+}
+
+/***/ }),
+/* 106 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(107);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("a786e510", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ae15fda\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./faqs.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0ae15fda\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./faqs.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 107 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.card__faqs {\n  margin: 5px;\n  cursor: pointer;\n}\n.card__questions {\n  padding: 20px;\n  width: 100%;\n  cursor: pointer;\n}\n.arrow__back {\n  font-size: 29px;\n  margin: 15px 0;\n  cursor: pointer;\n}\n.card__content {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  cursor: pointer;\n}\n.card__content_item {\n    width: 50%;\n    padding: 15px;\n    text-align: center;\n}\n.card__content_item h3 {\n      color: #2c4983;\n      font-size: 14px;\n      margin-top: 10px;\n}\n.card__content_item_card {\n      padding: 17px;\n      border-radius: 33px;\n      max-width: 150px;\n      margin: 0 auto;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 108 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(113)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(111)
+/* template */
+var __vue_template__ = __webpack_require__(112)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/pages/faqs_single.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-477f7aa4", Component.options)
+  } else {
+    hotAPI.reload("data-v-477f7aa4", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 109 */,
+/* 110 */,
+/* 111 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        var id = this.$route.params.id;
+        this.fetch_questions(id);
+    },
+    data: function data() {
+        return {
+            questions: [],
+            loading: false
+        };
+    },
+
+    methods: {
+        fetch_questions: function fetch_questions(id) {
+            var _this = this;
+
+            this.loading = true;
+            axios.get("/faqs/" + id + "/questions").then(function (response) {
+                _this.loading = false;
+                _this.questions = response.data.questions;
+            });
+        },
+        show_question: function show_question(id) {
+            this.$router.push({ name: "faqs_question", params: { id: id } });
+        }
+    },
+    computed: {
+        outil_info: function outil_info() {
+            return {
+                icon: this.$route.query.icon,
+                color: this.$route.query.color,
+                title: this.$route.query.title
+            };
+        }
+    }
+});
+
+/***/ }),
+/* 112 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "questions_wrapper" }, [
+    _c(
+      "div",
+      {
+        staticClass: "app_outils_header",
+        style: { backgroundColor: _vm.outil_info.color }
+      },
+      [
+        _c(
+          "v-icon",
+          {
+            staticClass: "arrow__back",
+            on: {
+              click: function($event) {
+                _vm.$router.go(-1)
+              }
+            }
+          },
+          [_vm._v("arrow_back")]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "app_outils_header_content" }, [
+          _c("img", {
+            attrs: { src: "storage/" + _vm.outil_info.icon, alt: "" }
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "app_outils_header_title" }, [
+            _vm._v(_vm._s(_vm.outil_info.title) + " ")
+          ])
+        ])
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _vm.loading
+      ? _c(
+          "div",
+          { staticClass: "text-xs-center" },
+          [
+            _c("v-progress-circular", {
+              attrs: { indeterminate: "", color: "primary" }
+            })
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "card_questions" },
+      _vm._l(_vm.questions, function(q, index) {
+        return _c(
+          "div",
+          {
+            key: index,
+            staticClass: "card_questions_content",
+            on: {
+              click: function($event) {
+                _vm.show_question(q.id)
+              }
+            }
+          },
+          [
+            _c("v-layout", { attrs: { column: "" } }, [
+              _c("p", { staticClass: "lead" }, [_vm._v(_vm._s(q.created_at))]),
+              _vm._v(" "),
+              _c("h3", { staticClass: "headline mb-0" }, [
+                _vm._v(_vm._s(q.question) + " ")
+              ])
+            ])
+          ],
+          1
+        )
+      })
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-477f7aa4", module.exports)
+  }
+}
+
+/***/ }),
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(114);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("1821b1a8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-477f7aa4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./faqs_single.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-477f7aa4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./faqs_single.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.card_questions {\n  margin: 22px 15px;\n}\n.card_questions_content {\n    margin: 10px 0;\n    background: white;\n    padding: 15px 30px;\n    border-radius: 20px;\n    cursor: pointer;\n}\n.card_questions_content .lead {\n      color: #304A7F;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(116)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(118)
+/* template */
+var __vue_template__ = __webpack_require__(119)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/pages/faqs_question.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2e7d5242", Component.options)
+  } else {
+    hotAPI.reload("data-v-2e7d5242", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(117);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("72d76b71", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2e7d5242\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./faqs_question.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2e7d5242\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./faqs_question.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 117 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 118 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    mounted: function mounted() {
+        var _this = this;
+
+        var id = this.$route.params.id;
+        this.loading = true;
+        axios.get("questions/" + id).then(function (response) {
+            _this.contentHTML = response.data.question.response;
+            _this.selectedQuestion = response.data.question.question;
+            _this.loading = false;
+        });
+    },
+    data: function data() {
+        return {
+            dialog: true,
+            selectedQuestion: null,
+            loading: false,
+            contentHTML: null
+        };
+    },
+
+    methods: {}
+});
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-dialog",
+    {
+      attrs: {
+        fullscreen: "",
+        "hide-overlay": "",
+        transition: "dialog-bottom-transition"
+      },
+      model: {
+        value: _vm.dialog,
+        callback: function($$v) {
+          _vm.dialog = $$v
+        },
+        expression: "dialog"
+      }
+    },
+    [
+      _c(
+        "v-card",
+        [
+          _c(
+            "v-toolbar",
+            { attrs: { dark: "", color: "primary" } },
+            [
+              _c(
+                "v-btn",
+                {
+                  attrs: { icon: "", dark: "" },
+                  on: {
+                    click: function($event) {
+                      _vm.$router.go(-1)
+                    }
+                  }
+                },
+                [_c("v-icon", [_vm._v("close")])],
+                1
+              ),
+              _vm._v(" "),
+              _vm.selectedQuestion
+                ? _c("v-toolbar-title", [
+                    _vm._v(_vm._s(_vm.selectedQuestion) + " ")
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("v-spacer")
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm.loading
+            ? _c(
+                "div",
+                { staticClass: "text-xs-center" },
+                [
+                  _c("v-progress-circular", {
+                    attrs: { indeterminate: "", color: "primary" }
+                  })
+                ],
+                1
+              )
+            : [
+                _c("div", {
+                  staticClass: "content_html",
+                  domProps: { innerHTML: _vm._s(_vm.contentHTML) }
+                })
+              ]
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2e7d5242", module.exports)
   }
 }
 

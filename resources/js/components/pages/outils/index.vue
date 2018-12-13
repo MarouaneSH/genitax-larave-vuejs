@@ -38,9 +38,9 @@ export default {
         navigateTo(outil) {
             this.$router.push({ name: outil.component , 
                                 query :  {   
+                                    title : outil.titre,
                                     icon : outil.icon, 
                                     color : outil.coleur , 
-                                    title : outil.titre
                                 }
                             })
         }

@@ -85,7 +85,7 @@ class ApiController extends Controller
                     ->where("cgi_taxlocale_id",$type_search)
                     ->get();
     
-        return response()->json(["articles" => $articles]);
+        return response()->json(["search_result" => $articles]);
     }
 
 
@@ -102,6 +102,11 @@ class ApiController extends Controller
     public function question($id) {
         $question = QuestionResponse::select("response","question")->find($id);
         return response()->json(["question" => $question]);
+    }
+    
+    public function search_question($query) {
+        $question = QuestionResponse::search($query)->get();
+        return response()->json(["search_result" => $question]);
     }
 
 

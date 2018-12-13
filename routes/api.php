@@ -28,6 +28,7 @@ Route::get('article/query={query}&type_search={type_search}',"ApiController@sear
 
 Route::get('faqs',"ApiController@faqs");
 Route::get('faqs/{id}/questions',"ApiController@faqs_questions");
+Route::get('faqs/questions/query={query}',"ApiController@search_question");
 
 Route::get('questions/{id}',"ApiController@question");
 

@@ -1,6 +1,8 @@
 import CGI from '.././components/pages/cgi';
 import TAXES from '.././components/pages/taxes';
 import faqs from '.././components/pages/faqs';
+import faqs_single from '.././components/pages/faqs_single';
+import faqs_question from '.././components/pages/faqs_question';
 import infos from '.././components/pages/infos';
 import coefficients from '.././components/pages/outils/coefficients';
 import tarif_fiscal from '.././components/pages/outils/tarif-fiscal';
@@ -28,6 +30,16 @@ export const routes = [
         path : "/faqs", 
         component : faqs, 
         name : "faqs",
+    },
+    {
+        path : "/faqs/:id", 
+        component : faqs_single, 
+        name : "faqs_single",
+    },
+    {
+        path : "/faqs/questions/:id", 
+        component : faqs_question, 
+        name : "faqs_question",
     },
     {
         path : "/infos", 

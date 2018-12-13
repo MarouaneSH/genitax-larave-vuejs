@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 
 Route::get('/test', function () {
+
+    return App\QuestionResponse::search("patentes")->get();
     $matching_category = App\Category::search("Généralités")->get()->pluck("id");
     $matching_articles = App\ArticleCirculaire::search("sd ss")->get()->pluck("categorie_id");
     $all_matching = $matching_category->merge($matching_articles);

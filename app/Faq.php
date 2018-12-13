@@ -9,11 +9,11 @@ class Faq extends Model
 {
     use Searchable;
 
-    protected $indexConfigurator = TestIndexConfigurator::class;
+    protected $indexConfigurator = FaqIndexConfigurator::class;
 
    protected $mapping = [
         'properties' => [
-            'titre' => [
+            'titre_categories' => [
                 'type' => 'text',
                 'analyzer' => 'english',
             ],
