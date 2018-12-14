@@ -119,6 +119,15 @@
           align-items: center;
 }
 
+@media screen and (max-width: 600px) {
+  .box-gtax__article {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 .box-gtax__search .v-input__slot {
   max-width: 200px;
   border-radius: 50px !important;

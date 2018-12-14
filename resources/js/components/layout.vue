@@ -1,8 +1,11 @@
 <template>
     <v-app >
-       <app-side-bar></app-side-bar>
+       <app-side-bar ref="sidebar"></app-side-bar>
         <v-content>
             <v-container fluid>
+                    <div class="toggle_drawer">
+                        <v-icon @click="toggleDrawer()">filter_list</v-icon>
+                    </div>
                     <div class="text-xs-center">
                            <img class="logo" src="/img/logo.jpg" alt="">
                     </div>
@@ -14,14 +17,19 @@
 
 <script>
 export default {
-     data: () => ({
-
-  })
+    data: () => ({
+  }),
+  methods : {
+      toggleDrawer() {
+          this.$refs.sidebar.toggleDrawer();
+      }
+  }
 
 }
 </script>
 
-<style>
-
-
+<style scoped>
+.toggle_drawer {
+    font-size: 35px;
+}
 </style>

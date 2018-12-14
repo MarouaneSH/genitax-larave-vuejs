@@ -12,6 +12,7 @@
         "algolia/algoliasearch-client-php": "^1.27",
         "atayahmet/laravel-nestable": "^0.8.8",
         "babenkoivan/scout-elasticsearch-driver": "^3.9",
+        "barryvdh/laravel-cors": "^0.11.2",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/scout": "^6.1",

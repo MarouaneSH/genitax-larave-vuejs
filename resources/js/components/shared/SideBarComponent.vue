@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer  app class="app_drawer" width="350" >
+  <v-navigation-drawer  app class="app_drawer" width="350" v-model="drawer" >
 
       <v-autocomplete
         v-if="diplaySearch"
@@ -74,6 +74,7 @@
       search: null,
       urlToSearch : "",
       currentRoute : null,
+      drawer : true,
     }),
     methods : {
       filtred(t) {
@@ -107,7 +108,10 @@
         
 
 
-      }, 500)
+      }, 500),
+      toggleDrawer() {
+        this.drawer = !this.drawer;
+      }
     },
     computed: {
       items () {
