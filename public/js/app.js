@@ -25375,7 +25375,7 @@ window.Vue = __webpack_require__(14);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vuetify___default.a);
 
-window.axios.defaults.baseURL = "http://genitax.marouane.me/api";
+window.axios.defaults.baseURL = "http://68.66.242.92/api";
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: __WEBPACK_IMPORTED_MODULE_2__routes_routes__["a" /* routes */]
