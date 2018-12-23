@@ -484,88 +484,6 @@ module.exports = {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function(useSourceMap) {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		return this.map(function (item) {
-			var content = cssWithMappingToString(item, useSourceMap);
-			if(item[2]) {
-				return "@media " + item[2] + "{" + content + "}";
-			} else {
-				return content;
-			}
-		}).join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-function cssWithMappingToString(item, useSourceMap) {
-	var content = item[1] || '';
-	var cssMapping = item[3];
-	if (!cssMapping) {
-		return content;
-	}
-
-	if (useSourceMap && typeof btoa === 'function') {
-		var sourceMapping = toComment(cssMapping);
-		var sourceURLs = cssMapping.sources.map(function (source) {
-			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
-		});
-
-		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-	}
-
-	return [content].join('\n');
-}
-
-// Adapted from convert-source-map (MIT)
-function toComment(sourceMap) {
-	// eslint-disable-next-line no-undef
-	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
-	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
-
-	return '/*# ' + data + ' */';
-}
-
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -789,6 +707,88 @@ function applyToTag (styleElement, obj) {
     }
     styleElement.appendChild(document.createTextNode(css))
   }
+}
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+/*
+	MIT License http://www.opensource.org/licenses/mit-license.php
+	Author Tobias Koppers @sokra
+*/
+// css base code, injected by the css-loader
+module.exports = function(useSourceMap) {
+	var list = [];
+
+	// return the list of modules as css string
+	list.toString = function toString() {
+		return this.map(function (item) {
+			var content = cssWithMappingToString(item, useSourceMap);
+			if(item[2]) {
+				return "@media " + item[2] + "{" + content + "}";
+			} else {
+				return content;
+			}
+		}).join("");
+	};
+
+	// import a list of modules into the list
+	list.i = function(modules, mediaQuery) {
+		if(typeof modules === "string")
+			modules = [[null, modules, ""]];
+		var alreadyImportedModules = {};
+		for(var i = 0; i < this.length; i++) {
+			var id = this[i][0];
+			if(typeof id === "number")
+				alreadyImportedModules[id] = true;
+		}
+		for(i = 0; i < modules.length; i++) {
+			var item = modules[i];
+			// skip already imported module
+			// this implementation is not 100% perfect for weird media query combinations
+			//  when a module is imported multiple times with different media queries.
+			//  I hope this will never occur (Hey this way we have smaller bundles)
+			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+				if(mediaQuery && !item[2]) {
+					item[2] = mediaQuery;
+				} else if(mediaQuery) {
+					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+				}
+				list.push(item);
+			}
+		}
+	};
+	return list;
+};
+
+function cssWithMappingToString(item, useSourceMap) {
+	var content = item[1] || '';
+	var cssMapping = item[3];
+	if (!cssMapping) {
+		return content;
+	}
+
+	if (useSourceMap && typeof btoa === 'function') {
+		var sourceMapping = toComment(cssMapping);
+		var sourceURLs = cssMapping.sources.map(function (source) {
+			return '/*# sourceURL=' + cssMapping.sourceRoot + source + ' */'
+		});
+
+		return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+	}
+
+	return [content].join('\n');
+}
+
+// Adapted from convert-source-map (MIT)
+function toComment(sourceMap) {
+	// eslint-disable-next-line no-undef
+	var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap))));
+	var data = 'sourceMappingURL=data:application/json;charset=utf-8;base64,' + base64;
+
+	return '/*# ' + data + ' */';
 }
 
 
@@ -25375,7 +25375,7 @@ window.Vue = __webpack_require__(14);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vuetify___default.a);
 
-window.axios.defaults.baseURL = "http://142.93.227.137/api";
+window.axios.defaults.baseURL = "http://genitax.test/api";
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: __WEBPACK_IMPORTED_MODULE_2__routes_routes__["a" /* routes */]
@@ -73944,7 +73944,7 @@ var content = __webpack_require__(56);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("a786e510", content, false, {});
+var update = __webpack_require__(2)("a786e510", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73961,17 +73961,9 @@ if(false) {
 
 /***/ }),
 /* 56 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.card__faqs {\n  margin: 5px;\n  cursor: pointer;\n}\n.card__questions {\n  padding: 20px;\n  width: 100%;\n  cursor: pointer;\n}\n.arrow__back {\n  font-size: 29px;\n  margin: 15px 0;\n  cursor: pointer;\n}\n.card__content {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  cursor: pointer;\n}\n.card__content_item {\n    width: 50%;\n    padding: 15px;\n    text-align: center;\n}\n.card__content_item h3 {\n      color: #2c4983;\n      font-size: 14px;\n      margin-top: 10px;\n}\n.card__content_item_card {\n      padding: 17px;\n      border-radius: 33px;\n      max-width: 150px;\n      margin: 0 auto;\n}\n", ""]);
-
-// exports
-
+throw new Error("Module build failed: Error: Missing binding /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/vendor/darwin-x64-67/binding.node\nNode Sass could not find a binding for your current environment: OS X 64-bit with Node.js 11.x\n\nFound bindings for the following environments:\n  - OS X 64-bit with Node.js 10.x\n  - Linux 64-bit with Node.js 8.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass` to download the binding for your current environment.\n    at module.exports (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/lib/binding.js:15:13)\n    at Object.<anonymous> (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (internal/modules/cjs/loader.js:721:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)\n    at Module.load (internal/modules/cjs/loader.js:620:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:552:3)\n    at Module.require (internal/modules/cjs/loader.js:657:17)\n    at require (internal/modules/cjs/helpers.js:22:18)\n    at Object.<anonymous> (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/sass-loader/lib/loader.js:3:14)\n    at Module._compile (internal/modules/cjs/loader.js:721:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)\n    at Module.load (internal/modules/cjs/loader.js:620:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:552:3)\n    at Module.require (internal/modules/cjs/loader.js:657:17)\n    at require (internal/modules/cjs/helpers.js:22:18)\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:13:17)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModule.js:182:3)\n    at NormalModule.build (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModule.js:275:15)");
 
 /***/ }),
 /* 57 */
@@ -74222,7 +74214,7 @@ var content = __webpack_require__(62);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("1821b1a8", content, false, {});
+var update = __webpack_require__(2)("1821b1a8", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -74239,17 +74231,9 @@ if(false) {
 
 /***/ }),
 /* 62 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.card_questions {\n  margin: 22px 15px;\n}\n.card_questions_content {\n    margin: 10px 0;\n    background: white;\n    padding: 15px 30px;\n    border-radius: 20px;\n    cursor: pointer;\n}\n.card_questions_content .lead {\n      color: #304A7F;\n}\n", ""]);
-
-// exports
-
+throw new Error("Module build failed: Error: Missing binding /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/vendor/darwin-x64-67/binding.node\nNode Sass could not find a binding for your current environment: OS X 64-bit with Node.js 11.x\n\nFound bindings for the following environments:\n  - OS X 64-bit with Node.js 10.x\n  - Linux 64-bit with Node.js 8.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass` to download the binding for your current environment.\n    at module.exports (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/lib/binding.js:15:13)\n    at Object.<anonymous> (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (internal/modules/cjs/loader.js:721:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)\n    at Module.load (internal/modules/cjs/loader.js:620:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:552:3)\n    at Module.require (internal/modules/cjs/loader.js:657:17)\n    at require (internal/modules/cjs/helpers.js:22:18)\n    at Object.<anonymous> (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/sass-loader/lib/loader.js:3:14)\n    at Module._compile (internal/modules/cjs/loader.js:721:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)\n    at Module.load (internal/modules/cjs/loader.js:620:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:552:3)\n    at Module.require (internal/modules/cjs/loader.js:657:17)\n    at require (internal/modules/cjs/helpers.js:22:18)\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:13:17)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModule.js:182:3)\n    at NormalModule.build (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModule.js:275:15)");
 
 /***/ }),
 /* 63 */
@@ -74481,7 +74465,7 @@ var content = __webpack_require__(67);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("72d76b71", content, false, {});
+var update = __webpack_require__(2)("72d76b71", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -74500,7 +74484,7 @@ if(false) {
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -74717,7 +74701,7 @@ var content = __webpack_require__(72);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("3f537fca", content, false, {});
+var update = __webpack_require__(2)("3f537fca", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -74736,7 +74720,7 @@ if(false) {
 /* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -74887,7 +74871,7 @@ var content = __webpack_require__(77);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("18bb734a", content, false, {});
+var update = __webpack_require__(2)("18bb734a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -74906,7 +74890,7 @@ if(false) {
 /* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -75137,7 +75121,7 @@ var content = __webpack_require__(82);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("8082befa", content, false, {});
+var update = __webpack_require__(2)("8082befa", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -75156,7 +75140,7 @@ if(false) {
 /* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -75588,7 +75572,7 @@ var content = __webpack_require__(87);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("3a78dba1", content, false, {});
+var update = __webpack_require__(2)("3a78dba1", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -75607,7 +75591,7 @@ if(false) {
 /* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -75873,7 +75857,7 @@ var content = __webpack_require__(92);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("723833f6", content, false, {});
+var update = __webpack_require__(2)("723833f6", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -75890,17 +75874,9 @@ if(false) {
 
 /***/ }),
 /* 92 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.outil_card[data-v-4a24201b] {\n  padding: 30px 40px;\n  border-radius: 60px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  color: white;\n  margin-top: 15px;\n  cursor: pointer;\n  -webkit-transition: all .3s ease-in;\n  transition: all .3s ease-in;\n}\n.outil_card[data-v-4a24201b]:hover {\n    -webkit-transform: scale(1.03);\n            transform: scale(1.03);\n}\n.outil_card img[data-v-4a24201b] {\n    max-width: 50px;\n}\n.outil_card_title[data-v-4a24201b] {\n    margin-left: 10px;\n}\n", ""]);
-
-// exports
-
+throw new Error("Module build failed: Error: Missing binding /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/vendor/darwin-x64-67/binding.node\nNode Sass could not find a binding for your current environment: OS X 64-bit with Node.js 11.x\n\nFound bindings for the following environments:\n  - OS X 64-bit with Node.js 10.x\n  - Linux 64-bit with Node.js 8.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass` to download the binding for your current environment.\n    at module.exports (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/lib/binding.js:15:13)\n    at Object.<anonymous> (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (internal/modules/cjs/loader.js:721:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)\n    at Module.load (internal/modules/cjs/loader.js:620:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:552:3)\n    at Module.require (internal/modules/cjs/loader.js:657:17)\n    at require (internal/modules/cjs/helpers.js:22:18)\n    at Object.<anonymous> (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/sass-loader/lib/loader.js:3:14)\n    at Module._compile (internal/modules/cjs/loader.js:721:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)\n    at Module.load (internal/modules/cjs/loader.js:620:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:552:3)\n    at Module.require (internal/modules/cjs/loader.js:657:17)\n    at require (internal/modules/cjs/helpers.js:22:18)\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:13:17)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModule.js:182:3)\n    at NormalModule.build (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModule.js:275:15)");
 
 /***/ }),
 /* 93 */
@@ -76080,7 +76056,7 @@ var content = __webpack_require__(97);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("eab32204", content, false, {});
+var update = __webpack_require__(2)("eab32204", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -76099,7 +76075,7 @@ if(false) {
 /* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -76538,6 +76514,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -76787,7 +76764,9 @@ var render = function() {
               _c("p", [_vm._v("Taux sur GaniTax")])
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("img", { attrs: { src: "/img/seddik.png", alt: "" } })
         ],
         1
       )
@@ -76867,7 +76846,7 @@ var content = __webpack_require__(105);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("318946cc", content, false, {});
+var update = __webpack_require__(2)("318946cc", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -76886,7 +76865,7 @@ if(false) {
 /* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(2)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -77003,7 +76982,7 @@ if (false) {
 /* 108 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: Error: Missing binding /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/vendor/darwin-x64-67/binding.node\nNode Sass could not find a binding for your current environment: OS X 64-bit with Node.js 11.x\n\nFound bindings for the following environments:\n  - OS X 64-bit with Node.js 10.x\n  - Linux 64-bit with Node.js 8.x\n\nThis usually happens because your environment has changed since running `npm install`.\nRun `npm rebuild node-sass` to download the binding for your current environment.\n    at module.exports (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/lib/binding.js:15:13)\n    at Object.<anonymous> (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/node-sass/lib/index.js:14:35)\n    at Module._compile (internal/modules/cjs/loader.js:721:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)\n    at Module.load (internal/modules/cjs/loader.js:620:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:552:3)\n    at Module.require (internal/modules/cjs/loader.js:657:17)\n    at require (internal/modules/cjs/helpers.js:22:18)\n    at Object.<anonymous> (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/sass-loader/lib/loader.js:3:14)\n    at Module._compile (internal/modules/cjs/loader.js:721:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:732:10)\n    at Module.load (internal/modules/cjs/loader.js:620:32)\n    at tryModuleLoad (internal/modules/cjs/loader.js:560:12)\n    at Function.Module._load (internal/modules/cjs/loader.js:552:3)\n    at Module.require (internal/modules/cjs/loader.js:657:17)\n    at require (internal/modules/cjs/helpers.js:22:18)\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:13:17)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at runLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:170:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:27:11)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:165:10)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:173:18\n    at loadLoader (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/loadLoader.js:36:3)\n    at iteratePitchingLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:169:2)\n    at runLoaders (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/loader-runner/lib/LoaderRunner.js:362:2)\n    at NormalModule.doBuild (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModule.js:182:3)\n    at NormalModule.build (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModule.js:275:15)\n    at Compilation.buildModule (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/Compilation.js:157:10)\n    at moduleFactory.create (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/Compilation.js:460:10)\n    at factory (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModuleFactory.js:243:5)\n    at applyPluginsAsyncWaterfall (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModuleFactory.js:94:13)\n    at /Users/suub/Desktop/Dev/Laravel/genitax/node_modules/tapable/lib/Tapable.js:268:11\n    at NormalModuleFactory.params.normalModuleFactory.plugin (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/CompatibilityPlugin.js:52:5)\n    at NormalModuleFactory.applyPluginsAsyncWaterfall (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/tapable/lib/Tapable.js:272:13)\n    at resolver (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModuleFactory.js:69:10)\n    at process.nextTick (/Users/suub/Desktop/Dev/Laravel/genitax/node_modules/webpack/lib/NormalModuleFactory.js:196:7)\n    at process.internalTickCallback (internal/process/next_tick.js:70:11)");
 
 /***/ })
 /******/ ]);
