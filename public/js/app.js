@@ -76538,7 +76538,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -76788,9 +76787,7 @@ var render = function() {
               _c("p", [_vm._v("Taux sur GaniTax")])
             ],
             1
-          ),
-          _vm._v(" "),
-          _c("img", { attrs: { src: "/img/seddik.png", alt: "" } })
+          )
         ],
         1
       )

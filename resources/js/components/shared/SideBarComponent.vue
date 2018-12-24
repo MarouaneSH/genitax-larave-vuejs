@@ -60,7 +60,6 @@
                 <h5>INFO</h5>
                 <p>Taux sur GaniTax</p>
               </v-btn>
-              <img src="/img/seddik.png" alt="">
       </v-btn-toggle>
     </v-navigation-drawer>
 </template>
