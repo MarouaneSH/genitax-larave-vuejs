@@ -1,6 +1,7 @@
 <template>
         <div id="info_content">
             <v-card class="card__info">
+                 
                 <p><strong>Email : </strong> {{email}}  </p>
                 <p><strong>Téléphone : </strong> {{telephone}}  </p>
                 <div class="content_html" v-html="contentHTML">

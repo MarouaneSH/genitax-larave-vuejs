@@ -2,16 +2,18 @@
 require('./bootstrap');
 import VueRouter from 'vue-router';
 import Vuetify from 'vuetify';
+import SocialSharing from 'vue-social-sharing';
 import { routes } from './routes/routes';
 
 
 window.Vue = require('vue');
+Vue.use(SocialSharing);
 
 
 Vue.use(VueRouter);
 Vue.use(Vuetify)
 
-window.axios.defaults.baseURL ="http://142.93.227.137/api";
+window.axios.defaults.baseURL ="http://genitax.test/api";
 
 const router = new VueRouter({
     routes

@@ -15,6 +15,7 @@
                                         <h6> Circulaire </h6>
                                     </v-btn>
                             </v-btn-toggle>
+                           <app-social-sharing :title="selectedArticle ? selectedArticle.name : '' "></app-social-sharing>
                         </v-toolbar>
                             <div class="text-xs-center mt-5" v-if="articleNotFound">
                                 Article non trouvé
@@ -34,6 +35,8 @@
 </template>
 
 <script>
+import appSocialSharing from '../shared/social_sharing';
+
 export default {
     mounted(){
       let article_id = this.$route.params.id;
@@ -147,6 +150,9 @@ export default {
         getArticleHeader() {
             return this.toggle_html_type.charAt(0).toUpperCase() + this.toggle_html_type.slice(1);
         }
+    },
+    components : {
+        appSocialSharing
     }
 }
 </script>

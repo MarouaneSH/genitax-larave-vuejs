@@ -25363,22 +25363,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetify__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuetify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__routes_routes__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_social_sharing__ = __webpack_require__(113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_social_sharing___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_social_sharing__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes_routes__ = __webpack_require__(45);
 
 __webpack_require__(18);
 
 
 
 
+
 window.Vue = __webpack_require__(14);
+Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_social_sharing___default.a);
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vuetify___default.a);
 
-window.axios.defaults.baseURL = "http://142.93.227.137/api";
+window.axios.defaults.baseURL = "http://genitax.test/api";
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-    routes: __WEBPACK_IMPORTED_MODULE_2__routes_routes__["a" /* routes */]
+    routes: __WEBPACK_IMPORTED_MODULE_3__routes_routes__["a" /* routes */]
 });
 
 Vue.component('app-side-bar', __webpack_require__(100));
@@ -74505,7 +74509,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -74516,6 +74520,8 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_social_sharing__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_social_sharing___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__shared_social_sharing__);
 //
 //
 //
@@ -74539,6 +74545,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     mounted: function mounted() {
@@ -74546,7 +74556,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
         var id = this.$route.params.id;
         this.loading = true;
-        axios.get("questions/" + id).then(function (response) {
+        axios.get('questions/' + id).then(function (response) {
             _this.contentHTML = response.data.question.response;
             _this.selectedQuestion = response.data.question.question;
             _this.loading = false;
@@ -74561,7 +74571,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    methods: {}
+    methods: {},
+    components: {
+        appSocialSharing: __WEBPACK_IMPORTED_MODULE_0__shared_social_sharing___default.a
+    }
 });
 
 /***/ }),
@@ -74616,7 +74629,13 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c("v-spacer")
+              _c("v-spacer"),
+              _vm._v(" "),
+              _c("app-social-sharing", {
+                attrs: {
+                  title: _vm.selectedQuestion ? _vm.selectedQuestion : ""
+                }
+              })
             ],
             1
           ),
@@ -74752,6 +74771,7 @@ exports.push([module.i, "\n.card__info {\n    padding: 30px;\n}\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -76115,6 +76135,8 @@ exports.push([module.i, "\n.article_header[data-v-1a453a75] {\n    color: #1976d
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_social_sharing__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__shared_social_sharing___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__shared_social_sharing__);
 var _mounted$data$methods;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -76154,6 +76176,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = (_mounted$data$methods = {
     mounted: function mounted() {
@@ -76198,7 +76223,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             var num_article = this.$route.params.num;
             var type = this.$route.params.type;
 
-            axios.get("article/num=" + num_article + "&type=" + this.toggle_html_type + "&category=" + type).then(function (result) {
+            axios.get('article/num=' + num_article + '&type=' + this.toggle_html_type + '&category=' + type).then(function (result) {
                 if (!result.data.article) {
                     _this2.articleNotFound = true;
                     return;
@@ -76228,7 +76253,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             var article_id = this.$route.params.id;
 
             this.loadingDialog = true;
-            axios.get("article/id=" + article_id + "&type=" + this.toggle_html_type).then(function (result) {
+            axios.get('article/id=' + article_id + '&type=' + this.toggle_html_type).then(function (result) {
                 if (!result.data.article) {
                     _this3.articleNotFound = true;
                     return;
@@ -76260,7 +76285,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             });
         }
     }
-}, _defineProperty(_mounted$data$methods, "data", function data() {
+}, _defineProperty(_mounted$data$methods, 'data', function data() {
     return {
         dialog: true,
         loadingDialog: true,
@@ -76269,10 +76294,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         selectedArticle: null,
         hideToggle: false
     };
-}), _defineProperty(_mounted$data$methods, "computed", {
+}), _defineProperty(_mounted$data$methods, 'computed', {
     getArticleHeader: function getArticleHeader() {
         return this.toggle_html_type.charAt(0).toUpperCase() + this.toggle_html_type.slice(1);
     }
+}), _defineProperty(_mounted$data$methods, 'components', {
+    appSocialSharing: __WEBPACK_IMPORTED_MODULE_0__shared_social_sharing___default.a
 }), _mounted$data$methods);
 
 /***/ }),
@@ -76362,7 +76389,13 @@ var render = function() {
                     ],
                     1
                   )
-                : _vm._e()
+                : _vm._e(),
+              _vm._v(" "),
+              _c("app-social-sharing", {
+                attrs: {
+                  title: _vm.selectedArticle ? _vm.selectedArticle.name : ""
+                }
+              })
             ],
             1
           ),
@@ -77004,6 +77037,590 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 109 */,
+/* 110 */,
+/* 111 */,
+/* 112 */,
+/* 113 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*!
+ * vue-social-sharing v2.3.3 
+ * (c) 2017 nicolasbeauvais
+ * Released under the MIT License.
+ */
+
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var Vue = _interopDefault(__webpack_require__(14));
+
+var SocialSharingNetwork = {
+  functional: true,
+
+  props: {
+    network: {
+      type: String,
+      default: ''
+    }
+  },
+
+  render: function (createElement, context) {
+    var network = context.parent._data.baseNetworks[context.props.network];
+
+    if (!network) {
+      return console.warn(("Network " + (context.props.network) + " does not exist"));
+    }
+
+    return createElement(context.parent.networkTag, {
+      staticClass: context.data.staticClass || null,
+      staticStyle: context.data.staticStyle || null,
+      class: context.data.class || null,
+      style: context.data.style || null,
+      attrs: {
+        id: context.data.attrs.id || null,
+        'data-link': network.type === 'popup'
+          ? '#share-' + context.props.network
+          : context.parent.createSharingUrl(context.props.network),
+        'data-action': network.type === 'popup' ? null : network.action
+      },
+      on: {
+        click: network.type === 'popup' ? function () {
+          context.parent.share(context.props.network);
+        } : function () {
+          context.parent.touch(context.props.network);
+        }
+      }
+    }, context.children);
+  }
+};
+
+var email = {"sharer":"mailto:?subject=@title&body=@url%0D%0A%0D%0A@description","type":"direct"};
+var facebook = {"sharer":"https://www.facebook.com/sharer/sharer.php?u=@url&title=@title&description=@description&quote=@quote","type":"popup"};
+var googleplus = {"sharer":"https://plus.google.com/share?url=@url","type":"popup"};
+var line = {"sharer":"http://line.me/R/msg/text/?@description%0D%0A@url","type":"popup"};
+var linkedin = {"sharer":"https://www.linkedin.com/shareArticle?mini=true&url=@url&title=@title&summary=@description","type":"popup"};
+var odnoklassniki = {"sharer":"https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&st.shareUrl=@url&st.comments=@description","type":"popup"};
+var pinterest = {"sharer":"https://pinterest.com/pin/create/button/?url=@url&media=@media&description=@title","type":"popup"};
+var reddit = {"sharer":"https://www.reddit.com/submit?url=@url&title=@title","type":"popup"};
+var skype = {"sharer":"https://web.skype.com/share?url=@description%0D%0A@url","type":"popup"};
+var telegram = {"sharer":"https://t.me/share/url?url=@url&text=@description","type":"popup"};
+var twitter = {"sharer":"https://twitter.com/intent/tweet?text=@title&url=@url&hashtags=@hashtags@twitteruser","type":"popup"};
+var viber = {"sharer":"viber://forward?text=@url @description","type":"direct"};
+var vk = {"sharer":"https://vk.com/share.php?url=@url&title=@title&description=@description&image=@media&noparse=true","type":"popup"};
+var weibo = {"sharer":"http://service.weibo.com/share/share.php?url=@url&title=@title","type":"popup"};
+var whatsapp = {"sharer":"whatsapp://send?text=@description%0D%0A@url","type":"direct","action":"share/whatsapp/share"};
+var sms = {"sharer":"sms:?body=@url%20@description","type":"direct"};
+var BaseNetworks = {
+	email: email,
+	facebook: facebook,
+	googleplus: googleplus,
+	line: line,
+	linkedin: linkedin,
+	odnoklassniki: odnoklassniki,
+	pinterest: pinterest,
+	reddit: reddit,
+	skype: skype,
+	telegram: telegram,
+	twitter: twitter,
+	viber: viber,
+	vk: vk,
+	weibo: weibo,
+	whatsapp: whatsapp,
+	sms: sms
+};
+
+var inBrowser = typeof window !== 'undefined';
+var $window = inBrowser ? window : null;
+
+var SocialSharing = {
+  props: {
+    /**
+     * URL to share.
+     * @var string
+     */
+    url: {
+      type: String,
+      default: inBrowser ? window.location.href : ''
+    },
+
+    /**
+     * Sharing title, if available by network.
+     * @var string
+     */
+    title: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Sharing description, if available by network.
+     * @var string
+     */
+    description: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Facebook quote
+     * @var string
+     */
+    quote: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Twitter hashtags
+     * @var string
+     */
+    hashtags: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Twitter user.
+     * @var string
+     */
+    twitterUser: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Flag that indicates if counts should be retrieved.
+     * - NOT WORKING IN CURRENT VERSION
+     * @var mixed
+     */
+    withCounts: {
+      type: [String, Boolean],
+      default: false
+    },
+
+    /**
+     * Google plus key.
+     * @var string
+     */
+    googleKey: {
+      type: String,
+      default: undefined
+    },
+
+    /**
+     * Pinterest Media URL.
+     * Specifies the image/media to be used.
+     */
+    media: {
+      type: String,
+      default: ''
+    },
+
+    /**
+     * Network sub component tag.
+     * Default to span tag
+     */
+    networkTag: {
+      type: String,
+      default: 'span'
+    },
+
+    /**
+     * Additional or overridden networks.
+     * Default to BaseNetworks
+     */
+    networks: {
+      type: Object,
+      default: function () {
+        return {};
+      }
+    }
+  },
+
+  data: function data () {
+    return {
+      /**
+       * Available sharing networks.
+       * @param object
+       */
+      baseNetworks: BaseNetworks,
+
+      /**
+       * Popup settings.
+       * @param object
+       */
+      popup: {
+        status: false,
+        resizable: true,
+        toolbar: false,
+        menubar: false,
+        scrollbars: false,
+        location: false,
+        directories: false,
+        width: 626,
+        height: 436,
+        top: 0,
+        left: 0,
+        window: undefined,
+        interval: null
+      }
+    };
+  },
+
+  methods: {
+    /**
+     * Returns generated sharer url.
+     *
+     * @param network Social network key.
+     */
+    createSharingUrl: function createSharingUrl (network) {
+      return this.baseNetworks[network].sharer
+        .replace(/@url/g, encodeURIComponent(this.url))
+        .replace(/@title/g, encodeURIComponent(this.title))
+        .replace(/@description/g, encodeURIComponent(this.description))
+        .replace(/@quote/g, encodeURIComponent(this.quote))
+        .replace(/@hashtags/g, this.hashtags)
+        .replace(/@media/g, this.media)
+        .replace(/@twitteruser/g, this.twitterUser ? '&via=' + this.twitterUser : '');
+    },
+
+    /**
+     * Shares URL in specified network.
+     *
+     * @param string network Social network key.
+     */
+    share: function share (network) {
+      this.openSharer(network, this.createSharingUrl(network));
+
+      this.$root.$emit('social_shares_open', network, this.url);
+      this.$emit('open', network, this.url);
+    },
+
+    /**
+     * Touches network and emits click event.
+     *
+     * @param string network Social network key.
+     */
+    touch: function touch (network) {
+      window.open(this.createSharingUrl(network), '_self');
+
+      this.$root.$emit('social_shares_open', network, this.url);
+      this.$emit('open', network, this.url);
+    },
+
+    /**
+     * Opens sharer popup.
+     *
+     * @param string url Url to share.
+     */
+    openSharer: function openSharer (network, url) {
+      var this$1 = this;
+
+      // If a popup window already exist it will be replaced, trigger a close event.
+      if (this.popup.window && this.popup.interval) {
+        clearInterval(this.popup.interval);
+
+        this.popup.window.close();// Force close (for Facebook)
+
+        this.$root.$emit('social_shares_change', network, this.url);
+        this.$emit('change', network, this.url);
+      }
+
+      this.popup.window = window.open(
+        url,
+        'sharer',
+        'status=' + (this.popup.status ? 'yes' : 'no') +
+        ',height=' + this.popup.height +
+        ',width=' + this.popup.width +
+        ',resizable=' + (this.popup.resizable ? 'yes' : 'no') +
+        ',left=' + this.popup.left +
+        ',top=' + this.popup.top +
+        ',screenX=' + this.popup.left +
+        ',screenY=' + this.popup.top +
+        ',toolbar=' + (this.popup.toolbar ? 'yes' : 'no') +
+        ',menubar=' + (this.popup.menubar ? 'yes' : 'no') +
+        ',scrollbars=' + (this.popup.scrollbars ? 'yes' : 'no') +
+        ',location=' + (this.popup.location ? 'yes' : 'no') +
+        ',directories=' + (this.popup.directories ? 'yes' : 'no')
+      );
+
+      this.popup.window.focus();
+
+      // Create an interval to detect popup closing event
+      this.popup.interval = setInterval(function () {
+        if (this$1.popup.window.closed) {
+          clearInterval(this$1.popup.interval);
+
+          this$1.popup.window = undefined;
+
+          this$1.$root.$emit('social_shares_close', network, this$1.url);
+          this$1.$emit('close', network, this$1.url);
+        }
+      }, 500);
+    }
+  },
+
+  /**
+   * Merge base networks list with user's list
+   */
+  beforeMount: function beforeMount () {
+    this.baseNetworks = Vue.util.extend(this.baseNetworks, this.networks);
+  },
+
+  /**
+   * Sets popup default dimensions.
+   */
+  mounted: function mounted () {
+    if (!inBrowser) {
+      return;
+    }
+
+    /**
+     * Center the popup on dual screens
+     * http://stackoverflow.com/questions/4068373/center-a-popup-window-on-screen/32261263
+     */
+    var dualScreenLeft = $window.screenLeft !== undefined ? $window.screenLeft : screen.left;
+    var dualScreenTop = $window.screenTop !== undefined ? $window.screenTop : screen.top;
+
+    var width = $window.innerWidth ? $window.innerWidth : (document.documentElement.clientWidth ? document.documentElement.clientWidth : screen.width);
+    var height = $window.innerHeight ? $window.innerHeight : (document.documentElement.clientHeight ? document.documentElement.clientHeight : screen.height);
+
+    this.popup.left = ((width / 2) - (this.popup.width / 2)) + dualScreenLeft;
+    this.popup.top = ((height / 2) - (this.popup.height / 2)) + dualScreenTop;
+  },
+
+  /**
+   * Set component aliases for buttons and links.
+   */
+  components: {
+    'network': SocialSharingNetwork
+  }
+};
+
+SocialSharing.version = '2.3.3';
+
+SocialSharing.install = function (Vue) {
+  Vue.component('social-sharing', SocialSharing);
+};
+
+if (typeof window !== 'undefined') {
+  window.SocialSharing = SocialSharing;
+}
+
+module.exports = SocialSharing;
+
+/***/ }),
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(115)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(117)
+/* template */
+var __vue_template__ = __webpack_require__(118)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/shared/social_sharing.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-da6ad48e", Component.options)
+  } else {
+    hotAPI.reload("data-v-da6ad48e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 115 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(116);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("0586c29e", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-da6ad48e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./social_sharing.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-da6ad48e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./social_sharing.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 116 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.social_sharing_wrapper {\n    padding: 0 15px;\n}\n.social_img {\n    width: 40px;\n    cursor: pointer;\n}\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 117 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['title'],
+    data: function data() {
+        return {
+            url: window.location.href
+        };
+    }
+});
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("social-sharing", {
+    attrs: { url: _vm.url, title: _vm.title, description: _vm.title },
+    inlineTemplate: {
+      render: function() {
+        var _vm = this
+        var _h = _vm.$createElement
+        var _c = _vm._self._c || _h
+        return _c(
+          "div",
+          { staticClass: "social_sharing_wrapper" },
+          [
+            _c("network", { attrs: { network: "facebook" } }, [
+              _c("img", {
+                staticClass: "social_img",
+                attrs: {
+                  src:
+                    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjciIGhlaWdodD0iNjciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxnPiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPiAgPHJlY3QgZmlsbD0ibm9uZSIgaWQ9ImNhbnZhc19iYWNrZ3JvdW5kIiBoZWlnaHQ9IjQwMiIgd2lkdGg9IjU4MiIgeT0iLTEiIHg9Ii0xIi8+IDwvZz4gPGc+ICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+ICA8cGF0aCBpZD0ic3ZnXzEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjZjRmN2ZjIiBkPSJtMjguMTQwMjM1LDUwLjE3MjI5NGw2Ljc0NCwwbDAsLTE2LjMyMmw0LjQ5OSwwbDAuNTk2LC01LjYyNGwtNS4wOTUsMGwwLjAwNywtMi44MTZjMCwtMS40NjYgMC4xNCwtMi4yNTMgMi4yNDQsLTIuMjUzbDIuODEyLDBsMCwtNS42MjVsLTQuNSwwYy01LjQwNSwwIC03LjMwNywyLjcyOSAtNy4zMDcsNy4zMTdsMCwzLjM3N2wtMy4zNjksMGwwLDUuNjI1bDMuMzY5LDBsMCwxNi4zMjF6bTQuMjM1LDEzLjY4Yy0xNi41NjgsMCAtMzAsLTEzLjQzMiAtMzAsLTMwYzAsLTE2LjU2OSAxMy40MzIsLTMwIDMwLC0zMHMzMCwxMy40MzEgMzAsMzBjMCwxNi41NjggLTEzLjQzMiwzMCAtMzAsMzB6Ii8+IDwvZz48L3N2Zz4=",
+                  alt: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("network", { attrs: { network: "googleplus" } }, [
+              _c("img", {
+                staticClass: "social_img",
+                attrs: {
+                  src:
+                    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjciIGhlaWdodD0iNjciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxnPiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPiAgPHJlY3QgZmlsbD0ibm9uZSIgaWQ9ImNhbnZhc19iYWNrZ3JvdW5kIiBoZWlnaHQ9IjQwMiIgd2lkdGg9IjU4MiIgeT0iLTEiIHg9Ii0xIi8+IDwvZz4gPGc+ICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+ICA8cGF0aCBpZD0ic3ZnXzEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjZmZmZmZmIiBkPSJtMzIuOTYzLDM1LjAwMmMxLjYwOSwtMS42MDggMS43MzQsLTMuODQ1IDEuNzM0LC01LjEwMmMwLC01LjA1MSAtMi45OSwtMTIuODc1IC04Ljc5NiwtMTIuODc1Yy0xLjgxLDAgLTMuNzcsMC45MSAtNC45LDIuMzFjLTEuMTgxLDEuNDY4IC0xLjUzMywzLjM1MyAtMS41MzMsNS4xNjJjMCw0LjcgMi43MTQsMTIuNDY1IDguNzQ2LDEyLjQ2NWMxLjczNCwwIDMuNjE5LC0wLjg1NSA0Ljc0OSwtMS45NnptLTI4Ljk2MywtMS4wMDJjMCw3LjQwNSAyLjY4MywxNC4xODQgNy4xMjksMTkuNDE1YzAuODM5LC0xLjQxIDIuMTQsLTIuNzk3IDQuMDY2LC0zLjkzN2M0LjM0OCwtMi42NjQgMTAuMjA0LC0zLjAxNyAxMy4zNywtMy4yMThjLTAuOTgsLTEuMjU3IC0yLjExMSwtMi41ODkgLTIuMTExLC00Ljc3NGMwLC0xLjE4MiAwLjM1MiwtMS44ODUgMC43MDQsLTIuNzE1Yy0wLjc3OSwwLjA3NiAtMS41MzMsMC4xNTEgLTIuMjM3LDAuMTUxYy03LjQxNCwwIC0xMS42MTEsLTUuNTI5IC0xMS42MTEsLTEwLjk4M2MwLC0zLjIxNyAxLjQ4MywtNi43OTEgNC40NzMsLTkuMzc3YzMuOTk2LC0zLjI4NCA4Ljc0NiwtMy44NDUgMTIuNTE2LC0zLjg0NWwxNC40MDEsMGwtNC40NzQsMi41MTZsLTQuMzIyLDBjMS42MDcsMS4zMjkgNC45NTEsNC4xMjcgNC45NTEsOS40NDljMCw1LjE3OCAtMi45NDEsNy42MTUgLTUuODU2LDkuOTI2Yy0wLjkzLDAuOTA2IC0xLjk2LDEuODg2IC0xLjk2LDMuNDE4YzAsMS41MzMgMS4wMywyLjM4OSAxLjgxLDMuMDE3bDIuNTEzLDEuOTZjMy4wOTIsMi41NjQgNS44ODEsNC45NTEgNS44ODEsOS43NzdjMCwzLjE4MiAtMS40ODQsNi4zNzYgLTQuMzc5LDguODI2Yy0xLjU1NywwLjI1NSAtMy4xNTMsMC4zODggLTQuNzgxLDAuMzkzYzIuOTM4LC0xLjI4OSA0LjQ2MSwtMy42NDYgNC40NjEsLTYuNDhjMCwtMy41NjggLTIuMjg3LC01LjQ1MyAtNy42MTUsLTkuMjQ4Yy0wLjU1MywtMC4wNTEgLTAuOTA1LC0wLjA1MSAtMS42MDgsLTAuMDUxYy0wLjYyOCwwIC00LjM5OCwwLjEyNyAtNy4zMzgsMS4xMDZjLTEuNTMzLDAuNTUzIC02LjAwNiwyLjIzNyAtNi4wMDYsNy4yMTNjMCwwLjU0MSAwLjA1OCwxLjA2NSAwLjE3LDEuNTY5Yy03LjM3MiwtNS40NjMgLTEyLjE0NywtMTQuMjI4IC0xMi4xNDcsLTI0LjEwOHptNTcuNzMsLTExLjQ2OGwwLDBjMC40NCwxLjA2MyAwLjgyMSwyLjE1OSAxLjEzOSwzLjI4MWMtMC4zMTcsLTEuMTIyIC0wLjY5OCwtMi4yMTcgLTEuMTM5LC0zLjI4MWwwLDBsMCwwbDAsMHptLTI3LjczLDQxLjQ2OGMtMTYuNTY4LDAgLTMwLC0xMy40MzIgLTMwLC0zMGMwLC0xNi41NjkgMTMuNDMyLC0zMCAzMCwtMzBjMTIuNTA3LDAgMjMuMjI3LDcuNjUzIDI3LjczLDE4LjUzMmwwLDBsLTUuOTY2LDBsMCwtNy44MTRsLTMuMzQ5LDBsMCw3LjgxNGwtNy44MTQsMGwwLDMuMjgxbDcuODE0LDBsMCw3Ljg4MmwzLjM0OSwwbDAsLTcuODgybDcuMTA0LDBjMC43MzcsMi42MDIgMS4xMzIsNS4zNDkgMS4xMzIsOC4xODdjMCwxNi41NjggLTEzLjQzMiwzMCAtMzAsMzB6Ii8+IDwvZz48L3N2Zz4=",
+                  alt: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("network", { attrs: { network: "linkedin" } }, [
+              _c("img", {
+                staticClass: "social_img",
+                attrs: {
+                  src:
+                    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjciIGhlaWdodD0iNjciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxnPiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPiAgPHJlY3QgZmlsbD0ibm9uZSIgaWQ9ImNhbnZhc19iYWNrZ3JvdW5kIiBoZWlnaHQ9IjQwMiIgd2lkdGg9IjU4MiIgeT0iLTEiIHg9Ii0xIi8+IDwvZz4gPGc+ICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+ICA8cGF0aCBpZD0ic3ZnXzEiIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjZjdmYWZjIiBkPSJtNTAuODM3LDQ4LjEzN2wwLC0xMS43MTJjMCwtNi4yNzUgLTMuMzUsLTkuMTk1IC03LjgxNiwtOS4xOTVjLTMuNjA0LDAgLTUuMjE5LDEuOTgzIC02LjExOSwzLjM3NGwwLC0yLjg5NGwtNi43OSwwYzAuMDksMS45MTcgMCwyMC40MjcgMCwyMC40MjdsNi43OSwwbDAsLTExLjQwOGMwLC0wLjYwOSAwLjA0NCwtMS4yMTkgMC4yMjQsLTEuNjU1YzAuNDksLTEuMjIgMS42MDcsLTIuNDgzIDMuNDgyLC0yLjQ4M2MyLjQ1OCwwIDMuNDQsMS44NzMgMy40NCw0LjYxOGwwLDEwLjkyOWw2Ljc4OSwwbDAsLTAuMDAxem0tMjcuODc4LC0yMy4yMTVjMi4zNjcsMCAzLjg0MiwtMS41NyAzLjg0MiwtMy41MzFjLTAuMDQ0LC0yLjAwMyAtMS40NzUsLTMuNTI4IC0zLjc5NywtMy41MjhzLTMuODQxLDEuNTI0IC0zLjg0MSwzLjUyOGMwLDEuOTYxIDEuNDc0LDMuNTMxIDMuNzUzLDMuNTMxbDAuMDQzLDB6bTExLjA0MSwzOS4wNzhjLTE2LjU2OCwwIC0zMCwtMTMuNDMyIC0zMCwtMzBjMCwtMTYuNTY5IDEzLjQzMiwtMzAgMzAsLTMwczMwLDEzLjQzMSAzMCwzMGMwLDE2LjU2OCAtMTMuNDMyLDMwIC0zMCwzMHptLTcuNjQ2LC0xNS44NjNsMCwtMjAuNDI3bC02Ljc4OSwwbDAsMjAuNDI3bDYuNzg5LDB6Ii8+IDwvZz48L3N2Zz4=",
+                  alt: ""
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("network", { attrs: { network: "twitter" } }, [
+              _c("img", {
+                staticClass: "social_img",
+                attrs: {
+                  src:
+                    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjciIGhlaWdodD0iNjciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSI0MDIiIHdpZHRoPSI1ODIiIHk9Ii0xIiB4PSItMSIvPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxwYXRoIGlkPSJzdmdfMSIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNmZmZmZmYiIGQ9Im0zOC4xNjcsMjIuNDMwNjk1Yy0yLjYxOSwwLjk1MyAtNC4yNzQsMy40MTEgLTQuMDg2LDYuMTAxbDAuMDYzLDEuMDM4bC0xLjA0OCwtMC4xMjdjLTMuODEzLC0wLjQ4NyAtNy4xNDUsLTIuMTM5IC05Ljk3NCwtNC45MTVsLTEuMzgzLC0xLjM3N2wtMC4zNTYsMS4wMTdjLTAuNzU0LDIuMjY3IC0wLjI3Miw0LjY2MSAxLjI5OSw2LjI3MWMwLjgzOCwwLjg5IDAuNjQ5LDEuMDE3IC0wLjc5NiwwLjQ4N2MtMC41MDMsLTAuMTY5IC0wLjk0MywtMC4yOTYgLTAuOTg1LC0wLjIzM2MtMC4xNDYsMC4xNDkgMC4zNTYsMi4wNzYgMC43NTQsMi44MzljMC41NDUsMS4wNiAxLjY1NSwyLjA5NyAyLjg3MSwyLjcxMmwxLjAyNywwLjQ4N2wtMS4yMTUsMC4wMjFjLTEuMTczLDAgLTEuMjE1LDAuMDIxIC0xLjA4OSwwLjQ2N2MwLjQxOSwxLjM3NyAyLjA3NCwyLjgzOSAzLjkxOCwzLjQ3NWwxLjI5OSwwLjQ0NGwtMS4xMzEsMC42NzhjLTEuNjc2LDAuOTc2IC0zLjY0NiwxLjUyNiAtNS42MTYsMS41NjdjLTAuOTQ0LDAuMDIxIC0xLjcxOSwwLjEwNiAtMS43MTksMC4xN2MwLDAuMjExIDIuNTU3LDEuMzk3IDQuMDQ0LDEuODY0YzQuNDYzLDEuMzc3IDkuNzY1LDAuNzgzIDEzLjc0NiwtMS41NjhjMi44MjksLTEuNjc0IDUuNjU3LC01IDYuOTc4LC04LjIyMWMwLjcxMywtMS43MTUgMS40MjUsLTQuODUxIDEuNDI1LC02LjM1NGMwLC0wLjk3NSAwLjA2MywtMS4xMDIgMS4yMzYsLTIuMjY3YzAuNjkyLC0wLjY3OCAxLjM0MSwtMS40MTkgMS40NjcsLTEuNjMxYzAuMjEsLTAuNDAzIDAuMTg4LC0wLjQwMyAtMC44OCwtMC4wNDNjLTEuNzgxLDAuNjM2IC0yLjAzMywwLjU1MSAtMS4xNTIsLTAuNDAyYzAuNjQ5LC0wLjY3OCAxLjQyNSwtMS45MDcgMS40MjUsLTIuMjY3YzAsLTAuMDYzIC0wLjMxNCwwLjA0MiAtMC42NzEsMC4yMzNjLTAuMzc3LDAuMjEyIC0xLjIxNSwwLjUzIC0xLjg0NCwwLjcybC0xLjEzMSwwLjM2MWwtMS4wMjcsLTAuN2MtMC41NjYsLTAuMzgxIC0xLjM2MSwtMC44MDUgLTEuNzgxLC0wLjkzMmMtMS4wNjksLTAuMjk2IC0yLjcwNCwtMC4yNTQgLTMuNjY4LDAuMDg1em0tNC4xNjcsNDEuNzE3Yy0xNi41NjgsMCAtMzAsLTEzLjQzMiAtMzAsLTMwYzAsLTE2LjU2OSAxMy40MzIsLTMwIDMwLC0zMHMzMCwxMy40MzEgMzAsMzBjMCwxNi41NjggLTEzLjQzMiwzMCAtMzAsMzB6Ii8+CiA8L2c+Cjwvc3ZnPg==",
+                  alt: ""
+                }
+              })
+            ])
+          ],
+          1
+        )
+      },
+      staticRenderFns: []
+    }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-da6ad48e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

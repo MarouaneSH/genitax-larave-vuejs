@@ -7,6 +7,8 @@
                 </v-btn>
                 <v-toolbar-title v-if="selectedQuestion">{{selectedQuestion}} </v-toolbar-title>
                 <v-spacer></v-spacer>
+               <app-social-sharing :title="selectedQuestion ? selectedQuestion : '' "></app-social-sharing>
+
             </v-toolbar>
                 <div v-if="loading" class="text-xs-center">
                     <v-progress-circular
@@ -22,6 +24,8 @@
 </template>
 
 <script>
+import appSocialSharing from '../shared/social_sharing';
+
 export default {
     mounted() {
         const id = this.$route.params.id;
@@ -42,6 +46,9 @@ export default {
     },
     methods : {
         
+    },
+    components : {
+        appSocialSharing
     }
 }
 </script>
