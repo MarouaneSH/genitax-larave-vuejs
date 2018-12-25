@@ -156,6 +156,8 @@
           box-shadow: none;
   border-radius: 20px;
   padding: 0px 10px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .box-gtax__toggle .v-btn {
