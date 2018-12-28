@@ -25,7 +25,7 @@ Route::get('/ss', function () {
 
 Route::get('/insert', function () {
     foreach(App\Category::all() as $cat) {
-        dd($cat);
+
         DB::table('categories')->insert([
             [
             "id"=> $cat->id,

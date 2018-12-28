@@ -16,7 +16,7 @@ class Category extends Model
 
    public $timestamps = null;
 
-   protected $table = 'ca_mytable';
+//    protected $table = 'ca_mytable';
 
    protected $mapping = [
         'properties' => [
