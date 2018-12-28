@@ -73981,7 +73981,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         selectedHeaderName: function selectedHeaderName() {
             var _this6 = this;
 
-            if (!this.headerCategories.length) return null;
+            if (!this.headerCategories.length || !this.toggle_header) return null;
             return this.headerCategories.filter(function (e) {
                 return e.id == _this6.toggle_header;
             })[0].titre;

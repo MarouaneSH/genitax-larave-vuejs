@@ -192,7 +192,7 @@ export default {
   },
   computed : {
       selectedHeaderName() {
-          if(!this.headerCategories.length) return null;
+          if(!this.headerCategories.length || !this.toggle_header) return null;
          return this.headerCategories.filter((e) => e.id == this.toggle_header)[0].titre;
       }
   }

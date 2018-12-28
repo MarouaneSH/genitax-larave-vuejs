@@ -11,10 +11,45 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
+Route::get('/ss', function () {
+    foreach(App\Category::all() as $cat) {
+
+        foreach($cat->children->sortBy("titre") as $key => $ch) {
+            $ch->level = $key + 1;
+            $ch->save();
+        }
+    }
 });
 
+
+
+Route::get('/insert', function () {
+    foreach(App\Category::all() as $cat) {
+        dd($cat);
+        DB::table('categories')->insert([
+            [
+            "id"=> $cat->id,
+            'parent_id' => $cat->parent_id,
+            'titre' => $cat->titre,
+            'aid' => $cat->aid,
+            'cgi_taxlocale_id' => $cat->cgi_taxlocale_id,
+            'icon_type' => $cat->icon_type,
+            'Level' => $cat->Level,
+            ]
+        ]);
+    }
+});
+
+
+$icoType = 1;
+
+
+
+
+Route::get('/', function () {
+    return view('home');
+
+});
 
 Route::get("ttt",function() {
 

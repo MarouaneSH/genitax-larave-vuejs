@@ -18,6 +18,36 @@ use App\Outil;
 class ApiController extends Controller
 {
 
+    public function recursive($cat,&$counter) {
+        $parent = $cat->parent;
+       
+        if($parent){
+            $counter++;
+            return  $this->recursive($parent,$counter);
+        } 
+        return $counter;
+    }
+ 
+    public function test() {
+        $counter = 0;
+        foreach(Category::all() as $cat) {
+            $nbr_parent = $this->recursive($cat,$counter);
+            if($nbr_parent <=5) {
+                $cat->icon_type = $nbr_parent;
+                $cat->save();
+            } else {
+                $cat->icon_type = 5;
+                $cat->save();
+            }
+            if(!$cat->children) {
+                $cat->icon_type = 5;
+                $cat->save();
+            }
+            $counter = 0;
+        }
+    }
+
+
     public function cgiHeaderCategories() {
         $categories = Category::select("id","parent_id","titre","level","icon_type")
                     ->where("parent_id", null)

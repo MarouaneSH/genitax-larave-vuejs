@@ -15,6 +15,10 @@ use Illuminate\Http\Request;
 
 
 
+Route::get('test',"ApiController@test");
+
+
+
 Route::get('categories/parent={parent_id}',"ApiController@getCategory");
 Route::get('caregories/cgi/header',"ApiController@cgiHeaderCategories");
 Route::get('caregories/taxes',"ApiController@getTaxesCategories");

@@ -12,7 +12,11 @@ class Category extends Model
 
     use Searchable;
 
-    protected $indexConfigurator = TestIndexConfigurator::class;
+   protected $indexConfigurator = TestIndexConfigurator::class;
+
+   public $timestamps = null;
+
+   protected $table = 'ca_mytable';
 
    protected $mapping = [
         'properties' => [
