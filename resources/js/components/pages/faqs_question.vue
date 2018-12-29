@@ -53,6 +53,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .content_html {
+        padding: 30px;
+    }
 </style>

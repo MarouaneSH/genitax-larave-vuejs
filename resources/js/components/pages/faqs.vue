@@ -83,7 +83,7 @@ export default {
     flex-wrap: wrap;
     cursor: pointer;
     &_item {
-        width: 50%;
+        width: 30%;
         padding: 15px;
         text-align: center;
         h3 {

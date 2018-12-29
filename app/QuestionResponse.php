@@ -12,6 +12,8 @@ class QuestionResponse extends Model
 
     protected $indexConfigurator = QuestionIndexConfigurator::class;
 
+    public $guarded = [];
+    
     protected $mapping = [
         'properties' => [
             'question' => [

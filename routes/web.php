@@ -26,8 +26,17 @@ Route::get('/ss', function () {
 
 
 Route::get('/db2',function() {
-    foreach(DB::connection('mysql2')->table('tbl_taxLocale')->get() as $db2) {
-        
+    foreach(DB::table('faqs')->get() as $faq) {
+        foreach(DB::connection('mysql2')->table("category_map")->where('cid' , $faq->id)->get() as $quest) {
+            $news = DB::connection('mysql2')->table("tbl_news")->where('nid' , $quest->nid)->first();
+            if($news) {
+                App\QuestionResponse::create([
+                    "faq_id" => $faq->id,
+                    "question" => $news->news_heading,
+                    "response" => $news->news_description,
+                ]);
+            }
+        }
     }
 
 });
