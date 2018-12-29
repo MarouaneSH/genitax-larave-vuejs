@@ -11,11 +11,14 @@
                     </div>
                   <router-view :key="$route.fullPath"></router-view>
             </v-container>
+            <app-privacy></app-privacy>
         </v-content>
 </v-app>
 </template>
 
 <script>
+import appPrivacy from './shared/privacy';
+
 export default {
     data: () => ({
   }),
@@ -23,6 +26,9 @@ export default {
       toggleDrawer() {
           this.$refs.sidebar.toggleDrawer();
       }
+  },
+  components : {
+      appPrivacy
   }
 
 }

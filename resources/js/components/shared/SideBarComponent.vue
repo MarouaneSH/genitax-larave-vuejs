@@ -162,8 +162,10 @@
         if(!val) return;
         if(this.currentRoute == "cgi" || this.currentRoute == "taxes") {
            this.$router.push({ name: 'ArticleById', params: { id: val } , query : {category : this.currentRoute} })
+           this.selectedItem = null;
         } else {
-             this.$router.push({name: "faqs_question" , params : {id : val }})
+            this.$router.push({name: "faqs_question" , params : {id : val }})
+            this.selectedItem = null;
         }
       }
     }

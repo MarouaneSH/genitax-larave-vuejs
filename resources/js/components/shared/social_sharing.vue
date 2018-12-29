@@ -34,6 +34,8 @@ export default {
 <style >
 .social_sharing_wrapper {
     padding: 0 15px;;
+    flex-wrap: nowrap;
+    display: flex;
 }
 .social_img {
     width: 40px;
