@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 
 Route::get('test',"ApiController@test");
 
+Route::get('settings/name={name}',"ApiController@getSetting");
+
 
 
 Route::get('categories/parent={parent_id}',"ApiController@getCategory");

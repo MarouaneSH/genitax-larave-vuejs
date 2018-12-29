@@ -17,7 +17,7 @@ use App\Outil;
 
 class ApiController extends Controller
 {
-
+   // this functions is for testing purpose only
     public function recursive($cat,&$counter) {
         $parent = $cat->parent;
        
@@ -27,7 +27,7 @@ class ApiController extends Controller
         } 
         return $counter;
     }
- 
+     // this functions is for testing purpose only
     public function test() {
         $counter = 0;
         foreach(Category::all() as $cat) {
@@ -47,6 +47,11 @@ class ApiController extends Controller
         }
     }
 
+
+
+    public function getSetting($name) {
+        return response()->json(setting('site.'.$name));
+    }
 
     public function cgiHeaderCategories() {
         $categories = Category::select("id","parent_id","titre","level","icon_type")
