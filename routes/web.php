@@ -23,6 +23,14 @@ Route::get('/ss', function () {
 
 
 
+
+
+Route::get('/db2',function() {
+    foreach(DB::connection('mysql2')->table('tbl_taxLocale')->get() as $db2) {
+        dd($db2->article);
+    }
+
+});
 Route::get('/insert', function () {
     foreach(App\Category::all() as $cat) {
 
