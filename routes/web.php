@@ -26,8 +26,8 @@ Route::get('testing',function() {
     
    foreach(App\ArticleCirculaire::all() as $re) {
       
-       $doc = new DOMDocument();
-        $re->contenu_html_article = tidy_repair_string($re->contenu_html_article );
+          $re->contenu_html_article = str_replace("'\n", '', $re->contenu_html_article );
+        // $re->contenu_html_article = tidy_repair_string($re->contenu_html_article );
        $re->save();
    }
 });
