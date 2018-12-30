@@ -164,5 +164,6 @@ export default {
 }
 .content_html {
     padding: 0 40px;
+    padding-bottom: 20px;
 }
 </style>

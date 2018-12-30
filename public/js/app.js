@@ -25430,6 +25430,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_2_vue_social_sharing___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vuetify___default.a);
 
+// window.axios.defaults.baseURL ="http://genitax.test/api";
 window.axios.defaults.baseURL = "http://142.93.227.137/api";
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
@@ -75761,7 +75762,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.treeview_wrapper_fiscal[data-v-e68354a0] {\n    padding: 20px;\n}\n", ""]);
+exports.push([module.i, "\n.treeview_wrapper_fiscal[data-v-e68354a0] {\n    padding: 20px;\n}\n.content_html[data-v-e68354a0] {\n    padding : 20px;\n}\n", ""]);
 
 // exports
 
@@ -76704,7 +76705,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.article_header[data-v-1a453a75] {\n    color: #1976d1;\n    padding: 40px;\n}\n.content_html[data-v-1a453a75] {\n    padding: 0 40px;\n}\n", ""]);
+exports.push([module.i, "\n.article_header[data-v-1a453a75] {\n    color: #1976d1;\n    padding: 40px;\n}\n.content_html[data-v-1a453a75] {\n    padding: 0 40px;\n    padding-bottom: 20px;\n}\n", ""]);
 
 // exports
 

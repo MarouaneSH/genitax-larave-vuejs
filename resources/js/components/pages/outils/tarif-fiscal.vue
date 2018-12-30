@@ -144,4 +144,7 @@ export default {
 .treeview_wrapper_fiscal {
     padding: 20px;
 }
+.content_html {
+    padding : 20px;
+}
 </style>

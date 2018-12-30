@@ -24,6 +24,8 @@ class ArticleCirculaire extends Model
         ]
     ];
 
+    protected $guarded = [];
+    
     protected $appends = ['has_circulaire'];
 
     public function category()

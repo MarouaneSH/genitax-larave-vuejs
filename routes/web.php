@@ -22,104 +22,145 @@ Route::get('/ss', function () {
 });
 
 
-
-
-
-Route::get('/db2',function() {
-    foreach(DB::table('faqs')->get() as $faq) {
-        foreach(DB::connection('mysql2')->table("category_map")->where('cid' , $faq->id)->get() as $quest) {
-            $news = DB::connection('mysql2')->table("tbl_news")->where('nid' , $quest->nid)->first();
-            if($news) {
-                App\QuestionResponse::create([
-                    "faq_id" => $faq->id,
-                    "question" => $news->news_heading,
-                    "response" => $news->news_description,
-                ]);
-            }
-        }
-    }
-
-});
-Route::get('/insert', function () {
-    foreach(App\Category::all() as $cat) {
-
-        DB::table('categories')->insert([
-            [
-            "id"=> $cat->id,
-            'parent_id' => $cat->parent_id,
-            'titre' => $cat->titre,
-            'aid' => $cat->aid,
-            'cgi_taxlocale_id' => $cat->cgi_taxlocale_id,
-            'icon_type' => $cat->icon_type,
-            'Level' => $cat->Level,
-            ]
-        ]);
-    }
+Route::get('testing',function() {
+    
+   foreach(App\ArticleCirculaire::all() as $re) {
+      
+       $doc = new DOMDocument();
+        $re->contenu_html_article = tidy_repair_string($re->contenu_html_article );
+       $re->save();
+   }
 });
 
+//migration tarfi fiscal
+// Route::get('/migrate',function() {
+//         foreach(App\OutilsTarifsFiscalCategory::all() as $rec) {
+            
+//             $article = DB::connection("mysql2")->table('tbl_tarifFiscal')->where('id',$rec->aid)->first();
+            
+//             if( $article) {
+//                 ini_set('pcre.backtrack_limit', 99999999999999999);
+//                 $content_article = preg_replace('/article ([0-9]{1,4})/', '<a href="article/${1}">article ${1}</a>' ,$article->txt);
+//                 App\OutilsTarifsFiscalArticle::create([
+//                     "categorie_id" => $rec->id,
+//                     "contenu_html" => $content_article ,
+//                 ]);
+//             }
+            
+    
+            
+//         }
+//     });
 
-$icoType = 1;
+
+// migration LF 2017
+// Route::get('/migrate',function() {
+//     foreach(App\Category::whereBetween('id',[421, 491])->where("aid","!=", "0")->get() as $rec) {
+        
+//         $article = DB::connection("mysql2")->table('tbl_lf_2017')->where('id',$rec->aid)->first();
+        
+//         ini_set('pcre.backtrack_limit', 99999999999999999);
+//         $content_article = preg_replace('/article ([0-9]{1,4})/', '<a href="article/${1}">article ${1}</a>' ,$article->article);
+        
+
+//         App\ArticleCirculaire::create([
+//             "categorie_id" => $rec->id,
+//             "num_article" => $rec->aid,
+//             "contenu_html_article" => $content_article ,
+//         ]);
+//     }
+// });
+
+
+// migration cgi
+// Route::get('/migrate',function() {
+//     // dd(App\Category::whereBetween('id',[1, 419])->where("aid","!=", "0")->get()->pluck(["titre"]));
+//     foreach(App\Category::whereBetween('id',[1, 419])->where("aid","!=", "0")->get() as $rec) {
+        
+//         $article = DB::connection("mysql2")->table('tbl_cgi')->where('aid',$rec->aid)->first();
+//         $circ = DB::connection("mysql2")->table('tbl_circ')->where('aid', $article->aid)->first();
+        
+//         ini_set('pcre.backtrack_limit', 99999999999999999);
+//         $content_article = preg_replace('/article ([0-9]{1,4})/', '<a href="article/${1}">article ${1}</a>' ,$article->cgi_article);
+        
+//         if($circ) $content_circulaire = preg_replace('/article ([0-9]{1,4})/', '<a href="article/${1}">article ${1}</a>' ,$circ->description);
+
+//         App\ArticleCirculaire::create([
+//             "categorie_id" => $rec->id,
+//             "num_article" => $rec->aid,
+//             "num_circulaire" => ($circ) ? $circ->aid : null,
+//             "contenu_html_article" => $content_article ,
+//             "contenu_html_circulaire"=> ($circ) ? $content_circulaire : null
+//         ]);
+//     }
+// });
+
+//migration taxe
+// Route::get('/migrate',function() {
+
+//     foreach(App\Category::where('id',">","586")->where("aid","!=", "0")->get() as $rec) {
+        
+//         $article = DB::connection("mysql2")->table('tbl_taxLocale')->where('aid',$rec->aid)->first();
+//         $circ = DB::connection("mysql2")->table('tbl_circ_tl')->where('aid', $article->aid)->first();
+        
+//         ini_set('pcre.backtrack_limit', 99999999999999999);
+//         $content_article = preg_replace('/article ([0-9]{1,4})/', '<a href="article/${1}">article ${1}</a>' ,$article->article);
+        
+//         if($circ) $content_circulaire = preg_replace('/article ([0-9]{1,4})/', '<a href="article/${1}">article ${1}</a>' ,$circ->description);
+
+//         App\ArticleCirculaire::create([
+//             "categorie_id" => $rec->id,
+//             "num_article" => $rec->aid,
+//             "num_circulaire" => ($circ) ? $circ->aid : null,
+//             "contenu_html_article" => $content_article ,
+//             "contenu_html_circulaire"=> ($circ) ? $content_circulaire : null
+//         ]);
+//     }
+// });
+
+// Route::get('/db2',function() {
+
+//     foreach(DB::table('faqs')->get() as $faq) {
+//         foreach(DB::connection('mysql2')->table("category_map")->where('cid' , $faq->id)->get() as $quest) {
+//             $news = DB::connection('mysql2')->table("tbl_news")->where('nid' , $quest->nid)->first();
+            
+//             if($news) {
+//                 $desc = $news->news_description;
+//                 App\QuestionResponse::create([
+//                     "faq_id" => $faq->id,
+//                     "question" => $news->news_heading,
+//                     "response" =>  strip_tags($desc, '<p><br>'),
+//                     "created_at" => Carbon\Carbon::parse(str_replace(",","", $news->news_date))
+//                 ]);
+//             }
+//         }
+//     }
+
+// });
+// Route::get('/insert', function () {
+//     foreach(App\Category::all() as $cat) {
+
+//         DB::table('categories')->insert([
+//             [
+//             "id"=> $cat->id,
+//             'parent_id' => $cat->parent_id,
+//             'titre' => $cat->titre,
+//             'aid' => $cat->aid,
+//             'cgi_taxlocale_id' => $cat->cgi_taxlocale_id,
+//             'icon_type' => $cat->icon_type,
+//             'Level' => $cat->Level,
+//             ]
+//         ]);
+//     }
+// });
+
+
 
 
 
 
 Route::get('/', function () {
     return view('home');
-
-});
-
-Route::get("ttt",function() {
-
-       $soapClient = new \SoapClient("http://52.232.29.235/services.wsdl");
-       $credentials = array('Username' => 'webad', 'Client' => 'P1', 'Password' => 'webad2017');
-
-       $tmpResult = $soapClient->GetTemplateResultAsXML();
-
-       dd($tmpResult);
-       $SearchCriteriaProperties1 = array('ColumnName' => 'program_grp_id__1',
-           'Description' => 'Etablissement',
-           'RestrictionType' => "=",
-           'FromValue' => strval($pole),
-           'ToValue' => strval($pole),
-           'DataType' => 10,
-           'DataLength' => 25,
-           'DataCase' => 2,
-           'IsParameter' => true,
-           'IsVisible' => true,
-           'IsPrompt' => false,
-           'IsMandatory' => false,
-           'CanBeOverridden' => false,
-           'RelDateCrit' => '');
-
-       $SearchCriteriaPropertiesList = array($SearchCriteriaProperties1);
-
-       $TemplateResultOptions = array(
-           'ShowDescriptions' => true,
-           'Aggregated' => true,
-           'OverrideAggregation' => false,
-           'CalculateFormulas' => true,
-           'FormatAlternativeBreakColumns' => true,
-           'RemoveHiddenColumns' => false,
-           'Filter' => "",
-           'FirstRecord' => -1,
-           'LastRecord' => -1);
-
-       $InputForTemplateResult = array('TemplateId' => '571',
-           'TemplateResultOptions' => $TemplateResultOptions,
-           'SearchCriteriaPropertiesList' => $SearchCriteriaPropertiesList,
-           'PipelineAssociatedName' => '');
-
-       $params3 = array('input' => $InputForTemplateResult, 'credentials' => $credentials);
-       $tmpResult = $soapClient->GetTemplateResultAsXML($params3);
-
-       $jsonresult = json_encode($tmpResult);
-
-       $result = json_decode($jsonresult, true);
-
-       $content = $result['GetTemplateResultAsXMLResult']['TemplateResult'];
-       $xml = simplexml_load_string($content);
-
-       return $xml;
 
 });
 
