@@ -75342,7 +75342,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.card__info {\n  padding: 30px;\n  -webkit-box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.15), 0 2px 4px 0 rgba(93, 100, 148, 0.2);\n          box-shadow: 0 5px 15px 0 rgba(37, 44, 97, 0.15), 0 2px 4px 0 rgba(93, 100, 148, 0.2);\n  border-radius: 10px;\n  text-align: center;\n}\n.card__info p strong {\n    display: block;\n    text-transform: uppercase;\n    color: #2c4983;\n}\n", ""]);
+exports.push([module.i, "\n#info_content {\n  text-align: center;\n}\n.img_info {\n  width: 350px;\n}\n.card__info {\n  padding: 30px;\n  border-radius: 10px;\n  text-align: center;\n}\n.card__info p strong {\n    display: block;\n    text-transform: uppercase;\n    color: #2c4983;\n}\n", ""]);
 
 // exports
 
@@ -75353,6 +75353,7 @@ exports.push([module.i, "\n.card__info {\n  padding: 30px;\n  -webkit-box-shadow
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -75393,6 +75394,11 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "info_content" } }, [
+    _c("img", {
+      staticClass: "img_info",
+      attrs: { src: "img/info.png", alt: "" }
+    }),
+    _vm._v(" "),
     _c("div", { staticClass: "card__info" }, [
       _c("p", [
         _c("strong", [_vm._v("Email : ")]),
@@ -75405,7 +75411,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", {
-        staticClass: "content_html",
+        staticClass: "content_htmlS",
         domProps: { innerHTML: _vm._s(_vm.contentHTML) }
       })
     ])
@@ -77368,7 +77374,7 @@ var render = function() {
             _vm._v(" "),
             _c("h5", [_vm._v("FAQ")]),
             _vm._v(" "),
-            _c("p", [_vm._v("Faire Aux Questions")])
+            _c("p", [_vm._v("Foire Aux Questions")])
           ]),
           _vm._v(" "),
           _c("v-btn", { attrs: { to: "/outils", flat: "" } }, [
@@ -77384,7 +77390,7 @@ var render = function() {
             _vm._v(" "),
             _c("h5", [_vm._v("INFO")]),
             _vm._v(" "),
-            _c("p", [_vm._v("Taux sur GaniTax")])
+            _c("p", [_vm._v("sur GaniTax")])
           ])
         ],
         1
@@ -77494,7 +77500,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.toggle_drawer[data-v-180b2835] {\n    font-size: 35px;\n    position: absolute;\n}\n", ""]);
+exports.push([module.i, "\n.toggle_drawer[data-v-180b2835] {\n    font-size: 35px;\n    position: absolute;\n}\n.infos[data-v-180b2835] {\nbackground-color :#DDDDDD;\n}\n", ""]);
 
 // exports
 
@@ -77776,6 +77782,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "v-content",
+        { class: { infos: _vm.$route.name == "infos" } },
         [
           _c(
             "v-container",
@@ -77800,12 +77807,14 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "text-xs-center" }, [
-                _c("img", {
-                  staticClass: "logo",
-                  attrs: { src: "/img/logo.jpg", alt: "" }
-                })
-              ]),
+              _vm.$route.name != "infos"
+                ? _c("div", { staticClass: "text-xs-center" }, [
+                    _c("img", {
+                      staticClass: "logo",
+                      attrs: { src: "/img/logo.jpg", alt: "" }
+                    })
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("router-view", { key: _vm.$route.fullPath })
             ],

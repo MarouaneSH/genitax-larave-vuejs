@@ -1,9 +1,10 @@
 <template>
         <div id="info_content">
+            <img src="img/info.png" class="img_info" alt="">
             <div class="card__info">
                 <p><strong>Email : </strong> {{email}}  </p>
                 <p><strong>Téléphone : </strong> {{telephone}}  </p>
-                <div class="content_html" v-html="contentHTML">
+                <div class="content_htmlS" v-html="contentHTML">
                 </div>
             </div>
         </div>
@@ -29,9 +30,14 @@ export default {
 </script>
 
 <style lang="scss">
+#info_content {
+    text-align: center;
+}
+.img_info {
+ width: 350px;
+}
 .card__info {
     padding: 30px;
-    box-shadow: 0 5px 15px 0 rgba(37,44,97,0.15), 0 2px 4px 0 rgba(93,100,148,0.2);
     border-radius: 10px;
     text-align: center;
     p {

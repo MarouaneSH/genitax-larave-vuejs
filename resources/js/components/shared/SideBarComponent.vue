@@ -48,7 +48,7 @@
               <v-btn to="/faqs" flat>
                 <img src="/img/4.png" alt="">
                 <h5>FAQ</h5>
-                <p>Faire Aux Questions</p>
+                <p>Foire Aux Questions</p>
               </v-btn>
               <v-btn  to="/outils" flat>
                 <img src="/img/5.png" alt="">
@@ -58,7 +58,7 @@
               <v-btn to="/infos" flat>
                 <img src="/img/3.png" alt="">
                 <h5>INFO</h5>
-                <p>Taux sur GaniTax</p>
+                <p>sur GaniTax</p>
               </v-btn>
       </v-btn-toggle>
       <img src="/img/seddikk.png" class="seddik_brand">

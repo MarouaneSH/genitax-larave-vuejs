@@ -1,13 +1,13 @@
 <template>
     <v-app >
        <app-side-bar ref="sidebar"></app-side-bar>
-        <v-content>
-            <v-container fluid>
+        <v-content  :class="{ 'infos' : $route.name == 'infos'}">
+            <v-container fluid >
                     <div class="toggle_drawer">
                         <v-icon @click="toggleDrawer()">filter_list</v-icon>
                     </div>
-                    <div class="text-xs-center">
-                           <img class="logo" src="/img/logo.jpg" alt="">
+                    <div class="text-xs-center" v-if="$route.name != 'infos'">
+                           <img  class="logo" src="/img/logo.jpg" alt="">
                     </div>
                   <router-view :key="$route.fullPath"></router-view>
             </v-container>
@@ -38,5 +38,8 @@ export default {
 .toggle_drawer {
     font-size: 35px;
     position: absolute;
+}
+.infos {
+background-color :#DDDDDD;
 }
 </style>
