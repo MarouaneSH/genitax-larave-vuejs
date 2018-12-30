@@ -11,11 +11,9 @@
                         <div class="card__content_item_card" @click="navigateTo(faq)"
                                 :style="{backgroundColor : faq.couleur}">
                                 <div class="text-xs-center">
-                                    <v-avatar :size="100">
                                         <v-img
                                         :src="'storage/'+faq.icone"
                                         ></v-img>
-                                    </v-avatar>
                                 </div>
                         </div>
                         <h3 class="mb-0">{{faq.titre_categories}} </h3>
@@ -90,12 +88,14 @@ export default {
         color: #2c4983;
         font-size: 14px;
         margin-top: 10px;
+        font-weight: 400;
         }
         &_card {
-        padding: 17px;
+          padding: 17px;
            border-radius: 33px;
            max-width: 150px;
            margin: 0 auto;
+           box-shadow: 0 5px 15px 0 rgba(37,44,97,0.15), 0 2px 4px 0 rgba(93,100,148,0.2);
         }
     }
 }

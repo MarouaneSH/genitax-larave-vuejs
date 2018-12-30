@@ -6,12 +6,13 @@
                     <div class="box-gtax__input">
                         <v-text-field
                             label="Solo"
-                            placeholder="Search"
+                            placeholder="..."
                             class="box-gtax__search"
                             solo
                             v-model="article"
+                            :append-icon-cb="searchArticle"
                             @change="searchArticle"
-                            append-icon="search"
+                            append-icon="arrow_forward"
                             :loading="loadingArticle"
                         ></v-text-field>
                         <div class="text-xs-center" v-if="articleNotFound">
@@ -19,14 +20,15 @@
                         </div>
                     </div>
             </v-flex>
-            <v-flex xs12 class="box-gtax__toggle_wrapper">
+           
+        </div>
+         <v-flex xs12 class="box-gtax__toggle_wrapper" v-if="headerCategories.length">
                     <v-btn-toggle dark v-model="toggle_header" class="box-gtax__toggle" @change="fetch_categories">
                             <v-btn flat v-for="cat in headerCategories" :value="cat.id " :key="cat.id" >
                                 <h6> {{cat.titre}} </h6>
                             </v-btn>
                     </v-btn-toggle>
             </v-flex>
-        </div>
         <div class="treeview_wrapper">
                 <v-app id="inspire">
 

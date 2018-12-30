@@ -36,31 +36,32 @@
 
         <v-btn-toggle id="sidebar_toggle">
               <v-btn to="/cgi" flat>
-                <v-icon>library_books</v-icon>
+                <img src="/img/1.png" alt="">
                 <h5>CGI</h5>
                 <p>Code Général des Impôts</p>
               </v-btn>
               <v-btn to="/taxes" flat>
-                <v-icon>vertical_split</v-icon>
+                 <img src="/img/2.png" alt="">
                 <h5>TAXES</h5>
                 <p>Locales</p>
               </v-btn>
               <v-btn to="/faqs" flat>
-                <v-icon>chat</v-icon>
+                <img src="/img/4.png" alt="">
                 <h5>FAQ</h5>
                 <p>Faire Aux Questions</p>
               </v-btn>
               <v-btn  to="/outils" flat>
-                <v-icon>equalizer</v-icon>
+                <img src="/img/5.png" alt="">
                 <h5>OUTILS</h5>
                 <p>Divers</p>
               </v-btn>
               <v-btn to="/infos" flat>
-                <v-icon>info</v-icon>
+                <img src="/img/3.png" alt="">
                 <h5>INFO</h5>
                 <p>Taux sur GaniTax</p>
               </v-btn>
       </v-btn-toggle>
+      <img src="/img/seddikk.png" class="seddik_brand">
     </v-navigation-drawer>
 </template>
 

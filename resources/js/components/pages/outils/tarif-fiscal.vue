@@ -1,5 +1,5 @@
 <template>
-    <div id="app_tarif_fiscal">
+    <div class="app_outils_wrapper">
         <div class="app_outils_header" :style="{backgroundColor : outil_info.color}">
             <v-icon @click="$router.go(-1)" class="arrow__back">arrow_back</v-icon>
             <div class="app_outils_header_content" >
@@ -146,5 +146,8 @@ export default {
 }
 .content_html {
     padding : 20px;
+}
+.app_outils_header {
+   
 }
 </style>

@@ -49,14 +49,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.outils_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 .outil_card{
     padding: 30px 40px;
     border-radius: 60px;
     display: flex;
     align-items: center;
+    margin: 20px 0;
+    width: 49%;
     color: white;
     margin-top: 15px;
     cursor: pointer;
+      box-shadow: 0 5px 15px 0 rgba(37,44,97,0.15), 0 2px 4px 0 rgba(93,100,148,0.2);
     transition: all .3s ease-in;
     &:hover {
         transform: scale(1.03);

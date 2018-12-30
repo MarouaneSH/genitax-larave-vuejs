@@ -2,12 +2,12 @@
     <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
                 <v-card>
                         <v-toolbar dark color="primary">
-                            <v-btn icon dark @click="$router.go(-1)">
-                                <v-icon>close</v-icon>
+                            <v-btn icon dark @click="$router.go(-1)" class="arrow_back_yellow">
+                                <v-icon>arrow_back</v-icon>
                             </v-btn>
                             <v-toolbar-title v-if="selectedArticle">{{selectedArticle.name}} </v-toolbar-title>
                             <v-spacer></v-spacer>
-                            <v-btn-toggle v-if="!hideToggle" light v-model="toggle_html_type" @change="isSearchablebyId ? fetchArticleById() : fetchArticleByName ()" >
+                            <v-btn-toggle class="article_switcher_toggle" v-if="!hideToggle" light v-model="toggle_html_type" @change="isSearchablebyId ? fetchArticleById() : fetchArticleByName ()" >
                                     <v-btn flat value="article">
                                         <h6> Article </h6>
                                     </v-btn>

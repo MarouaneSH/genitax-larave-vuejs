@@ -1,12 +1,11 @@
 <template>
         <div id="info_content">
-            <v-card class="card__info">
-                 
+            <div class="card__info">
                 <p><strong>Email : </strong> {{email}}  </p>
                 <p><strong>Téléphone : </strong> {{telephone}}  </p>
                 <div class="content_html" v-html="contentHTML">
                 </div>
-            </v-card>
+            </div>
         </div>
 </template>
 
@@ -29,8 +28,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .card__info {
     padding: 30px;
+    box-shadow: 0 5px 15px 0 rgba(37,44,97,0.15), 0 2px 4px 0 rgba(93,100,148,0.2);
+    border-radius: 10px;
+    text-align: center;
+    p {
+        strong {
+            display: block;
+            text-transform: uppercase;
+            color: #2c4983;
+        }
+    }
 }
+
 </style>

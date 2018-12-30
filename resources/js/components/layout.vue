@@ -37,5 +37,6 @@ export default {
 <style scoped>
 .toggle_drawer {
     font-size: 35px;
+    position: absolute;
 }
 </style>

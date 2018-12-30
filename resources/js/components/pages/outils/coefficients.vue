@@ -1,5 +1,5 @@
 <template>
-    <div class="coefficient_wrapper">
+    <div class="app_outils_wrapper">
         <div class="app_outils_header" :style="{backgroundColor : outil_info.color}">
             <v-icon @click="$router.go(-1)" class="arrow__back">arrow_back</v-icon>
             <div class="app_outils_header_content" >
@@ -13,20 +13,24 @@
             color="primary"
             ></v-progress-circular>
         </div>
-        <div class="coefficient_box" v-for="coef in coefficients" :key="coef.id">
-            <div class="coefficient_item">
-                <strong>PROFESSION: </strong>
-                {{coef.profession}}
+        <div class="coefficient_box_wrapper">
+             <div class="coefficient_box" v-for="coef in coefficients" :key="coef.id">
+                    <div class="coefficient_item">
+                        <strong>PROFESSION: </strong>
+                        {{coef.profession}}
+                    </div>
+                    <div class="coefficient_details">
+                        <div class="coefficient_item">
+                            <strong>N.M.A.E: </strong>
+                            {{coef.nmae}}
+                        </div>
+                        <div class="coefficient_item">
+                            <strong>Taux: </strong>
+                            {{coef.taux}} %
+                        </div>
+                    </div>
             </div>
-            <div class="coefficient_item">
-                <strong>N.M.A.E: </strong>
-                {{coef.nmae}}
-            </div>
-            <div class="coefficient_item">
-                <strong>Taux: </strong>
-                {{coef.taux}} %
-            </div>
-       </div>
+        </div>
     </div>
 </template>
 
@@ -60,14 +64,8 @@ export default {
 }
 </script>
 
-<style>
-
-.coefficient_box{
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+<style lang="scss">
+.app_outils_header {
     padding: 20px;
-    margin: 20px 0;
-}
-.coefficient_item strong{
- color: #5284e2;
 }
 </style>

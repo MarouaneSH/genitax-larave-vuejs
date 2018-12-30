@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <div class="app_outils_wrapper">
         <div class="app_outils_header" :style="{backgroundColor : outil_info.color}">
             <v-icon @click="$router.go(-1)" class="arrow__back">arrow_back</v-icon>
             <div class="app_outils_header_content" >
@@ -13,7 +13,7 @@
             color="primary"
             ></v-progress-circular>
         </div>
-         <v-card-text v-else>
+         <div v-else>
             <div class="coefficient_box" v-for="item in nomenclatures" :key="item.id">
                     <div class="coefficient_item">
                         <strong>ACTIVITES: </strong>
@@ -32,8 +32,8 @@
                         {{item.classe_1}}
                     </div>
                 </div>
-        </v-card-text>
-    </v-card>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -65,9 +65,10 @@ export default {
 
 <style scoped>
 .coefficient_box{
-      box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     padding: 20px;
-    margin: 20px 0;
+    width: 80%;
+    margin-top: 20px;
+    border-radius: 5px;
 }
 .coefficient_item strong{
  color: #5284e2;
