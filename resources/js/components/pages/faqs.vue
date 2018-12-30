@@ -1,5 +1,5 @@
 <template>
-     <v-layout column align-center="" class="mt-5">
+     <v-layout column align-center="">
             <div class="text-xs-center w-100" v-if="loading">
                     <v-progress-circular
                     indeterminate
@@ -11,9 +11,7 @@
                         <div class="card__content_item_card" @click="navigateTo(faq)"
                                 :style="{backgroundColor : faq.couleur}">
                                 <div class="text-xs-center">
-                                        <v-img
-                                        :src="'storage/'+faq.icone"
-                                        ></v-img>
+                                        <img :src="'storage/'+faq.icone" alt="">
                                 </div>
                         </div>
                         <h3 class="mb-0">{{faq.titre_categories}} </h3>
@@ -82,8 +80,9 @@ export default {
     cursor: pointer;
     &_item {
         width: 30%;
-        padding: 15px;
+        padding: 30px 17px;
         text-align: center;
+        cursor: pointer;
         h3 {
         color: #2c4983;
         font-size: 14px;
@@ -91,11 +90,15 @@ export default {
         font-weight: 400;
         }
         &_card {
-          padding: 17px;
+          padding: 25px 17px;
            border-radius: 33px;
            max-width: 150px;
            margin: 0 auto;
            box-shadow: 0 5px 15px 0 rgba(37,44,97,0.15), 0 2px 4px 0 rgba(93,100,148,0.2);
+   
+        }
+        img {
+                   max-width: 100%;
         }
     }
 }
