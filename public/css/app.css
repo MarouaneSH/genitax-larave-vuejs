@@ -271,8 +271,8 @@
           box-shadow: none;
   border-radius: 20px;
   padding: 0px 10px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 .article_switcher_toggle .v-btn {

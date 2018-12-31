@@ -77165,6 +77165,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -77299,6 +77300,7 @@ var render = function() {
               "search-input": _vm.search,
               color: "primary",
               solo: "",
+              "disable-resize-watcher": true,
               filter: _vm.filtred,
               "append-icon": "search",
               "no-data-text": "Aucun " + _vm.getLabelName + " trouvé",

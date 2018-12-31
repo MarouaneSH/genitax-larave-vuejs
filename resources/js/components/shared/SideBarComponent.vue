@@ -10,6 +10,7 @@
         :search-input.sync="search"
         color="primary"
         solo
+        :disable-resize-watcher="true"
         :filter="filtred"
         append-icon="search"
         :no-data-text="'Aucun ' + getLabelName + ' trouvé'"
