@@ -11,6 +11,7 @@
         color="primary"
         solo
         :disable-resize-watcher="true"
+        :disable-route-watcher ="true"
         :filter="filtred"
         append-icon="search"
         :no-data-text="'Aucun ' + getLabelName + ' trouvé'"
@@ -18,7 +19,7 @@
         :item-value="getItemValue"
         @input.native="searchArticle"
         label="Public APIs"
-        :placeholder="'Chercher une ' + getLabelName"
+        :placeholder="'Chercher ' + getLabelName"
       >  
 
        <template
@@ -152,9 +153,9 @@
       },
       getLabelName() {
         if(this.currentRoute == "cgi" || this.currentRoute == "taxes") {
-            return "article";
+            return "un article";
         } else {
-          return "question";
+          return "une question";
         }
       }
     },

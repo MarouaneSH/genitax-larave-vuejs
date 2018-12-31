@@ -77166,6 +77166,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -77248,9 +77249,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     getLabelName: function getLabelName() {
       if (this.currentRoute == "cgi" || this.currentRoute == "taxes") {
-        return "article";
+        return "un article";
       } else {
-        return "question";
+        return "une question";
       }
     }
   },
@@ -77301,13 +77302,14 @@ var render = function() {
               color: "primary",
               solo: "",
               "disable-resize-watcher": true,
+              "disable-route-watcher": true,
               filter: _vm.filtred,
               "append-icon": "search",
               "no-data-text": "Aucun " + _vm.getLabelName + " trouvé",
               "item-text": "titre",
               "item-value": _vm.getItemValue,
               label: "Public APIs",
-              placeholder: "Chercher une " + _vm.getLabelName
+              placeholder: "Chercher " + _vm.getLabelName
             },
             on: {
               "update:searchInput": function($event) {

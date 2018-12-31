@@ -193,6 +193,7 @@
 }
 
 
+
 .article_switcher_toggle {
     background: #3e66b8 !important;
     box-shadow: none;
@@ -257,3 +258,13 @@
 .coefficient_item strong{
  color: #5284e2;
 }
+
+
+.toggle_drawer {
+  .theme--light.v-icon {
+    color: white !important;
+    background: #2c4983 !important;
+    padding: 8px;
+    border-radius: 50%;
+  }
+ }

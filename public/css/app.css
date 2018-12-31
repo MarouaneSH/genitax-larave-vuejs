@@ -351,3 +351,10 @@
   color: #5284e2;
 }
 
+.toggle_drawer .theme--light.v-icon {
+  color: white !important;
+  background: #2c4983 !important;
+  padding: 8px;
+  border-radius: 50%;
+}
+

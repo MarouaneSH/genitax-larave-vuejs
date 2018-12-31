@@ -22,14 +22,23 @@ Route::get('/ss', function () {
 });
 
 
+
 Route::get('testing',function() {
     
-   foreach(App\ArticleCirculaire::all() as $re) {
-      
-        $re->contenu_html_article = tidy_repair_string($re->contenu_html_article );
-       $re->save();
+   foreach(App\Category::all() as $re) {
+        $re->titre =  str_replace("?","'",$re->titre);
+        $re->save();
    }
 });
+
+// Route::get('testing',function() {
+    
+//    foreach(App\ArticleCirculaire::all() as $re) {
+      
+//         $re->contenu_html_article = tidy_repair_string($re->contenu_html_article );
+//        $re->save();
+//    }
+// });
 
 //migration tarfi fiscal
 // Route::get('/migrate',function() {
