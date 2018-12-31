@@ -115,7 +115,7 @@ class ApiController extends Controller
         $all_matching = $matching_category->merge($matching_articles);
 
         $articles = Category::whereIn("id", $all_matching->unique())
-                    ->with("articles:id,categorie_id")
+                    ->with("articles:id,categorie_id,num_article")
                     ->whereHas('articles')
                     ->where("cgi_taxlocale_id",$type_search)
                     ->get();
