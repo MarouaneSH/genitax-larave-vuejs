@@ -358,7 +358,7 @@
   border-radius: 50%;
 }
 
-.content_html a {
+.content_html a[href^="#/article"] {
   color: #1976d2;
   background: #ffc107;
   padding: 2px 12px;
