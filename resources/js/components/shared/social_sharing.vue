@@ -42,21 +42,5 @@ export default {
     cursor: pointer;
 }
 
-@media screen and (max-width : 600px){
-        .hide-mobile {
-            display: none;
-        }
-        .v-toolbar__content {
-            height: auto !important;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .social_sharing_wrapper {
-            margin: 20px 0;
-        }
-        .arrow_back_yellow {
-            margin-right: auto !important;
-        }
-}
 
 </style>

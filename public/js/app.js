@@ -75036,7 +75036,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.social_sharing_wrapper {\n    padding: 0 15px;;\n    -ms-flex-wrap: nowrap;;\n        flex-wrap: nowrap;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.social_img {\n    width: 40px;\n    cursor: pointer;\n}\n@media screen and (max-width : 600px){\n.hide-mobile {\n            display: none;\n}\n.v-toolbar__content {\n            height: auto !important;\n            -ms-flex-wrap: wrap;\n                flex-wrap: wrap;\n            -webkit-box-pack: center;\n                -ms-flex-pack: center;\n                    justify-content: center;\n}\n.social_sharing_wrapper {\n            margin: 20px 0;\n}\n.arrow_back_yellow {\n            margin-right: auto !important;\n}\n}\n\n", ""]);
+exports.push([module.i, "\n.social_sharing_wrapper {\n    padding: 0 15px;;\n    -ms-flex-wrap: nowrap;;\n        flex-wrap: nowrap;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n}\n.social_img {\n    width: 40px;\n    cursor: pointer;\n}\n\n\n", ""]);
 
 // exports
 

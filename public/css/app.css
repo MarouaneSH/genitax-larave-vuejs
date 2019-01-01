@@ -382,3 +382,33 @@
   margin: 0 6px;
 }
 
+@media screen and (max-width: 600px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .v-toolbar__content {
+    height: auto !important;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .social_sharing_wrapper {
+    margin: 20px 0;
+  }
+
+  .arrow_back_yellow {
+    margin-right: auto !important;
+  }
+
+  .box-gtax__toggle {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
