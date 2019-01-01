@@ -14,7 +14,7 @@
             ></v-progress-circular>
         </div>
          <div v-else>
-            <div class="coefficient_box" v-for="item in nomenclatures" :key="item.id">
+            <div class="coefficient_box tahoma-font_all" v-for="item in nomenclatures" :key="item.id">
                     <div class="coefficient_item">
                         <strong>ACTIVITES: </strong>
                         {{item.activites}}

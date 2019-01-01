@@ -14,7 +14,7 @@
             ></v-progress-circular>
         </div>
         <div class="coefficient_box_wrapper">
-             <div class="coefficient_box" v-for="coef in coefficients" :key="coef.id">
+             <div class="coefficient_box tahoma-font_all" v-for="coef in coefficients" :key="coef.id">
                     <div class="coefficient_item">
                         <strong>PROFESSION: </strong>
                         {{coef.profession}}

@@ -75650,36 +75650,40 @@ var render = function() {
       "div",
       { staticClass: "coefficient_box_wrapper" },
       _vm._l(_vm.coefficients, function(coef) {
-        return _c("div", { key: coef.id, staticClass: "coefficient_box" }, [
-          _c("div", { staticClass: "coefficient_item" }, [
-            _c("strong", [_vm._v("PROFESSION: ")]),
-            _vm._v(
-              "\n                    " +
-                _vm._s(coef.profession) +
-                "\n                "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "coefficient_details" }, [
+        return _c(
+          "div",
+          { key: coef.id, staticClass: "coefficient_box tahoma-font_all" },
+          [
             _c("div", { staticClass: "coefficient_item" }, [
-              _c("strong", [_vm._v("N.M.A.E: ")]),
+              _c("strong", [_vm._v("PROFESSION: ")]),
               _vm._v(
-                "\n                        " +
-                  _vm._s(coef.nmae) +
-                  "\n                    "
+                "\n                    " +
+                  _vm._s(coef.profession) +
+                  "\n                "
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "coefficient_item" }, [
-              _c("strong", [_vm._v("Taux: ")]),
-              _vm._v(
-                "\n                        " +
-                  _vm._s(coef.taux) +
-                  " %\n                    "
-              )
+            _c("div", { staticClass: "coefficient_details" }, [
+              _c("div", { staticClass: "coefficient_item" }, [
+                _c("strong", [_vm._v("N.M.A.E: ")]),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(coef.nmae) +
+                    "\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "coefficient_item" }, [
+                _c("strong", [_vm._v("Taux: ")]),
+                _vm._v(
+                  "\n                        " +
+                    _vm._s(coef.taux) +
+                    " %\n                    "
+                )
+              ])
             ])
-          ])
-        ])
+          ]
+        )
       })
     )
   ])
@@ -76365,49 +76369,53 @@ var render = function() {
       : _c(
           "div",
           _vm._l(_vm.nomenclatures, function(item) {
-            return _c("div", { key: item.id, staticClass: "coefficient_box" }, [
-              _c("div", { staticClass: "coefficient_item" }, [
-                _c("strong", [_vm._v("ACTIVITES: ")]),
-                _vm._v(
-                  "\n                    " +
-                    _vm._s(item.activites) +
-                    "\n                "
-                )
-              ]),
-              _vm._v(" "),
-              item.classe_3
-                ? _c("div", { staticClass: "coefficient_item" }, [
-                    _c("strong", [_vm._v("CLASSE 3 (10%) ")]),
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(item.classe_3) +
-                        "\n                "
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              item.classe_2
-                ? _c("div", { staticClass: "coefficient_item" }, [
-                    _c("strong", [_vm._v("CLASSE 2 (20%) ")]),
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(item.classe_2) +
-                        "\n                "
-                    )
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              item.classe_1
-                ? _c("div", { staticClass: "coefficient_item" }, [
-                    _c("strong", [_vm._v("CLASSE 1 (10%) ")]),
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(item.classe_1) +
-                        "\n                "
-                    )
-                  ])
-                : _vm._e()
-            ])
+            return _c(
+              "div",
+              { key: item.id, staticClass: "coefficient_box tahoma-font_all" },
+              [
+                _c("div", { staticClass: "coefficient_item" }, [
+                  _c("strong", [_vm._v("ACTIVITES: ")]),
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(item.activites) +
+                      "\n                "
+                  )
+                ]),
+                _vm._v(" "),
+                item.classe_3
+                  ? _c("div", { staticClass: "coefficient_item" }, [
+                      _c("strong", [_vm._v("CLASSE 3 (10%) ")]),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(item.classe_3) +
+                          "\n                "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                item.classe_2
+                  ? _c("div", { staticClass: "coefficient_item" }, [
+                      _c("strong", [_vm._v("CLASSE 2 (20%) ")]),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(item.classe_2) +
+                          "\n                "
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                item.classe_1
+                  ? _c("div", { staticClass: "coefficient_item" }, [
+                      _c("strong", [_vm._v("CLASSE 1 (10%) ")]),
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(item.classe_1) +
+                          "\n                "
+                      )
+                    ])
+                  : _vm._e()
+              ]
+            )
           })
         )
   ])
