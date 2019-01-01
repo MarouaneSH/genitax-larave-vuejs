@@ -11,25 +11,55 @@
 |
 */
 
-Route::get('/ss', function () {
-    foreach(App\Category::all() as $cat) {
 
-        foreach($cat->children->sortBy("titre") as $key => $ch) {
-            $ch->level = $key + 1;
-            $ch->save();
-        }
-    }
+
+
+
+
+
+
+
+Route::get('/app', function () {
+    return view('home');
+});
+
+Route::get('/', function () {
+    return view('index');
 });
 
 
 
-Route::get('testing',function() {
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
+
+
+
+
+
+
+
+// ALL THIS ROUTES ARE FOR TESTING
+
+// Route::get('/ss', function () {
+//     foreach(App\Category::all() as $cat) {
+
+//         foreach($cat->children->sortBy("titre") as $key => $ch) {
+//             $ch->level = $key + 1;
+//             $ch->save();
+//         }
+//     }
+// });
+
+
+
+// Route::get('testing',function() {
     
-   foreach(App\Category::all() as $re) {
-        $re->titre =  str_replace("?","'",$re->titre);
-        $re->save();
-   }
-});
+//    foreach(App\Category::all() as $re) {
+//         $re->titre =  str_replace("?","'",$re->titre);
+//         $re->save();
+//    }
+// });
 
 // Route::get('testing',function() {
     
@@ -164,30 +194,3 @@ Route::get('testing',function() {
 
 
 
-
-
-
-Route::get('/', function () {
-    return view('home');
-
-});
-
-Route::get('/test', function () {
-
-    return App\QuestionResponse::search("patentes")->get();
-    $matching_category = App\Category::search("Généralités")->get()->pluck("id");
-    $matching_articles = App\ArticleCirculaire::search("sd ss")->get()->pluck("categorie_id");
-    $all_matching = $matching_category->merge($matching_articles);
-
-    $articles = App\Category::whereIn("id", $all_matching->unique())
-                ->with("articles:id,categorie_id")
-                ->whereHas('articles')
-                ->get();
-   
-    return response()->json(["articles" => $articles]);
-});
-
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});

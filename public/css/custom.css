@@ -1,0 +1,25 @@
+.gradient-bg, .preloader, .gradient-bg-1, .gradient-bg, .navbar.affix {
+    background: linear-gradient(-45deg, rgb(37, 61, 110) 0%, rgba(52, 131, 255, 1) 100%) !important;
+}
+.color-base {
+    color : #226adb !important;
+}
+.genitax_header{
+    margin-top: 51px;
+}
+
+.feature-single  h5 {
+    position: relative;
+}
+.feature-single  h5:before{ 
+    content: "";
+    border-radius: 100%;
+    width: 10px;
+    height: 10px;
+    background: #226adb;
+    position: absolute;
+    left: -5px;
+    bottom: 0;
+    margin: auto;
+    top: 0;
+}
