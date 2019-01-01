@@ -4,6 +4,24 @@
 @import "~vuetify/dist/vuetify.min.css";
 
 
+
+@font-face {
+  font-family: 'tahoma';
+  src: url('../fonts/Tahoma Regular font.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.tahoma-font {
+  font-family: tahoma !important; 
+  &_all {
+    * {
+      font-family: tahoma !important; 
+    } 
+  }
+}
+
+
 * {
   font-family: 'Oswald', sans-serif;
 }

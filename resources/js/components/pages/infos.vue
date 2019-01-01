@@ -1,7 +1,7 @@
 <template>
         <div id="info_content">
             <img src="img/info.png" class="img_info" alt="">
-            <div class="card__info">
+            <div class="card__info tahoma-font_all">
                 <p><strong>Email : </strong> {{email}}  </p>
                 <p><strong>Téléphone : </strong> {{telephone}}  </p>
                 <div class="content_htmlS" v-html="contentHTML">

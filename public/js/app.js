@@ -75235,7 +75235,7 @@ var render = function() {
               )
             : [
                 _c("div", {
-                  staticClass: "content_html",
+                  staticClass: "content_html tahoma-font_all",
                   domProps: { innerHTML: _vm._s(_vm.contentHTML) }
                 })
               ]
@@ -75399,7 +75399,7 @@ var render = function() {
       attrs: { src: "img/info.png", alt: "" }
     }),
     _vm._v(" "),
-    _c("div", { staticClass: "card__info" }, [
+    _c("div", { staticClass: "card__info tahoma-font_all" }, [
       _c("p", [
         _c("strong", [_vm._v("Email : ")]),
         _vm._v(" " + _vm._s(_vm.email) + "  ")
@@ -76121,7 +76121,7 @@ var render = function() {
                   )
                 : [
                     _c("div", {
-                      staticClass: "content_html",
+                      staticClass: "content_html tahoma-font_all",
                       domProps: { innerHTML: _vm._s(_vm.contentHTML) }
                     })
                   ]
@@ -77013,7 +77013,7 @@ var render = function() {
                 1
               )
             : [
-                _c("h3", { staticClass: "article_header" }, [
+                _c("h3", { staticClass: "article_header tahoma-font" }, [
                   _vm._v(
                     " " +
                       _vm._s(_vm.getArticleHeader) +
@@ -77024,7 +77024,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", {
-                  staticClass: "content_html",
+                  staticClass: "content_html tahoma-font_all",
                   domProps: { innerHTML: _vm._s(_vm.contentHTML) }
                 })
               ]
@@ -77726,7 +77726,10 @@ var render = function() {
             "v-card",
             [
               _c("v-card-text", [
-                _c("p", { domProps: { innerHTML: _vm._s(_vm.contentHTML) } })
+                _c("p", {
+                  staticClass: "tahoma-font_all",
+                  domProps: { innerHTML: _vm._s(_vm.contentHTML) }
+                })
               ]),
               _vm._v(" "),
               _c("v-divider"),

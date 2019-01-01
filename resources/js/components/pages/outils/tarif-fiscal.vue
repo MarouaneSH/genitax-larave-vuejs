@@ -54,7 +54,7 @@
                                 ></v-progress-circular>
                             </div>
                             <template v-else>
-                                <div class="content_html"  v-html="contentHTML"></div>
+                                <div class="content_html tahoma-font_all"  v-html="contentHTML"></div>
                             </template>
                     </v-card>
         </v-dialog>

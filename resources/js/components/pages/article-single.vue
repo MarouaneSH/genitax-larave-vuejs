@@ -27,8 +27,8 @@
                                 ></v-progress-circular>
                             </div>
                             <template v-else>
-                                 <h3 class="article_header"> {{getArticleHeader}}  : {{selectedArticle.num}} </h3>
-                                <div class="content_html"  v-html="contentHTML"></div>
+                                 <h3 class="article_header tahoma-font"> {{getArticleHeader}}  : {{selectedArticle.num}} </h3>
+                                <div class="content_html tahoma-font_all"  v-html="contentHTML"></div>
                             </template>
                     </v-card>
             </v-dialog>

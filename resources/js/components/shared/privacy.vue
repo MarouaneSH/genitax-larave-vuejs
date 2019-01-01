@@ -8,7 +8,7 @@
         <v-card>
 
             <v-card-text>
-                <p v-html="contentHTML"></p>
+                <p class="tahoma-font_all" v-html="contentHTML"></p>
             </v-card-text>
 
             <v-divider></v-divider>
