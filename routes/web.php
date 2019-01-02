@@ -18,7 +18,6 @@
 
 
 
-
 Route::get('/app', function () {
     return view('home');
 });
