@@ -32,6 +32,14 @@ Route::post('/contact',"HomeController@contact")->name('contact');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+    Route::get('/filters/categories/{id?}',function($id = null) {
+        if($id) {
+            return response()->json(App\Category::select("titre","id")->where('cgi_taxlocale_id', $id)->get()) ;
+        } else {
+            return response()->json(App\Category::select("titre","id")->get()) ;
+        }
+        
+    });
 });
 
 
