@@ -27,6 +27,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::post('/contact',"HomeController@contact")->name('contact');
+
 
 
 Route::group(['prefix' => 'admin'], function () {

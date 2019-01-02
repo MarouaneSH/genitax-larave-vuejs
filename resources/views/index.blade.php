@@ -776,24 +776,33 @@
                         <div class="col-md-6">
                             <div class="contact-form">
                                 <h3 class="font-400 oswald text-center">Envoyez-nous un e-mail</h3>
-                                <form action="mailer/config.php" method="post" id="ajax-contact">
+                                <form action="{{route('contact')}} " method="post">
+                                    {{ csrf_field() }}
+                                    @if($errors->any())
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Nom complet*" id="name" name="name" required>
+                                        <input type="text" required class="form-control" placeholder="Nom complet*" id="name" name="name" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" class="form-control" placeholder="Votre E-mail*" id="email" name="email" required>
+                                        <input type="email" required  class="form-control" placeholder="Votre E-mail*" id="email" name="email" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Sujet" id="subject" name="subject">
+                                        <input type="text" required  class="form-control" placeholder="Sujet" id="subject" name="subject">
                                     </div>
                                     <div class="form-group">
-                                        <textarea class="form-control" rows="10" placeholder="Votre message..." id="message" name="message" required></textarea>
+                                        <textarea class="form-control" required  rows="10" placeholder="Votre message..." id="message" name="message" required></textarea>
                                     </div>
                                     <div class="contact-btn">
                                         <button class="font-500 gradient-bg-1 color-white" type="submit">Envoyer</button>
                                     </div>
                                 </form>
-                                <div id="form-messages"></div>
                             </div>
                         </div>
                         <!--End Contact Form-->
@@ -854,6 +863,26 @@
         </footer>
         <!--End Footer-->
     </div>
+
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+      
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Votre formulaire a bien été envoyé. </h4>
+            </div>
+            <div class="modal-body">
+              <p>Merci ! Votre message a bien été envoyé. </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            </div>
+          </div>
+      
+        </div>
+      </div>
     <!--End Body Wrap-->
 
     <!--jQuery JS-->
@@ -875,10 +904,16 @@
     <!--Bootsnavs JS-->
     <script src="{{asset('assets/js/bootsnav.js')}}"></script>
     <!--Contact Form JS-->
-    <script src="{{asset('mailer/ajax-contact-form.js')}}"></script>
     <!--Main-->
     <script src="{{asset('assets/js/custom.js')}}"></script>
 
+    @if(session()->has('MailSuccess'))
+    <script>
+        $(document).ready(function() {
+            $('#myModal').modal('show');
+        })
+    </script>
+    @endif
 </body>
 
 </html>
