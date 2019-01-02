@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ddf00482e871af4132b6f9eb2a53ce0",
+    "content-hash": "83010dde428d0b5fe5b2a6d18c2ab15b",
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -2864,6 +2864,48 @@
             "time": "2018-11-23T23:41:29+00:00"
         },
         {
+            "name": "mailin-api/mailin-api-php",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mailin-api/mailin-api-php.git",
+                "reference": "ee0ce5b75771e07c0b282b28ee9f667ca5c781d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mailin-api/mailin-api-php/zipball/ee0ce5b75771e07c0b282b28ee9f667ca5c781d6",
+                "reference": "ee0ce5b75771e07c0b282b28ee9f667ca5c781d6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Sendinblue": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "SendinBlue",
+                    "homepage": "https://www.sendinblue.com/"
+                }
+            ],
+            "description": "Official SendinBlue provided API V2 wrapper",
+            "homepage": "https://github.com/mailin-api/mailin-api-php",
+            "time": "2016-02-26T08:48:44+00:00"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.24.0",
             "source": {
@@ -5119,6 +5161,56 @@
                 "environment"
             ],
             "time": "2018-07-29T20:33:41+00:00"
+        },
+        {
+            "name": "webup/laravel-sendinblue",
+            "version": "v1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agence-webup/laravel-sendinblue.git",
+                "reference": "dbe0a90cfac2b42d209f7e5f6821acf765b0e6fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agence-webup/laravel-sendinblue/zipball/dbe0a90cfac2b42d209f7e5f6821acf765b0e6fe",
+                "reference": "dbe0a90cfac2b42d209f7e5f6821acf765b0e6fe",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/mail": "5.5.*|5.6.*|5.7.*",
+                "mailin-api/mailin-api-php": "1.0.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Webup\\LaravelSendinBlue\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Baptiste Ducatel",
+                    "email": "baptiste@agence-webup.com",
+                    "homepage": "http://agence-webup.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel's mail transport for SendinBlue",
+            "keywords": [
+                "laravel",
+                "laravel5",
+                "lumen",
+                "mailing",
+                "sendinblue",
+                "stmp"
+            ],
+            "time": "2018-09-15T14:30:06+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

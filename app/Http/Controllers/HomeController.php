@@ -17,8 +17,10 @@ class HomeController extends Controller
         ]);
 
 
-        Mail::to(setting('site.email'))->send(new ContactMail($request->all()));
-       
+        // Mail::to(setting('site.email'))->send(new ContactMail($request->all()));
+        Mail::to("marouanesouah@gmail.com")->send(new ContactMail($request->all()));
+        
+        dd("dsds");
         return redirect()->back()->with([
             'MailSuccess'   =>  true,
        ]);

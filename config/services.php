@@ -30,6 +30,11 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
+    'sendinblue' => [
+        'url' => 'https://api.sendinblue.com/v2.0',
+        'key' => env('SENDINBLUE_KEY'),
+     ],
+
     'stripe' => [
         'model' => App\User::class,
         'key' => env('STRIPE_KEY'),

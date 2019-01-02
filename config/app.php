@@ -167,7 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Webup\LaravelSendinBlue\SendinBlueServiceProvider::class,
         /*
          * Application Service Providers...
          */
