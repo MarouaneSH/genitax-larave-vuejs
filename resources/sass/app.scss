@@ -303,7 +303,7 @@
   position: relative;
   .v-input__slot {
     border-radius: 31px;
-    width: 150px;
+    width: 129px;
     padding-left: 48px;
     text-align: center;
     margin-top: 4px;
@@ -341,5 +341,12 @@
 
   .box-gtax__toggle {
     flex-direction: column;
+  }
+  .box-gtax {
+    padding: 50px;
+    border-radius: 10px;
+  }
+  .social_sharing_wrapper{
+    bottom: -73px !important;
   }
 }
