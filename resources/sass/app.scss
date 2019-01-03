@@ -299,7 +299,29 @@
 }
 
 
-
+#article_navigation {
+  position: relative;
+  .v-input__slot {
+    border-radius: 31px;
+    width: 150px;
+    padding-left: 48px;
+    text-align: center;
+    margin-top: 4px;
+  }
+  .v-input__icon i{
+    background: #f2a200;
+    border-radius: 100%;
+    color: white;
+    /* font-size: 18px; */
+    padding: 4px;
+  }
+  .v-input__icon--prepend{
+    left: 20px;
+    z-index: 2;
+    position: absolute;
+    top: 16px;
+  }
+}
 
 @media screen and (max-width : 600px){
   .hide-mobile {

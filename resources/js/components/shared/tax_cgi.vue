@@ -14,6 +14,7 @@
                             @change="searchArticle"
                             append-icon="arrow_forward"
                             :loading="loadingArticle"
+                            open-on-click
                         ></v-text-field>
                         <div class="text-xs-center" v-if="articleNotFound">
                             Article non trouvé
@@ -39,6 +40,7 @@
                         v-model="tree"
                         :active.sync="active"
                         :items="items"
+                        :open="opens"
                         activatable
                         item-text="titre"
                         item-key="id"
@@ -97,6 +99,7 @@ export default {
         toggle_header : null,
         loadingTree : false,
         active : [],
+        opens : [],
         loadingDialog : false,
         toggle_html_type : "article",
         selectedArticle : null,

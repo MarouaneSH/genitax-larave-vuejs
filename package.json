@@ -25,6 +25,6 @@
         "vue-instantsearch": "^1.7.0",
         "vue-router": "^3.0.2",
         "vue-social-sharing": "^2.3.3",
-        "vuetify": "^1.3.12"
+        "vuetify": "^1.4.0"
     }
 }

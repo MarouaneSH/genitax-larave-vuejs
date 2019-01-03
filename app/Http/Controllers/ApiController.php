@@ -123,6 +123,27 @@ class ApiController extends Controller
         return response()->json(["search_result" => $articles]);
     }
 
+    public function getArticleByAction($num,$action) {
+        $articles = ArticleCirculaire::select("id");
+        if($action == "next") {
+            return response()->json([
+                "article" => $articles->where('num_article', ">" , $num)
+                             ->first(),
+            ]);
+        } else if($action == "back") {
+            return response()->json([
+                "article" => $articles->where('num_article', "<" , $num)
+                            ->orderByDesc('num_article',"desc")
+                            ->first(),
+            ]);
+        } else {
+            return response()->json([
+                "article" => $articles->where('num_article' , $num)
+                            ->first(),
+            ]);
+        }
+
+    }
 
     public function faqs() {
         $faqs = Faq::all();
