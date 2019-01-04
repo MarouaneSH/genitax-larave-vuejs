@@ -1341,7 +1341,10 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     }
     
     .attr-nav{
-        right: 30px;
+        right: 0;
+        left: 0;
+        margin: auto;
+        top: 50px;
     }
     
     .attr-nav > ul{

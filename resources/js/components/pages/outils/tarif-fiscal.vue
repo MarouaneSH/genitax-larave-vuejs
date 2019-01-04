@@ -17,6 +17,7 @@
                         item-text="titre"
                         item-key="id"
                         class="grey lighten-5"
+                        open-on-click
                         transition>
                         <template slot="prepend" slot-scope="{ item, open,  leaf }" >
                               <v-icon>

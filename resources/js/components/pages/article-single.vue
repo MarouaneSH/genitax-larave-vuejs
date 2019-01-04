@@ -1,7 +1,7 @@
 <template>
-    <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+    <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition" >
                 <v-card>
-                        <v-toolbar dark color="primary">
+                        <v-toolbar dark color="primary" class="article_dialog">
                             <v-btn icon dark @click="$router.go(-1)" class="arrow_back_yellow">
                                 <v-icon>arrow_back</v-icon>
                             </v-btn>

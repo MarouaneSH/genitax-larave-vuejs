@@ -359,4 +359,42 @@
   .social_sharing_wrapper{
     bottom: -73px !important;
   }
+
+
+   .article_dialog {
+      .spacer {
+        display: none !important;
+      }
+      .article_switcher_toggle {
+        margin: 15px 0;
+      }
+   }
+
+   .card__faqs {
+     flex-direction: column;
+     .card__content_item {
+       width: 100%;
+     }
+   }
+   .card_questions {
+     flex-direction: column;
+     .card_questions_content {
+       width: 100%;
+     }
+   }
+
+   .outils_container {
+     flex-direction: column;
+     .outil_card {
+       width: 100% !important;
+     }
+   }
+
+   .coefficient_box_wrapper {
+     flex-direction: column;
+     .coefficient_box {
+       width: 100% !important;
+     }
+   }
+  
 }

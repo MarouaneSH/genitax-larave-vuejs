@@ -6,7 +6,7 @@
                     color="primary"
                     ></v-progress-circular>
             </div>
-            <div v-else class="card__content">
+            <div v-else class="card__content card__faqs">
                  <div class="card__content_item"  v-for="faq in faqs" :key="faq.id" >
                         <div class="card__content_item_card" @click="navigateTo(faq)"
                                 :style="{backgroundColor : faq.couleur}">
