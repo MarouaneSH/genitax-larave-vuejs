@@ -127,12 +127,12 @@ class ApiController extends Controller
 
         $cgi_tax = ($type == 'cgi') ? 1 : 2;
         // dd($type);
-        $articles = ArticleCirculaire::select("id","num_article","category_id")->whereHas("category",function($q) use($cgi_tax) {
+        $articles = ArticleCirculaire::select("id","num_article")->whereHas("category",function($q) use($cgi_tax) {
             $q->where("cgi_taxlocale_id" , $cgi_tax );
         });
         if($action == "next") {
             return response()->json([
-                "article" => $articles->where('num_article', ">=" , (int) $num)
+                "article" => $articles->where('num_article', ">" , (int) $num)
                              ->first(),
             ]);
         } else if($action == "back") {
