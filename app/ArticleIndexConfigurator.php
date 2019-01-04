@@ -13,6 +13,6 @@ class ArticleIndexConfigurator extends IndexConfigurator
      * @var array
      */
     protected $settings = [
-        //
+       
     ];
 }

@@ -28,7 +28,7 @@ Route::get('caregories/taxes',"ApiController@getTaxesCategories");
 Route::get('article/id={id}&type={type}',"ApiController@getArticle");
 Route::get('article/num={id}&type={type}&category={category}',"ApiController@getArticleByNum");
 Route::get('article/query={query}&type_search={type_search}',"ApiController@searchArticle");
-Route::get('article/num={num}&action={action}',"ApiController@getArticleByAction");
+Route::get('article/num={num}&action={action}&type={type}',"ApiController@getArticleByAction");
 
 
 Route::get('faqs',"ApiController@faqs");

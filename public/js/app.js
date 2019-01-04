@@ -26511,8 +26511,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vuetify___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */]);
 
-// window.axios.defaults.baseURL ="http://genitax.test/api";
-window.axios.defaults.baseURL = "http://142.93.227.137/api";
+window.axios.defaults.baseURL = "http://genitax.test/api";
+// window.axios.defaults.baseURL ="http://142.93.227.137/api";
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: __WEBPACK_IMPORTED_MODULE_3__routes_routes__["a" /* routes */]
@@ -79093,7 +79093,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this4 = this;
 
             this.loadingDialog = true;
-            axios.get('article/num=' + this.selectedArticle.num + '&action=' + action).then(function (result) {
+
+            axios.get('article/num=' + this.selectedArticle.num + '&action=' + action + '&type=' + this.$route.query.category).then(function (result) {
                 _this4.toggle_html_type = "article";
                 if (!result.data.article) {
                     _this4.articleNotFound = true;

@@ -161,7 +161,8 @@ export default {
         fetchArticle(action) {
 
             this.loadingDialog = true;
-            axios.get(`article/num=${this.selectedArticle.num}&action=${action}`)
+
+            axios.get(`article/num=${this.selectedArticle.num}&action=${action}&type=${this.$route.query.category}`)
                  .then((result)=> {
                      this.toggle_html_type = "article";
                      if(!result.data.article) {

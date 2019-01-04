@@ -123,17 +123,23 @@ class ApiController extends Controller
         return response()->json(["search_result" => $articles]);
     }
 
-    public function getArticleByAction($num,$action) {
-        $articles = ArticleCirculaire::select("id");
+    public function getArticleByAction($num,$action,$type) {
+
+        $cgi_tax = ($type == 'cgi') ? 1 : 2;
+        // dd($type);
+        $articles = ArticleCirculaire::select("id","num_article","categorie_id")->whereHas("category",function($q) use($cgi_tax) {
+            $q->where("cgi_taxlocale_id" , $cgi_tax );
+        });
         if($action == "next") {
             return response()->json([
-                "article" => $articles->where('num_article', ">" , $num)
-                             ->first(),
+                "article" => $articles->where('num_article', ">=" , (int) $num)
+                             ->with("category:id,titre")
+                             ->get(),
             ]);
         } else if($action == "back") {
             return response()->json([
-                "article" => $articles->where('num_article', "<" , $num)
-                            ->orderByDesc('num_article',"desc")
+                "article" => $articles->where('num_article', "<" , (int) $num)
+                            ->orderByRaw("CAST(num_article AS DECIMAL) DESC")
                             ->first(),
             ]);
         } else {
