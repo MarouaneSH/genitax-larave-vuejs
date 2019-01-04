@@ -32,17 +32,25 @@
         <div class="treeview_wrapper">
                 <v-app id="inspire">
 
-                    <h5 class="tree_header" v-if="type =='cgi'">{{selectedHeaderName}} </h5>
-                    <h5 class="tree_header" v-else>Taxes Locales </h5>
+                   
+                    <div class="treeview_header_wrapper">
+                         <h5 class="tree_header" v-if="type =='cgi'">{{selectedHeaderName}} </h5>
+                         <h5 class="tree_header" v-else>Taxes Locales </h5>
+                         <v-btn class="btn_summary" v-if="!openAll" @click="openAll = true" round dark  >VOIR SOMMAIRE</v-btn>
+                    </div>
+                    
                     <v-treeview
+                        ref="treeview"
                         v-if="!loadingTree"
                         v-model="tree"
                         :active.sync="active"
                         :items="items"
                         activatable
+                        :open-all="openAll"
                         item-text="titre"
                         item-key="id"
                         class="grey lighten-5"
+                        open-on-click
                         transition>
                         <template slot="prepend" slot-scope="{ item, open,  leaf }" >
                               <v-icon>
@@ -110,6 +118,7 @@ export default {
         article : null,
         loadingArticle : false,
         articleNotFound : false,
+        openAll : false,
   }),
   methods : {
     fetch_categories() {
@@ -125,6 +134,7 @@ export default {
      axios.get(url).then((result) => {
         this.items = result.data.categories;
         this.loadingTree = false;
+ 
       }); 
     },
     search(arr, id) {
@@ -144,6 +154,7 @@ export default {
     openDialog() {
         this.$router.push({name : "ArticleById", params : { id : this.selectedArticle.id} , query : {category : this.type}})
     },
+
     searchArticle() {
         console.log("sdds");
         this.loadingArticle = true;
@@ -173,7 +184,26 @@ export default {
             }
         })
         this.contentHTML = html.innerHTML;
-    }
+    },
+    getTreeViewItems() {
+            let _this = this;
+            this.items.filter(function(obj) {
+                if (!obj.children.length) {
+                  console.log("dssd");
+                }
+                 return _this.getTreeViewItems();
+            });
+
+            return  _this.selected;
+    },
+    getObjectValueByPath (obj, path, fallback) {
+            // credit: http://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-with-string-key#comment55278413_6491621
+            if (!path || path.constructor !== String) return fallback
+            path = path.replace(/\[(\w+)\]/g, '.$1') // convert indexes to properties
+            path = path.replace(/^\./, '') // strip a leading dot
+            return getNestedValue(obj, path.split('.'), fallback)
+    },
+
   },
 
   watch : {
@@ -190,13 +220,15 @@ export default {
             return true;
             }
         return null;
-      }
+      },
+      
   },
   computed : {
       selectedHeaderName() {
           if(!this.headerCategories.length || !this.toggle_header) return null;
          return this.headerCategories.filter((e) => e.id == this.toggle_header)[0].titre;
-      }
+      },
+      
   }
 
 }

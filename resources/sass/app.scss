@@ -323,6 +323,16 @@
   }
 }
 
+
+.treeview_header_wrapper{
+  display: flex;
+  align-items: center;
+  .btn_summary {
+    margin-left: auto;
+    background: #f2a200 !important;
+    font-weight: 400;
+  }
+}
 @media screen and (max-width : 600px){
   .hide-mobile {
       display: none;

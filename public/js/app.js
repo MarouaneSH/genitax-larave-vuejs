@@ -66336,6 +66336,13 @@ var __values = undefined && undefined.__values || function (o) {
         };
     },
     watch: {
+        openAll : function openAll(value) {
+            var _this = this;
+            console.log("dssd");
+            Object.keys(this.nodes).forEach(function (key) {
+                return _this.updateOpen(Object(_util_helpers__WEBPACK_IMPORTED_MODULE_4__["getObjectValueByPath"])(_this.nodes[key].item, _this.itemKey), true);
+            });
+        },
         items: {
             handler: function handler() {
                 var _this = this;
@@ -66851,7 +66858,7 @@ var VTreeviewNodeProps = {
                 staticClass: 'v-treeview-node__root',
                 on: {
                     click: function click() {
-                        if (_this.openOnClick && _this.children) {
+                        if (_this.openOnClick && _this.children.length) {
                             _this.open();
                         } else if (_this.activatable) {
                             _this.isActive = !_this.isActive;
@@ -74941,6 +74948,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: {
@@ -74986,7 +75001,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             selected: null,
             article: null,
             loadingArticle: false,
-            articleNotFound: false
+            articleNotFound: false,
+            openAll: false
         };
     },
     methods: {
@@ -75059,6 +75075,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
             this.contentHTML = html.innerHTML;
+        },
+        getTreeViewItems: function getTreeViewItems() {
+            var _this = this;
+            this.items.filter(function (obj) {
+                if (!obj.children.length) {
+                    console.log("dssd");
+                }
+                return _this.getTreeViewItems();
+            });
+
+            return _this.selected;
+        },
+        getObjectValueByPath: function getObjectValueByPath(obj, path, fallback) {
+            // credit: http://stackoverflow.com/questions/6491463/accessing-nested-javascript-objects-with-string-key#comment55278413_6491621
+            if (!path || path.constructor !== String) return fallback;
+            path = path.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+            path = path.replace(/^\./, ''); // strip a leading dot
+            return getNestedValue(obj, path.split('.'), fallback);
         }
     },
 
@@ -75077,6 +75111,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             return null;
         }
+
     },
     computed: {
         selectedHeaderName: function selectedHeaderName() {
@@ -75196,23 +75231,49 @@ var render = function() {
             "v-app",
             { attrs: { id: "inspire" } },
             [
-              _vm.type == "cgi"
-                ? _c("h5", { staticClass: "tree_header" }, [
-                    _vm._v(_vm._s(_vm.selectedHeaderName) + " ")
-                  ])
-                : _c("h5", { staticClass: "tree_header" }, [
-                    _vm._v("Taxes Locales ")
-                  ]),
+              _c(
+                "div",
+                { staticClass: "treeview_header_wrapper" },
+                [
+                  _vm.type == "cgi"
+                    ? _c("h5", { staticClass: "tree_header" }, [
+                        _vm._v(_vm._s(_vm.selectedHeaderName) + " ")
+                      ])
+                    : _c("h5", { staticClass: "tree_header" }, [
+                        _vm._v("Taxes Locales ")
+                      ]),
+                  _vm._v(" "),
+                  !_vm.openAll
+                    ? _c(
+                        "v-btn",
+                        {
+                          staticClass: "btn_summary",
+                          attrs: { round: "", dark: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.openAll = true
+                            }
+                          }
+                        },
+                        [_vm._v("VOIR SOMMAIRE")]
+                      )
+                    : _vm._e()
+                ],
+                1
+              ),
               _vm._v(" "),
               !_vm.loadingTree
                 ? _c("v-treeview", {
+                    ref: "treeview",
                     staticClass: "grey lighten-5",
                     attrs: {
                       active: _vm.active,
                       items: _vm.items,
                       activatable: "",
+                      "open-all": _vm.openAll,
                       "item-text": "titre",
                       "item-key": "id",
+                      "open-on-click": "",
                       transition: ""
                     },
                     on: {

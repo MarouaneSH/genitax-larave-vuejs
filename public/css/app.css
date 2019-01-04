@@ -409,6 +409,21 @@
   top: 16px;
 }
 
+.treeview_header_wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.treeview_header_wrapper .btn_summary {
+  margin-left: auto;
+  background: #f2a200 !important;
+  font-weight: 400;
+}
+
 @media screen and (max-width: 600px) {
   .hide-mobile {
     display: none;
