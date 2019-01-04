@@ -10,7 +10,7 @@
                             class="box-gtax__search"
                             solo
                             v-model="article"
-                            :append-icon-cb="searchArticle"
+                            @click:append="searchArticle"
                             @change="searchArticle"
                             append-icon="arrow_forward"
                             :loading="loadingArticle"
@@ -32,13 +32,11 @@
         <div class="treeview_wrapper">
                 <v-app id="inspire">
 
-                   
                     <div class="treeview_header_wrapper">
                          <h5 class="tree_header" v-if="type =='cgi'">{{selectedHeaderName}} </h5>
                          <h5 class="tree_header" v-else>Taxes Locales </h5>
                          <v-btn class="btn_summary" v-if="!openAll" @click="openAll = true" round dark  >VOIR SOMMAIRE</v-btn>
                     </div>
-                    
                     <v-treeview
                         ref="treeview"
                         v-if="!loadingTree"
@@ -47,12 +45,13 @@
                         :items="items"
                         activatable
                         :open-all="openAll"
+                        :open="open"
                         item-text="titre"
                         item-key="id"
                         class="grey lighten-5"
                         open-on-click
                         transition>
-                        <template slot="prepend" slot-scope="{ item, open,  leaf }" >
+                        <template slot="prepend" slot-scope="{ item, open }" >
                               <v-icon>
                                   <template v-if="item.icon_type == 1">  {{ open ? 'folder_open' : 'folder' }} </template>
                                   <template v-else-if="item.icon_type == 2">list_alt</template>
@@ -121,6 +120,7 @@ export default {
         openAll : false,
   }),
   methods : {
+
     fetch_categories() {
       this.loadingTree = true;
       let url;
@@ -134,7 +134,9 @@ export default {
      axios.get(url).then((result) => {
         this.items = result.data.categories;
         this.loadingTree = false;
- 
+        if(this.getTreeviewOpenCache) {
+            this.open =  this.getTreeviewOpenCache;
+        }
       }); 
     },
     search(arr, id) {
@@ -152,6 +154,10 @@ export default {
         return  _this.selected;
     },
     openDialog() {
+         //save the opened tree
+        const openTreeCache = this.$refs.treeview.$data.openCache;
+        this.$store.commit("setTreeviewOpenCache",openTreeCache);
+
         this.$router.push({name : "ArticleById", params : { id : this.selectedArticle.id} , query : {category : this.type}})
     },
 
@@ -228,7 +234,9 @@ export default {
           if(!this.headerCategories.length || !this.toggle_header) return null;
          return this.headerCategories.filter((e) => e.id == this.toggle_header)[0].titre;
       },
-      
+      getTreeviewOpenCache() {
+          return this.$store.getters.getTreeviewOpenCache;
+      }
   }
 
 }
