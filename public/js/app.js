@@ -26511,8 +26511,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vuetify___default.a);
 Vue.use(__WEBPACK_IMPORTED_MODULE_4_vuex__["a" /* default */]);
 
-window.axios.defaults.baseURL = "http://genitax.test/api";
-// window.axios.defaults.baseURL ="http://142.93.227.137/api";
+// window.axios.defaults.baseURL ="http://genitax.test/api";
+window.axios.defaults.baseURL = "http://142.93.227.137/api";
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     routes: __WEBPACK_IMPORTED_MODULE_3__routes_routes__["a" /* routes */]
