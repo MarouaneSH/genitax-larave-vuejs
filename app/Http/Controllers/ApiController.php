@@ -127,15 +127,93 @@ class ApiController extends Controller
 
         $cgi_tax = ($type == 'cgi') ? 1 : 2;
         // dd($type);
-        $articles = ArticleCirculaire::select("id","num_article")->whereHas("category",function($q) use($cgi_tax) {
+        $articles = ArticleCirculaire::select("id","num_article","categorie_id")->whereHas("category",function($q) use($cgi_tax) {
             $q->where("cgi_taxlocale_id" , $cgi_tax );
         });
         if($action == "next") {
+            $final_article  = null;
+            if(strpos($num, "bis")) {
+                $article_ter = clone($articles);
+                $n = (int)$num;
+
+                $article_ter = $article_ter->where("num_article","$n ter")->first();
+                if($article_ter) {
+                    $final_article = $article_ter;
+                }
+
+            } else {
+                $article_bis = clone($articles);
+                 $article_bis = $article_bis->where("num_article","$num bis")->first();
+                if($article_bis) {
+                    $final_article = $article_bis;
+                } else {
+                    $article_ter = clone($articles);
+                    $article_ter =  $article_ter->where("num_article","$num ter")->first();
+                    if($article_ter) {
+                        $final_article = $article_ter;
+                    }
+                }
+            }
+
+            if(!$final_article) {
+                $final_article =  $articles->where('num_article', ">" , (int) $num)
+                                   ->first();
+            }
+
+
             return response()->json([
-                "article" => $articles->where('num_article', ">" , (int) $num)
-                             ->first(),
+                "article" => $final_article ,
             ]);
+
         } else if($action == "back") {
+
+            // $final_article  = null;
+            // if(strpos($num, "ter")) {
+            //     $article_bis = clone($articles);
+            //     $n = (int)$num;
+
+            //     $article_bis = $article_bis->where("num_article","$n bis")->first();
+            //     if($article_bis) {
+            //         $final_article = $article_bis;
+            //     }
+
+            // } else if(strpos($num, "bis")) {
+            //     $real_article = clone($articles);
+            //     $n = (int)$num;
+
+            //     $real_article = $real_article->where("num_article","$n")->first();
+            //     if($real_article) {
+            //         $final_article = $real_article;
+            //     }
+            // } else {
+            //     $previous_article = $articles->where('num_article', "<" , (int) $num)
+            //                                 ->orderByRaw("CAST(num_article AS DECIMAL) DESC")
+            //                                 ->first();
+                
+            //     //search if previous articleh as bis or ter
+            //     $num_previous = $previous_article->num_article;
+            //     $previous_article_ter = clone($articles);
+            //     $previous_article_ter = $previous_article_ter->where("num_article","$num_previous ter")->first();
+            //     if($previous_article_ter) {
+            //         $final_article = $previous_article_ter->first;
+                   
+            //     } else {
+            //         $previous_article_bis = clone($articles);
+            //         $previous_article_bis = $previous_article_bis->where("num_article","$num_previous bis")->first();
+            //         if($previous_article_bis) {
+            //             $final_article = $previous_article_bis;
+            //         }
+            //     }
+            // }
+
+            // if(!$final_article) {
+            //     $final_article =  $previous_article;
+            // }
+
+        
+            // return response()->json([
+            //     "article" => $final_article
+            // ]);
             return response()->json([
                 "article" => $articles->where('num_article', "<" , (int) $num)
                             ->orderByRaw("CAST(num_article AS DECIMAL) DESC")
