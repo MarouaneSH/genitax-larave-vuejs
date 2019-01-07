@@ -16,7 +16,11 @@
                         </div>
                         <h3 class="mb-0">{{faq.titre_categories}} </h3>
                  </div>
+                 
             </div>
+            <div class="text-xs-center btn_propose">
+                    <v-btn color="primary"><a href="mailto:contact@genitax.ma">Poser une question </a></v-btn> 
+                 </div>
       </v-layout>
 </template>
 
@@ -73,6 +77,12 @@ export default {
     font-size: 29px;
     margin: 15px 0;
     cursor: pointer;
+}
+.btn_propose {
+    a{
+        text-decoration: none;
+        color: white;
+    }
 }
 .card__content  {
     display: flex;

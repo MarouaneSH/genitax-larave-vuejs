@@ -32,7 +32,10 @@
                             </div>
                            <app-social-sharing :title="selectedArticle ? selectedArticle.name : '' "></app-social-sharing>
                         </v-toolbar>
-                            <p class="subheadline" v-if="selectedArticle && !articleNotFound" >{{selectedArticle.name}} </p>
+                            <div class="article-subheader">
+                                <p class="subheadline" v-if="selectedArticle && !articleNotFound" >{{selectedArticle.name}} </p>
+                                 <span @click="copyToClipBoard()"><v-icon>file_copy</v-icon> copier l'article au Presse papier</span>
+                            </div>
                             <div class="text-xs-center mt-5" v-if="articleNotFound">
                                 Article non trouvé
                             </div>
@@ -44,6 +47,7 @@
                             </div>
                             <template v-else>
                                  <h3 class="article_header tahoma-font"> {{getArticleHeader}}  : {{selectedArticle.num}} </h3>
+                               
                                 <div class="content_html tahoma-font_all" v-if="!articleNotFound"  v-html="contentHTML"></div>
                             </template>
                     </v-card>
@@ -63,6 +67,17 @@ export default {
       } else {
           this.fetchArticleByName();
       }
+
+      document.onkeyup=(e) => {
+        if (e.which == 37) {
+            this.fetchArticle('back');
+        } else if(e.which == 39)  {
+            this.fetchArticle('next');
+        } 
+        else if(e.which == 8)  {
+            this.fetchArticle('back');
+        } 
+      } 
         
     },
     data() {
@@ -77,6 +92,14 @@ export default {
         }
     }, 
     methods : {
+        copyToClipBoard(){
+             var dummy = document.createElement("input");
+                document.body.appendChild(dummy);
+                dummy.setAttribute('value', this.contentHTML);
+                dummy.select();
+                document.execCommand("copy");
+               document.body.removeChild(dummy);
+        },
         generateHtml(htmlContent) {
             let html = document.createElement('div');
             html.innerHTML = htmlContent;
@@ -189,6 +212,17 @@ export default {
 </script>
 
 <style scoped>
+.article-subheader {
+    display: flex;
+}
+.article-subheader  span {
+    margin-left: auto;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    margin-right: 19px;
+    cursor: pointer;
+}
 .article_header {
     color: #1976d1;
     padding: 40px;

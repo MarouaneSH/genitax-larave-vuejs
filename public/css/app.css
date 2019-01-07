@@ -515,3 +515,11 @@
   }
 }
 
+.v-treeview > .v-treeview-node {
+  text-transform: uppercase;
+}
+
+.v-treeview-node__children > .v-treeview-node {
+  text-transform: initial;
+}
+

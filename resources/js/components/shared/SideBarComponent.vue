@@ -50,7 +50,7 @@
               <v-btn to="/faqs" flat>
                 <img src="/img/4.png" alt="">
                 <h5>FAQ</h5>
-                <p>Foire Aux Questions</p>
+                <p>Q&A – Réponses DGI</p>
               </v-btn>
               <v-btn  to="/outils" flat>
                 <img src="/img/5.png" alt="">
