@@ -48,7 +48,7 @@
                             <template v-else>
                                  <h3 class="article_header tahoma-font"> {{getArticleHeader}}  : {{selectedArticle.num}} </h3>
                                
-                                <div class="content_html tahoma-font_all" v-if="!articleNotFound"  v-html="contentHTML"></div>
+                                <div class="content_html tahoma-font_all" v-if="!articleNotFound" ref="contentHtml"  v-html="contentHTML"></div>
                             </template>
                     </v-card>
             </v-dialog>
@@ -95,7 +95,7 @@ export default {
         copyToClipBoard(){
              var dummy = document.createElement("input");
                 document.body.appendChild(dummy);
-                dummy.setAttribute('value', this.contentHTML);
+                dummy.setAttribute('value', this.$refs.contentHtml.textContent );
                 dummy.select();
                 document.execCommand("copy");
                document.body.removeChild(dummy);
