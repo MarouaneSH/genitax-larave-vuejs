@@ -14,31 +14,31 @@
     <meta name="description" content="">
     <title>GeniTax® - Fiscalité marocaine au bout du clic</title>
     <!--Favicon-->
-    <link rel="shortcut icon" type="image/png" href="{{asset('assets/images/favicon.png')}}">
+    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.css')}}">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
     <!--Owl Carousel CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.min.css">
     <!--Magnific PopUp Stylesheet-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/magnific-popup.css')}}">
+    <link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.css">
     <!--Icofont CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/icofont.css')}}">
+    <link rel="stylesheet" type="text/css" href="assets/css/icofont.css">
 
     <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,600" rel="stylesheet">
 
     <!--Mailer CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('mailer/mailer-style.css')}}">
+    <link rel="stylesheet" type="text/css" href="mailer/mailer-style.css">
     <!--Animate CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
     <!--Bootsnav CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootsnav.css')}}">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootsnav.css">
     <!--Main CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!--Responsive CSS-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
+    <link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
 
     <!--Modanizr JS-->
-    <script src="{{asset('assets/js/modernizr.custom.js')}}"></script>
+    <script src="assets/js/modernizr.custom.js"></script>
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -63,7 +63,7 @@
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
                         <ul>
-                            <li><a href="{{url('/app')}} ">Version Online <i class="icofont icofont-arrow-right"></i></a></li>
+                            <li><a href="/app">Version Online <i class="icofont icofont-arrow-right"></i></a></li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
@@ -73,7 +73,7 @@
                         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                             <i class="icofont icofont-navigation-menu"></i>
                         </button>
-                        <a class="navbar-brand" href="index.html"><img src="{{asset('assets/images/logo.png')}}" class="logo" alt=""></a>
+                        <a class="navbar-brand" href="index.html"><img src="assets/images/logo.png" class="logo" alt=""></a>
                     </div>
                     <!-- End Header Navigation -->
 
@@ -108,10 +108,21 @@
                             <h1 class="font-700 color-white text-uppercase wow fadeInUp" data-wow-delay="0.1s" style=" line-height:20px !important;">GeniTax<span style="font-size:16px !important;">®</span></h1>
                             <p class="color-white wow fadeInUp oswald font200" data-wow-delay="0.2s">1ère solution digitale dédiée à la fiscalité marocaine</p>
                             <p class="color-white wow fadeInUp" data-wow-delay="0.3s" style="font-size:14px;">
-                                GENITAX® est votre outil pour simplifier les procédures fiscales. Une solution facile et intuitive qui synthétise le Code Général des Impots mis à jour et offre une large gamme d'outils dédiés à la fiscalité marocaine. 
+                                    GENITAX® est conçu pour permettre la
+                                    maîtrise de la législation fiscale Marocaine à
+                                    travers des fonctionnalités simples et
+                                    intuitives ainsi qu’une gamme d’outils dédiés
+                                    à la fiscalité marocaine.
+                            </p>
+                            <p class="color-white wow fadeInUp" data-wow-delay="0.4s" style="font-size:14px; margin-bottom:15px">
+                                    Il est destiné aussi bien aux entreprises et
+                                    professionnels, qu’aux étudiants et
+                                    particuliers, leur permettant une parfaite
+                                    prise en main d’une matière jusque là difficile
+                                    à appréhender.
                             </p>
                             <div class="caption-btn wow fadeInUp" data-wow-delay="0.4s">
-                                <a class="font-600" href="{{url('/app')}} "><i class="icofont icofont-globe"></i> Version Online</a><a class="font-600" href="#about-download"><i class="icofont icofont-download-alt"></i> Télécharger</a>
+                                <a class="font-600" href="/app"><i class="icofont icofont-globe"></i> Version Online</a><a class="font-600" href="#about-download"><i class="icofont icofont-download-alt"></i> Télécharger</a>
                             </div>
                         </div>
                     </div>
@@ -120,16 +131,120 @@
                     <!--Start Banner Image-->
                     <div class="col-md-6">
                         <div class="banner-img wow fadeIn" data-wow-delay="0.4s">
-                            <img src="{{asset('assets/images/app1.png')}}" class="img-responsive" alt="Image">
+                            <img src="assets/images/app1.png" class="img-responsive" alt="Image">
                         </div>
                     </div>
                     <!--End Banner Image-->
                 </div>
                 <!--End Row-->
+
+               
             </div>
             <!--End Container-->
         </section>
         <!--End Banner Section-->
+
+
+        
+        <!--Start About Section-->
+        <section style="border-bottom: 1px solid #f1f1f1; padding-bottom: 30px;">
+            <!--Start Container-->
+            <div class="container">
+                <!--Start Heading Row-->
+                <div class="row">
+                    <!--Start Heading content-->
+                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                        <div class="section-heading text-center" style="margin:0 0 40px">
+                            <div class="wow fadeInUp text-center" data-wow-delay="0.1s" style="padding-bottom:20px;">
+                                    <img src="assets/images/seddik&associes.png" alt="Image">
+                            </div>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">Créé en 1996, SEDDIK & ASSOCIES regroupe des Experts Comptables et Consultants d’Entreprises. Implanté à Casablanca, SEDDIK & Associés opère sur l’ensemble du territoire du Maroc et intervient dans divers secteurs d’activité. </p>
+                        </div>
+                    </div>
+                    <!--End Heading content-->
+                </div>
+                <!--End Heading Row-->
+
+                <!--Start About Row-->
+                <div class="row">
+                    <!--Start About Content-->
+                    <div class="col-md-12">
+                        <div class="about-content">
+                            <h4 class="text-center font-700 wow fadeInUp" data-wow-delay="0.1s">L’implication et l’engagement du Cabinet ont été couronnés par plusieurs consécrations internationales, dont :
+                            </h4>
+                            <ul class="wow fadeInUp text-center" data-wow-delay="0.2s">
+                                <li>L’intégration en 2006 du réseau international MSI GLOBAL ALLIANCE,</li>
+                                <li>La nomination de SEDDIK & Associés en tant que top 100/2013 des Cabinets de Conseil Juridiques par le prestigieux magazine britannique ACQUISITION INTERNATIONAL et en 2016 dans la catégorie «best for accounting & Tax disputes – Morocco»</li>
+                                <li>L’obtention en 2014 du prestigieux M&A AWARD dans la catégorie Accounting & Consulting de la célèbre revue britannique ACQUISITION INTERNATIONAL,</li>
+                                <li>La nomination en tant que titulaire du Corporate LivWare Awards – 2017 par le magazine Britannique MERGER & ACQUISITIONS </li>
+                                <li>La Nomination de SEDDIK & Associés Tax Firm of the year 2017 par le Magazine Britannique FINANCE MONTHLY </li>
+                                <li>La nomination en tant que membre du Jury de MAROC ENTREPRENEURS – PARIS pour la sélection du meilleur projet de création d’entreprise</li>
+                                <li>Membre actif de Réseau entreprendre </li>
+                                <li>SEDDIK & Associés fût partenaire scientifique du SIFEP – Salon International de la Finance Participative</li>
+                            </ul>
+                            <h4 style="margin-top:40px" class="text-center font-700 wow fadeInUp" data-wow-delay="0.3s">Membre de l’ordre des Experts Comptables, Cabinet SEDDIK exerce les activités suivantes :</h4></div>
+                            <ul class="wow fadeInUp text-center" data-wow-delay="0.4s">
+                                    <li>Audit & Commissariat aux Comptes et aux apports</li>
+                                    <li>Management Consulting et Conseil de Direction</li>
+                                    <li>Planification financière et assistance à l’implantation</li>
+                                    <li>Evaluation d’entreprises et due diligences</li>
+                                    <li>Audit et Conseil juridique et fiscales</li>
+                                    <li>Conseil et assistance Comptable</li>
+                                    <li>Formation, recrutement et développement des ressources Humaines</li>
+                                    <li>Organisation, procédures et systèmes d’information.</li>
+                            </ul>
+
+                            <div style="margin-top:60px;display:flex;align-items:center;">
+                                    <div class="col-md-2">
+                                            <img src="assets/images/msi.jpg" class="img-responsive" />
+                                        </div>
+                    
+                                        <div class="col-md-2">
+                                            <img src="assets/images/award2013.jpg" class="img-responsive" />
+                                        </div>
+                    
+                                        <div class="col-md-2">
+                                            <img src="assets/images/award2014.jpg"  class="img-responsive" />
+                                        </div>
+                    
+                                        <div class="col-md-2">
+                                            <img src="assets/images/award2016.jpg"  class="img-responsive" />
+                                        </div>
+                    
+                                        <div class="col-md-2">
+                                            <img src="assets/images/2017award.jpg"  class="img-responsive" />
+                                        </div>
+                    
+                                        <div class="col-md-2">
+                                            <img src="assets/images/award2017.jpg"  class="img-responsive" />
+                                        </div>
+                            </div>
+                    </div>
+                    <!--End About Content-->
+                </div>
+                <!--End About Row-->
+            </div>
+            <!--End Container-->
+        </section>
+        <!--End About Section-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!--Start About Section-->
         <section id="about">
@@ -141,7 +256,10 @@
                     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                         <div class="section-heading text-center">
                             <h2 class="font-400 oswald color-base text-uppercase wow fadeInUp" data-wow-delay="0.1s">A propos de GeniTax<span style="font-size:12px !important;">®</span></h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Cabinet SEDDIK & Associés offre aux entreprises et organismes publics marocaine le moyen de consulter tous les articles et circulaires de la fiscalité marocaine et bien plus de fonctionnalités...</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">GENITAX® est maintenant disponible dans sa nouvelle
+                                    version contenant plusieurs dispositifs informatiques
+                                    permettant une utilisation simple, conviviale et
+                                    intuitive.</p>
                         </div>
                     </div>
                     <!--End Heading content-->
@@ -153,7 +271,7 @@
                     <!--Start About Image-->
                     <div class="col-md-6">
                         <div class="about-img wow fadeIn" data-wow-delay="0.2s">
-                            <img src="{{asset('assets/images/app2.png')}}" class="img-responsive" alt="Image">
+                            <img src="assets/images/app2.png" class="img-responsive" alt="Image">
                         </div>
                     </div>
                     <!--End About Image-->
@@ -161,9 +279,16 @@
                     <!--Start About Content-->
                     <div class="col-md-6" id="about-download">
                         <div class="about-content">
-                            <h3 class="font-700 wow fadeInUp" data-wow-delay="0.1s">Tous les outils que vous demandez sont désormais à votre disposition.</h3>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Votre outil digital GENITAX® est maintenant disponible sur l'intégralité des dispositifs informatiques en vue de vous permettre une utilisation plus agréable et intuitive en 360°.</p>
-                            <p class="wow fadeInUp" data-wow-delay="0.3s">En plus des textes de fiscalité marocaine mis à jour, Cabinet SEDDIK & Associés a pris le soin d'enrichir votre outil fiscal de plusieurs fonctionnalités indispensables pour réussir votre mission au sein de votre organisme.</p>
+                            <h3 class="font-700 wow fadeInUp" data-wow-delay="0.1s">Toute la législation fiscale est aujourd’hui au bout des
+                                    doigts permettant à l’utilisateur de consacrer son
+                                    temps à l’analyse et à la réflexion.</h3>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">GENITAX® est également doté de plusieurs outils et
+                                    fonctionnalités puissants permettant de répondre à des
+                                    efficacement à des prises de décisions optimales.</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.3s">La nouvelle version de GENITAX® a été refondu pour
+                                    s’ouvrir sur le Web et intégrer les dernières
+                                    technologies de développement informatique intégrant
+                                    l’intelligence artificielle.</p>
                         </div>
                         <div  class="about-btn btn-lg p-0 wow fadeInUp" data-wow-delay="0.3s">
                             <h5 class="text-uppercase oswald font-400">Télécharger pour MOBILE</h5>
@@ -181,6 +306,85 @@
         </section>
         <!--End About Section-->
 
+
+
+
+
+
+
+
+
+        
+
+        <!--Start About Section-->
+        <section style="background:#f1f1f1; padding-top:55px;padding-bottom:55px;">
+                <!--Start Container-->
+                <div class="container">
+                    <!--Start Heading Row-->
+                    <div class="row">
+                        <!--Start Heading content-->
+                        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                            <div class="section-heading text-center">
+                                <h2 class="font-400 oswald color-base text-uppercase wow fadeInUp" data-wow-delay="0.1s">GeniTax<span style="font-size:12px !important;">®</span> 360°</h2>
+                                <p class="wow fadeInUp" data-wow-delay="0.2s">La nouvelle version 2019 de la Solution GENITAX® comporte non seulement des fonctionnalités améliorées mais également de nouvelles applications sur d'autres appareils en vue de vous accompagner partout pour votre travail.</p>
+                            </div>
+                        </div>
+                        <!--End Heading content-->
+                    </div>
+                    <!--End Heading Row-->
+    
+                    <!--Start About Row-->
+                    <div class="row">
+
+                        <!--Start About Content-->
+                        <div class="col-md-6" id="about-download">
+                                <div class="about-content">
+                                    <h3 class="font-700 wow fadeInUp" data-wow-delay="0.1s">Online - Mobile - Tablette - Desktop</h3>
+                                    <p class="wow fadeInUp" data-wow-delay="0.2s">Aujourd'hui vous avez le choix d'accéder à votre solution GENITAX® depuis l'appareil de votre choix et profiter de nouvelles fonctionnalités avant-gardistes:</p>
+                                    <ul style="list-style-type:circle; margin-top:20px;">
+                                        <li><b>Version Online</b></li>
+                                        Vous pouvez accéder à votre solution depuis votre navigateur Chrome ou FireFox et travailler avec toutes vos fonctionnalités favories.
+                                        <br /><br /><li><b>Version Mobile & Tablette</b></li>
+                                        Téléchargez votre application mobile Android ou Apple iOS sur votre SmartPhone et disposez de la solution et de ses mises à jour dans votre poche.
+
+                                        <br /><br /><li><b>Version Windows Desktop</b></li>
+                                        Si vous souhaitez avoir une expérience orientée PC, GENITAX® est aussi téléchargeable pour Windows afin de vous offrir un espace de travail plus confortable et adapté.
+
+                                        <br /><br /><li><b>Moteur de Recherche Intélligent</b></li>
+                                        GENITAX® dispose d'un moteur de recherche de type Intelligence Artificielle sous ElasticSearch. Le moteur de recherche index pour vous les résultats par ordre de pertinence.
+                                        
+                                        <br /><br /><li><b>Marketplace d'Outils</b></li>
+                                        Dans le menu de GeniTax®, la rubrique Outils est un espace Marketplace qui englobe des outils tiers à intégrer au fur et à mesures par SEDDIK & Associés ou par toute autre personne.
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--End About Content-->
+
+
+                        <!--Start About Image-->
+                        <div class="col-md-6">
+                            <div class="about-img wow fadeIn" data-wow-delay="0.2s">
+                                <img src="assets/images/crossdevice.png" class="img-responsive" alt="Image">
+                            </div>
+                        </div>
+                        <!--End About Image-->
+    
+                        
+                    </div>
+                    <!--End About Row-->
+                </div>
+                <!--End Container-->
+            </section>
+            <!--End About Section-->
+
+
+
+
+
+
+
+
+
         <!--Start Features Section-->
         <section id="features" class="bg-gray">
             <!--Start Container-->
@@ -191,7 +395,8 @@
                     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                         <div class="section-heading text-center">
                             <h2 class="font-400 color-base text-uppercase wow fadeInUp oswald" data-wow-delay="0.1s">Fonctionnalités clés</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">La fiscalité marocaine a choisi pour vous les fonctionnalités indispensables à trouver dans votre outil digital GENITAX®</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">Jamais la fiscalité n’a été aussi simple et digeste. Avec GENITAX® le pari est gagné pour une maîtrise progressive d’une discipline réservée auparavant aux initiés et
+                                    spécialistes.</p>
                         </div>
                     </div>
                     <!--End Heading content-->
@@ -240,6 +445,12 @@
                     </div>
                     <!--End Feature Item-->
                 </div>
+                
+                <div class="row" style="margin-top:40px">
+                        <p class="feature-single text-center wow fadeIn" data-wow-delay="0.5s">Gérer son risque fiscal et connaitre ses obligations devient aisé et permet à tout un chacun de disposer d’une information fiscale structurée et à jour.
+                            SEDDIK & Associés précurseur dans la digitalisation, ont pris le pari d’enrichir cet l’outil GENITAX® en vue d’accompagner l’effort entrepris depuis plusieurs années
+                            par la Direction Générale des Impôts pour la vulgarisation de la matière fiscale.</p>
+                        </div>
                 <!--End Feature Items Row-->
             </div>
             <!--End Container-->
@@ -256,6 +467,22 @@
                     <div class="col-md-6">
                         <div class="why-choose-content">
                             <h2 class="font-400 oswald  color-base text-uppercase wow fadeInUp" data-wow-delay="0.1s">Pourquoi GENITAX<span style="font-size:12px !important;">®</span></h2>
+                            
+                            <!--Start Why Choose Item-->
+                            <div class="why-choose-single fix wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="why-chose-icon float-left">
+                                        <i class="icofont icofont-briefcase"></i>
+                                    </div>
+                                    <div class="why-choose-single-details float-right">
+                                        <h5 class="font-400 oswald text-uppercase">Concentré d'expertise</h5>
+                                        <p>GENITAX® se positionne en tant
+                                                que système expert en adoptant la démarche de l’expert
+                                                fiscaliste en matière de collecte t de recherche
+                                                d’information.</p>
+                                    </div>
+                                </div>
+                                <!--End Why Choose Item-->
+                            
                             <!--Start Why Choose Item-->
                             <div class="why-choose-single fix wow fadeInUp" data-wow-delay="0.1s">
                                 <div class="why-chose-icon float-left">
@@ -263,10 +490,14 @@
                                 </div>
                                 <div class="why-choose-single-details float-right">
                                     <h5 class="font-400 oswald ">FACILE</h5>
-                                    <p>La solution a été conçue dans le but de vous ressembler et de vous offrir une expérience intuitive pour vous faciliter le travail.</p>
+                                    <p>une solution conçue pour libérer l’utilisateur des
+                                            contraintes liées à la recherche et lui fournir des réponses
+                                            pertinentes à des questions souvent complexes.</p>
                                 </div>
                             </div>
                             <!--End Why Choose Item-->
+
+
 
                             <!--Start Why Choose Item-->
                             <div class="why-choose-single fix wow fadeInUp" data-wow-delay="0.1s">
@@ -274,8 +505,11 @@
                                     <i class="icofont icofont-diamond"></i>
                                 </div>
                                 <div class="why-choose-single-details float-right">
-                                    <h5 class="font-400 oswald ">COMPLET</h5>
-                                    <p>GENITAX® englobe toutes les fonctionnalités indispensables liées à la fiscalité marocaine et vous offre aussi un large choix d'outils efficaces.</p>
+                                    <h5 class="font-400 oswald ">INTUITIF</h5>
+                                    <p>GENITAX® adopte la même démarche de
+                                            traitement et utilise la puissance de l’informatique en vue
+                                            de ressortir les bonnes réponses aux questions posées. Sa
+                                            prise en main est naturellement simple.</p>
                                 </div>
                             </div>
                             <!--End Why Choose Item-->
@@ -287,7 +521,9 @@
                                 </div>
                                 <div class="why-choose-single-details float-right">
                                     <h5 class="font-400 oswald ">VISION 360°</h5>
-                                    <p>Accessible depuis plusieurs dispositifs, mobiles et ordinateurs, notre solution a pour vision de vous accompagner sur l'ensemble de votre espace de travail.</p>
+                                    <p>GENITAX® est accessibles depuis plusieurs
+                                            dispositifs : mobiles et desktop, la solution se veut disponible
+                                            sur l’ensemble de l’espace de travail de l’utilisateur.</p>
                                 </div>
                             </div>
                             <!--End Why Choose Item-->
@@ -298,8 +534,12 @@
                                     <i class="icofont icofont-refresh"></i>
                                 </div>
                                 <div class="why-choose-single-details float-right">
-                                    <h5 class="font-400 oswald ">MIS A JOUR</h5>
-                                    <p>Les agents du Cabinet SEDDIK & Associés ont la mission de mettre à jour constamment les informations de GENITAX® pour vous offrir une source fidèle aux textes de lois.</p>
+                                    <h5 class="font-400 oswald ">CONSTAMMENT MIS A JOUR</h5>
+                                    <p>L’équipe experte de SEDDIK &
+                                            ASSOCIES se charge de la mise à jour de GENITAX® et œuvre
+                                            constamment à la création de nouvelles fonctionnalités et
+                                            outils inspirés de l’expérience acquise dans le domaine de
+                                            l’expertise fiscale.</p>
                                 </div>
                             </div>
                             <!--End Why Choose Item-->
@@ -310,7 +550,7 @@
                     <!--Start Why Choose Image-->
                     <div class="col-md-6">
                         <div class="why-choose-img wow fadeIn" data-wow-delay="0.2s">
-                            <img src="{{asset('assets/images/app3.png')}}" class="img-responsive" alt="Image">
+                            <img src="assets/images/app3.png" class="img-responsive" alt="Image">
                         </div>
                     </div>
                     <!--End Why Choose Image-->
@@ -340,45 +580,17 @@
 
                 <!--Start Screenshots Slider-->
                 <div class="screenshots-slider owl-carousel wow fadeIn" data-wow-delay="0.1s">
-                    <img src="{{asset('assets/images/screenshot-1.jpg')}}" class="img-responsive" alt="Image">
-                    <img src="{{asset('assets/images/screenshot-2.jpg')}}" class="img-responsive" alt="Image">
-                    <img src="{{asset('assets/images/screenshot-3.jpg')}}" class="img-responsive" alt="Image">
-                    <img src="{{asset('assets/images/screenshot-4.jpg')}}" class="img-responsive" alt="Image">
-                    <img src="{{asset('assets/images/screenshot-5.jpg')}}" class="img-responsive" alt="Image">
+                    <img src="assets/images/screenshot-1.jpg" class="img-responsive" alt="Image">
+                    <img src="assets/images/screenshot-2.jpg" class="img-responsive" alt="Image">
+                    <img src="assets/images/screenshot-3.jpg" class="img-responsive" alt="Image">
+                    <img src="assets/images/screenshot-4.jpg" class="img-responsive" alt="Image">
+                    <img src="assets/images/screenshot-5.jpg" class="img-responsive" alt="Image">
                 </div>
                 <!--End Screenshots Slider-->
             </div>
             <!--End Container-->
         </section>
         <!--End App Screenshots Section-->
-
-        <!--Start Demo Video Section-->
-        <section id="demo-video" class="bg-cover position-relative">
-            <div class="overlay"></div>
-            <!--Start Container-->
-            <div class="container">
-                <!--Start Row-->
-                <div class="row">
-                    <!--Start Video Content-->
-                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                        <div class="video-content text-center">
-                            <h2 class="font-400 oswald text-uppercase color-white wow fadeInUp" data-wow-delay="0.1s">Vidéo</h2>
-                            <p class="color-white wow fadeInUp" data-wow-delay="0.2s">Vidéo Presse de présentation de GENITAX® sur le journal télévisé 2M TV <br />- GeniTax® est 1ère au Maroc -</p>
-                            <div class="video-popup-icon position-relative">
-                                <div class="pulse1"></div>
-                                <div class="pulse2"></div>
-                                <a class="popup-video" href="http://www.youtube.com/watch?v=zhBkiw3QY9c"><i class="icofont icofont-play-alt-2"></i></a>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!--End Video Content-->
-                </div>
-                <!--End Row-->
-            </div>
-            <!--End Container-->
-        </section>
-        <!--End Demo Video Section-->
 
         <!--Start How Work Section-->
         <section id="how-work">
@@ -409,7 +621,7 @@
                                 </div>
                             </div>
                             <div class="how-work-image">
-                                <img src="{{asset('assets/images/app4.png')}}" class="img-responsive" alt="Image">
+                                <img src="assets/images/app4.png" class="img-responsive" alt="Image">
                             </div>
                         </div>
                     </div>
@@ -425,7 +637,7 @@
                                 </div>
                             </div>
                             <div class="how-work-image">
-                                <img src="{{asset('assets/images/app5.png')}}" class="img-responsive" alt="Image">
+                                <img src="assets/images/app5.png" class="img-responsive" alt="Image">
                             </div>
                         </div>
                     </div>
@@ -441,7 +653,7 @@
                                 </div>
                             </div>
                             <div class="how-work-image">
-                                <img src="{{asset('assets/images/app6.png')}}" class="img-responsive" alt="Image">
+                                <img src="assets/images/app6.png" class="img-responsive" alt="Image">
                             </div>
                         </div>
                     </div>
@@ -457,7 +669,7 @@
                                 </div>
                             </div>
                             <div class="how-work-image">
-                                <img src="{{asset('assets/images/app7.png')}}" class="img-responsive" alt="Image">
+                                <img src="assets/images/app7.png" class="img-responsive" alt="Image">
                             </div>
                         </div>
                     </div>
@@ -562,7 +774,7 @@
                     <!--Start Faq Image-->
                     <div class="col-md-6">
                         <div class="faq-img float-right wow fadeIn" data-wow-delay="0.2s">
-                            <img src="{{asset('assets/images/app8.png')}}" class="img-responsive" alt="Image">
+                            <img src="assets/images/app8.png" class="img-responsive" alt="Image">
                         </div>
                     </div>
                     <!--End Faq Image-->
@@ -582,7 +794,7 @@
                     <!--Start Heading Content-->
                     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                         <div class="section-heading text-center">
-                            <h2 class="font-400 oswald color-white text-uppercase wow fadeInUp" data-wow-delay="0.1s">Presse</h2>
+                            <h2 class="font-400 oswald color-white text-uppercase wow fadeInUp" data-wow-delay="0.1s">Revue de Presse</h2>
                             <p class="color-white wow fadeInUp" data-wow-delay="0.2s">La Presse marocaine parle de GENITAX® pour le présenter au monde des entreprises comme étant une 1ère au Maroc</p>
                         </div>
                     </div>
@@ -599,7 +811,7 @@
                             <div class="testimonial-single row">
                                 <div class="col-sm-3">
                                     <div class="client-info text-center wow fadeInUp" data-wow-delay="0.1s">
-                                        <img src="{{asset('assets/images/client-1.gif')}}" alt=""  style="border-radius:10px !important; padding:10px; height: auto !important;">
+                                        <img src="assets/images/client-1.gif" alt=""  style="border-radius:10px !important; padding:10px; height: auto !important;">
                                         <h4 class="font-600">2M TV</h4>
                                         <p>Journal Télévisé marocain</p>
                                     </div>
@@ -621,7 +833,7 @@
                             <div class="testimonial-single row">
                                 <div class="col-sm-3">
                                     <div class="client-info text-center">
-                                        <img src="{{asset('assets/images/client-1.jpg')}}" alt="" style="border-radius:10px !important; padding:10px; height: auto !important;">
+                                        <img src="assets/images/client-1.jpg" alt="" style="border-radius:10px !important; padding:10px; height: auto !important;">
                                         <h4 class="font-600">Aujourd'hui le Maroc</h4>
                                         <p>Journal marocain</p>
                                     </div>
@@ -643,7 +855,7 @@
                             <div class="testimonial-single row">
                                 <div class="col-sm-3">
                                     <div class="client-info text-center">
-                                        <img src="{{asset('assets/images/client-3.jpg')}}" alt="" style="border-radius:10px !important; padding:10px; height: auto !important;">
+                                        <img src="assets/images/client-3.jpg" alt="" style="border-radius:10px !important; padding:10px; height: auto !important;">
                                         <h4 class="font-600">Medias 24</h4>
                                         <p>Journal économique marocain</p>
                                     </div>
@@ -670,6 +882,61 @@
         </section>
         <!--End Testimonial Section-->
 
+
+        
+        <!--Start Demo Video Section-->
+        <section id="demo-video" class="bg-cover position-relative">
+                <div class="overlay"></div>
+                <!--Start Container-->
+                <div class="container">
+                    <!--Start Row-->
+                    <div class="row">
+                        <!--Start Video Content-->
+                        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                            <div class="video-content text-center">
+                                <h2 class="font-400 oswald text-uppercase color-white wow fadeInUp" data-wow-delay="0.1s">Vidéo</h2>
+                                <p class="color-white wow fadeInUp" data-wow-delay="0.2s">Vidéo Presse de présentation de GENITAX® sur le journal télévisé 2M TV et RTM <br />- GeniTax® est une 1ère au Maroc -</p>
+                                
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                            <div class="video-popup-icon position-relative">
+                                                    <div class="pulse1"></div>
+                                                    <div class="pulse2"></div>
+                                                    <a class="popup-video" href="http://www.youtube.com/watch?v=zhBkiw3QY9c"><i class="icofont icofont-play-alt-2"></i></a>
+                                                </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                            <div class="video-popup-icon position-relative">
+                                                    <div class="pulse1"></div>
+                                                    <div class="pulse2"></div>
+                                                    <a class="popup-video" href="http://www.youtube.com/watch?v=vHAMsmOxBSw"><i class="icofont icofont-play-alt-2"></i></a>
+                                                </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                            <div class="video-popup-icon position-relative">
+                                                    <div class="pulse1"></div>
+                                                    <div class="pulse2"></div>
+                                                    <a class="popup-video" href="http://www.youtube.com/watch?v=ge_vIQX3rOM"><i class="icofont icofont-play-alt-2"></i></a>
+                                                </div>
+                                    </div>
+                                </div>
+                                
+                                
+    
+                            </div>
+                        </div>
+                        <!--End Video Content-->
+                    </div>
+                    <!--End Row-->
+                </div>
+                <!--End Container-->
+            </section>
+            <!--End Demo Video Section-->
+
+            
         <!--Start Download App Section-->
         <section id="app-download">
             <!--Start Container-->
@@ -678,13 +945,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="app-downlod-img wow fadeInUp" data-wow-delay="0.2s">
-                            <img src="{{asset('assets/images/app2.png')}}" class="img-responsive" alt="Image">
+                            <img src="assets/images/app2.png" class="img-responsive" alt="Image">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="app-download-content animated fadeInUp" style="padding: 0 !important;">
                             <h2 class="font-400 oswald color-base text-uppercase wow fadeInUp" data-wow-delay="0.1s">Télécharger Maintenant</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Vous souhaitez télécharger votre application sur votre appareil le plus utilisé pour votre travail ? Il suffit de cliquer pour télécharger et installer.</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">Vous souhaitez télécharger GENITAX® sur votre appareil le plus utilisé pour votre travail ? L’installation est gratuite, cliquez sur l’une des
+                                    options et installez.</p>
                             
                             <div class="about-btn btn-lg p-0 wow fadeInUp" data-wow-delay="0.3s">
                                 <h5 class="text-uppercase oswald font-400">Télécharger pour MOBILE</h5>
@@ -732,7 +1000,7 @@
                         <div class="col-sm-3">
                             <div class="contact-info-single text-center wow fadeIn" data-wow-delay="0.1s">
                                 <i class="icofont icofont-email gradient-bg-1 color-white"></i>
-                                <p>Contact@CabinetSeddik.com <br> Contact@GeniTax.ma</p>
+                                <p>Contact@Genitax.ma <br> Contact@CabinetSeddik.com</p>
                             </div>
                         </div>
                         <!--End Contact Info Single-->
@@ -741,7 +1009,9 @@
                         <div class="col-sm-3">
                             <div class="contact-info-single text-center wow fadeIn" data-wow-delay="0.2s">
                                 <i class="icofont icofont-phone gradient-bg-1 color-white"></i>
-                                <p><a href="tel:+212 522 25 40 00">+212 522 25 40 00</a><br><a href="tel:+212 522 25 40 20">+212 522 25 40 20</a></p>
+                                <p><a href="tel:+212 522 25 40 00">Tel: +212 522 25 40 00
+                                    </a><br><a href="tel:+212 522 77 43 57">Fax: +212 522 77 43 57
+                                        </a></p>
                             </div>
                         </div>
                         <!--End Contact Info Single-->
@@ -758,8 +1028,8 @@
                         <!--Start Contact Info Single-->
                         <div class="col-sm-3">
                             <div class="contact-info-single text-center wow fadeIn" data-wow-delay="0.4s">
-                                <i class="icofont icofont-chat gradient-bg-1 color-white"></i>
-                                <p>Live chat disponibilités<br>Lundi - Vendredi</p>
+                                <i class="icofont icofont-clock-time gradient-bg-1 color-white"></i>
+                                <p>Jours d'ouverture<br>Du Lundi au Samedi</p>
                             </div>
                         </div>
                         <!--End Contact Info Single-->
@@ -776,33 +1046,24 @@
                         <div class="col-md-6">
                             <div class="contact-form">
                                 <h3 class="font-400 oswald text-center">Envoyez-nous un e-mail</h3>
-                                <form action="{{route('contact')}} " method="post">
-                                    {{ csrf_field() }}
-                                    @if($errors->any())
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
+                                <form action="mailer/config.php" method="post" id="ajax-contact">
                                     <div class="form-group">
-                                        <input type="text" required class="form-control" placeholder="Nom complet*" id="name" name="name" required>
+                                        <input type="text" class="form-control" placeholder="Nom complet*" id="name" name="name" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" required  class="form-control" placeholder="Votre E-mail*" id="email" name="email" required>
+                                        <input type="email" class="form-control" placeholder="Votre E-mail*" id="email" name="email" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" required  class="form-control" placeholder="Sujet" id="subject" name="subject">
+                                        <input type="text" class="form-control" placeholder="Sujet" id="subject" name="subject">
                                     </div>
                                     <div class="form-group">
-                                        <textarea class="form-control" required  rows="10" placeholder="Votre message..." id="message" name="message" required></textarea>
+                                        <textarea class="form-control" rows="10" placeholder="Votre message..." id="message" name="message" required></textarea>
                                     </div>
                                     <div class="contact-btn">
                                         <button class="font-500 gradient-bg-1 color-white" type="submit">Envoyer</button>
                                     </div>
                                 </form>
+                                <div id="form-messages"></div>
                             </div>
                         </div>
                         <!--End Contact Form-->
@@ -863,57 +1124,31 @@
         </footer>
         <!--End Footer-->
     </div>
-
-    <div id="myModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-      
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-              <h4 class="modal-title">Votre formulaire a bien été envoyé. </h4>
-            </div>
-            <div class="modal-body">
-              <p>Merci ! Votre message a bien été envoyé. </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-            </div>
-          </div>
-      
-        </div>
-      </div>
     <!--End Body Wrap-->
 
     <!--jQuery JS-->
-    <script src="{{asset('assets/js/jquery.min.js')}}"></script>
+    <script src="assets/js/jquery.min.js"></script>
     <!--Google Map API-->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4yKUBz0tTKwfw8zY8mYOR7MAZy9coIMg&callback" async defer></script>
-    <script src="{{asset('assets/js/map.js')}}"></script>
+    <script src="assets/js/map.js"></script>
     <!--Counter JS-->
-    <script src="{{asset('assets/js/waypoints.js')}}"></script>
-    <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="assets/js/waypoints.js"></script>
+    <script src="assets/js/jquery.counterup.min.js"></script>
     <!--Bootstrap JS-->
-    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <!--Magnic PopUp JS-->
-    <script src="{{asset('assets/js/magnific-popup.min.js')}}"></script>
+    <script src="assets/js/magnific-popup.min.js"></script>
     <!--Owl Carousel JS-->
-    <script src="{{asset('assets/js/owl.carousel.min.js')}}"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
     <!--Wow JS-->
-    <script src="{{asset('assets/js/wow.min.js')}}"></script>
+    <script src="assets/js/wow.min.js"></script>
     <!--Bootsnavs JS-->
-    <script src="{{asset('assets/js/bootsnav.js')}}"></script>
+    <script src="assets/js/bootsnav.js"></script>
     <!--Contact Form JS-->
+    <script src="mailer/ajax-contact-form.js"></script>
     <!--Main-->
-    <script src="{{asset('assets/js/custom.js')}}"></script>
+    <script src="assets/js/custom.js"></script>
 
-    @if(session()->has('MailSuccess'))
-    <script>
-        $(document).ready(function() {
-            $('#myModal').modal('show');
-        })
-    </script>
-    @endif
 </body>
 
 </html>

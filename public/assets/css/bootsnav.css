@@ -1339,21 +1339,11 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
         padding-left: 15px;
         padding-right: 15px;
     }
-
-    .navbar-brand {
-        position: absolute;
-        left: 28px;
-        top: -6px;
-    }
     
     .attr-nav{
         right: 30px;
-        top: -6px;
     }
     
-    .caption-content .caption-btn a{
-        margin-top: 15px;
-    }
     .attr-nav > ul{
         margin-right: -10px;
     }
