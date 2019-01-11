@@ -2,11 +2,10 @@
     <v-layout column justify-center align-center xs12>
         <div class="box-gtax">
             <v-flex xs12 class="box-gtax__article">
-                    <h5> Nº Article</h5>
                     <div class="box-gtax__input">
                         <v-text-field
                             label="Solo"
-                            placeholder="..."
+                            placeholder="Aller à Nº Article.."
                             class="box-gtax__search"
                             solo
                             v-model="article"
@@ -15,7 +14,7 @@
                             append-icon="arrow_forward"
                             :loading="loadingArticle"
                         ></v-text-field>
-                        <div class="text-xs-center" v-if="articleNotFound">
+                        <div class="text-xs-center toast" v-if="articleNotFound">
                             Article non trouvé
                         </div>
                     </div>
@@ -36,6 +35,7 @@
                          <h5 class="tree_header" v-if="type =='cgi'">{{selectedHeaderName}} </h5>
                          <h5 class="tree_header" v-else>Taxes Locales </h5>
                          <v-btn class="btn_summary" v-if="!openAll" @click="openAll = true" round dark  >VOIR SOMMAIRE</v-btn>
+                         <v-btn class="btn_summary" v-else @click="$router.push('/')" round dark  >CACHER SOMMAIRE</v-btn>
                     </div>
                     <v-treeview
                         ref="treeview"

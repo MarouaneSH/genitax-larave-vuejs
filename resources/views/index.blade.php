@@ -63,7 +63,7 @@
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
                         <ul>
-                            <li><a href="/app">Version Online <i class="icofont icofont-arrow-right"></i></a></li>
+                            <li><a href="/app"><span class="hidden-xs">Version </span>Online <i class="icofont icofont-arrow-right"></i></a></li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
@@ -122,7 +122,7 @@
                                     à appréhender.
                             </p>
                             <div class="caption-btn wow fadeInUp" data-wow-delay="0.4s">
-                                <a class="font-600" href="/app"><i class="icofont icofont-globe"></i> Version Online</a><a class="font-600" href="#about-download"><i class="icofont icofont-download-alt"></i> Télécharger</a>
+                                <a class="font-600" href="/app"><i class="icofont icofont-globe"></i> <span class="hidden-xs">Version</span> Online</a><a class="font-600" href="#about-download"><i class="icofont icofont-download-alt"></i> Télécharger</a>
                             </div>
                         </div>
                     </div>
@@ -147,18 +147,18 @@
 
         
         <!--Start About Section-->
-        <section style="border-bottom: 1px solid #f1f1f1; padding-bottom: 30px;">
+        <section style="padding-bottom: 30px;">
             <!--Start Container-->
             <div class="container">
                 <!--Start Heading Row-->
                 <div class="row">
                     <!--Start Heading content-->
-                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" style="padding-top:40px">
                         <div class="section-heading text-center" style="margin:0 0 40px">
                             <div class="wow fadeInUp text-center" data-wow-delay="0.1s" style="padding-bottom:20px;">
                                     <img src="assets/images/seddik&associes.png" alt="Image">
                             </div>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Créé en 1996, SEDDIK & ASSOCIES regroupe des Experts Comptables et Consultants d’Entreprises. Implanté à Casablanca, SEDDIK & Associés opère sur l’ensemble du territoire du Maroc et intervient dans divers secteurs d’activité. </p>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">Créé en 1996, SEDDIK & Associés regroupe des Experts Comptables et Consultants d’Entreprises. Implanté à Casablanca, SEDDIK & Associés opère sur l’ensemble du territoire du Maroc et intervient dans divers secteurs d’activité. </p>
                         </div>
                     </div>
                     <!--End Heading content-->
@@ -166,59 +166,92 @@
                 <!--End Heading Row-->
 
                 <!--Start About Row-->
-                <div class="row">
+                <div class="row" style="margin-top:40px">
                     <!--Start About Content-->
                     <div class="col-md-12">
                         <div class="about-content">
-                            <h4 class="text-center font-700 wow fadeInUp" data-wow-delay="0.1s">L’implication et l’engagement du Cabinet ont été couronnés par plusieurs consécrations internationales, dont :
+                            <h4 class="text-center font-700 wow fadeInUp text-uppercase" data-wow-delay="0.1s" style="padding-bottom:45px;">Implication & engagement couronnés<br />par plusieurs consécrations internationales
                             </h4>
-                            <ul class="wow fadeInUp text-center" data-wow-delay="0.2s">
-                                <li>L’intégration en 2006 du réseau international MSI GLOBAL ALLIANCE,</li>
-                                <li>La nomination de SEDDIK & Associés en tant que top 100/2013 des Cabinets de Conseil Juridiques par le prestigieux magazine britannique ACQUISITION INTERNATIONAL et en 2016 dans la catégorie «best for accounting & Tax disputes – Morocco»</li>
-                                <li>L’obtention en 2014 du prestigieux M&A AWARD dans la catégorie Accounting & Consulting de la célèbre revue britannique ACQUISITION INTERNATIONAL,</li>
-                                <li>La nomination en tant que titulaire du Corporate LivWare Awards – 2017 par le magazine Britannique MERGER & ACQUISITIONS </li>
-                                <li>La Nomination de SEDDIK & Associés Tax Firm of the year 2017 par le Magazine Britannique FINANCE MONTHLY </li>
-                                <li>La nomination en tant que membre du Jury de MAROC ENTREPRENEURS – PARIS pour la sélection du meilleur projet de création d’entreprise</li>
-                                <li>Membre actif de Réseau entreprendre </li>
-                                <li>SEDDIK & Associés fût partenaire scientifique du SIFEP – Salon International de la Finance Participative</li>
-                            </ul>
-                            <h4 style="margin-top:40px" class="text-center font-700 wow fadeInUp" data-wow-delay="0.3s">Membre de l’ordre des Experts Comptables, Cabinet SEDDIK exerce les activités suivantes :</h4></div>
-                            <ul class="wow fadeInUp text-center" data-wow-delay="0.4s">
-                                    <li>Audit & Commissariat aux Comptes et aux apports</li>
-                                    <li>Management Consulting et Conseil de Direction</li>
-                                    <li>Planification financière et assistance à l’implantation</li>
-                                    <li>Evaluation d’entreprises et due diligences</li>
-                                    <li>Audit et Conseil juridique et fiscales</li>
-                                    <li>Conseil et assistance Comptable</li>
-                                    <li>Formation, recrutement et développement des ressources Humaines</li>
-                                    <li>Organisation, procédures et systèmes d’information.</li>
-                            </ul>
+                                <div class="row" class="wow fadeInUp" data-wow-delay="0.2s">
+                                    <div class="col-md-4 text-center" style="margin-bottom:30px;">
+                                    <img src="assets/images/msi.jpg" style="height:60px; margin-bottom:30px;" /><br />
+                                       Membre du réseau international <b>MSI GLOBAL ALLIANCE</b> depuis 2006
+                                    </div>
+                                    <div class="col-md-4 text-center" style="margin-bottom:30px;">
+                                    <img src="assets/images/award2013.jpg" style="height:60px; margin-bottom:30px;" /><br />
+                                      <b>Top 100/2013</b> des Cabinets de Conseil Juridiques<br /><small style="color:rgba(52, 131, 255, 1);">Magazine britannique ACQUISITION INTERNATIONAL</small>
+                                    </div>
+                                    <div class="col-md-4 text-center" style="margin-bottom:30px;">
+                                    <img src="assets/images/award2016.jpg" style="height:60px; margin-bottom:30px;" /><br />
+                                        <b>« Best for accounting & Tax disputes – Morocco »</b> des Cabinets de Conseil Juridiques<br /><small style="color:rgba(52, 131, 255, 1);">Magazine britannique ACQUISITION INTERNATIONAL</small>
+                                    </div>
+                                </div>
 
-                            <div style="margin-top:60px;display:flex;align-items:center;">
-                                    <div class="col-md-2">
-                                            <img src="assets/images/msi.jpg" class="img-responsive" />
-                                        </div>
+                                <div class="row" class="wow fadeInUp" data-wow-delay="0.3s">
+                                    <div class="col-md-4 text-center" style="margin-bottom:30px;">
+                                    <img src="assets/images/award2014.jpg" style="height:60px; margin-bottom:30px;" /><br />
+                                    <b>M&A AWARD</b> Accounting & Consulting<br /><small style="color:rgba(52, 131, 255, 1);">Magazine britannique ACQUISITION INTERNATIONAL 2014</small>
+                                    </div>
+                                    <div class="col-md-4 text-center" style="margin-bottom:30px;">
+                                    <img src="assets/images/2017award.jpg" style="height:60px; margin-bottom:30px;" /><br />
+                                    <b>Corporate LivWare Awards</b><br /><small  style="color:rgba(52, 131, 255, 1);">Magazine Britannique MERGER & ACQUISITIONS 2017</small>
+                                    </div>
+                                    <div class="col-md-4 text-center" style="margin-bottom:30px;">
+                                    <img src="assets/images/award2017.jpg" style="height:60px; margin-bottom:30px;" /><br />
+                                    <b>Tax Firm of the year</b> 2017 <br /><small  style="color:rgba(52, 131, 255, 1);">Magazine Britannique FINANCE MONTHLY</small>
+                                    </div>
+                                </div>
+
+
+                                <div class="row" class="wow fadeInUp" data-wow-delay="0.3s">
+                                    <div class="col-md-4 text-center" style="margin-bottom:30px;">
+                                    <img src="assets/images/marocentrepreneurs.png" style="height:60px; margin-bottom:30px;" /><br />
+                                    Membre du Jury de <b>MAROC ENTREPRENEURS – PARIS</b><br /><small style="color:rgba(52, 131, 255, 1);">Pour la sélection du meilleur projet de création d’entreprise</small>
+                                    </div>
+                                    <div class="col-md-4 text-center" style="margin-bottom:30px;">
+                                    <img src="assets/images/reseau-entreprendre.png" style="height:60px; margin-bottom:30px;" /><br />
+                                    Membre actif de <b>Réseau entreprendre</b>
+                                    </div>
+                                    <div class="col-md-4 text-center" style="margin-bottom:30px;">
+                                    <img src="assets/images/sifep.jpg" style="height:60px; margin-bottom:30px;" /><br />
+                                    Partenaire scientifique du <b>SIFEP</b><br /><small style="color:rgba(52, 131, 255, 1);">Salon International de la Finance Participative</small>
+                                    </div>
+                                </div>
+
+
+
                     
-                                        <div class="col-md-2">
-                                            <img src="assets/images/award2013.jpg" class="img-responsive" />
-                                        </div>
-                    
-                                        <div class="col-md-2">
-                                            <img src="assets/images/award2014.jpg"  class="img-responsive" />
-                                        </div>
-                    
-                                        <div class="col-md-2">
-                                            <img src="assets/images/award2016.jpg"  class="img-responsive" />
-                                        </div>
-                    
-                                        <div class="col-md-2">
-                                            <img src="assets/images/2017award.jpg"  class="img-responsive" />
-                                        </div>
-                    
-                                        <div class="col-md-2">
-                                            <img src="assets/images/award2017.jpg"  class="img-responsive" />
-                                        </div>
+                            <h4 style="margin-top:40px;padding-bottom: 25px" class="text-center font-700 wow fadeInUp text-uppercase" data-wow-delay="0.3s">Membre de l’ordre des Experts Comptables<br />Cabinet SEDDIK exerce les activités suivantes</h4></div>
+                            <div class="row" class="wow fadeInUp text-center" data-wow-delay="0.4s">
+                                <div class="col-md-4 text-center" style="padding-bottom:15px;margin-top:20px; ">
+                                    <div class="gradient-bg row" style="margin: 0 auto; border-radius:50%; height:60px; width:60px; color:white; display:flex; align-items:center; justify-content:center;"><span class="oswald">CCA</span></div>
+                                    <div class="row" style="margin-top:20px;">
+                                    Audit & Commissariat aux Comptes et aux Apports
+                                    </div>
+                                    </div>
+                                <div class="col-md-4 text-center" style="padding-bottom:15px;margin-top:20px;"><div class="gradient-bg row" style="margin: 0 auto; border-radius:50%; height:60px; width:60px; color:white; display:flex; align-items:center; justify-content:center;"><span class="oswald">M</span></div>
+                                    <div class="row" style="margin-top:20px;">Management Consulting et Conseil de Direction</div></div>
+                                <div class="col-md-4 text-center" style="padding-bottom:15px;margin-top:20px;"><div class="gradient-bg row" style="margin: 0 auto; border-radius:50%; height:60px; width:60px; color:white; display:flex; align-items:center; justify-content:center;"><span class="oswald">PF</span></div>
+                                    <div class="row" style="margin-top:20px;">Planification financière et assistance à l’implantation</div></div>
                             </div>
+                            <div class="row" class="wow fadeInUp text-center" data-wow-delay="0.5s">
+                                <div class="col-md-4 text-center" style="padding-bottom:15px;margin-top:20px;"><div class="gradient-bg row" style="margin: 0 auto; border-radius:50%; height:60px; width:60px; color:white; display:flex; align-items:center; justify-content:center;"><span class="oswald">DD</span></div>
+                                    <div class="row" style="margin-top:20px;">Evaluation d’entreprises et due diligences</div></div>
+                                    <div class="col-md-4 text-center" style="padding-bottom:15px;margin-top:20px;"><div class="gradient-bg row" style="margin: 0 auto; border-radius:50%; height:60px; width:60px; color:white; display:flex; align-items:center; justify-content:center;"><span class="oswald">IT</span></div>
+                                    <div class="row" style="margin-top:20px;">Solutions informatiques comptables et fiscales</div></div>
+                                <div class="col-md-4 text-center" style="padding-bottom:15px;margin-top:20px;"><div class="gradient-bg row" style="margin: 0 auto; border-radius:50%; height:60px; width:60px; color:white; display:flex; align-items:center; justify-content:center;"><span class="oswald">CJ/CF</span></div>
+                                    <div class="row" style="margin-top:20px;">Audit et Conseil juridiques et fiscales</div></div>
+                            </div>
+                            <div class="row" class="wow fadeInUp text-center" data-wow-delay="0.6s">
+                                <div class="col-md-4 text-center" style="padding-bottom:15px; margin-top:20px;"><div class="gradient-bg row" style="margin: 0 auto; border-radius:50%; height:60px; width:60px; color:white; display:flex; align-items:center; justify-content:center;"><span class="oswald">C</span></div>
+                                    <div class="row" style="margin-top:20px;">Conseil et assistance Comptable</div></div>
+                                <div class="col-md-4 text-center" style="padding-bottom:15px;margin-top:20px;"><div class="gradient-bg row" style="margin: 0 auto; border-radius:50%; height:60px; width:60px; color:white; display:flex; align-items:center; justify-content:center;"><span class="oswald">RH</span></div>
+                                    <div class="row" style="margin-top:20px;">Formation, recrutement et développement RH</div></div>
+                                <div class="col-md-4 text-center" style="padding-bottom:15px;margin-top:20px;"><div class="gradient-bg row" style="margin: 0 auto; border-radius:50%; height:60px; width:60px; color:white; display:flex; align-items:center; justify-content:center;"><span class="oswald">ORG</span></div>
+                                    <div class="row" style="margin-top:20px;">Organisation, procédures et systèmes d’information</div></div>
+                            </div>
+
+                            
                     </div>
                     <!--End About Content-->
                 </div>
@@ -237,7 +270,57 @@
 
 
 
+ <!--Start Demo Video Section-->
+ <section id="" class="bg-cover position-relative" style="padding-bottom:40px; margin-top:50px">
+                <div class="overlay"></div>
+                <!--Start Container-->
+                <div class="container">
+                    <!--Start Row-->
+                    <div class="row">
+                        <!--Start Video Content-->
+                        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                            <div class="video-content text-center">
+                                <h2 class="font-400 oswald text-uppercase color-white wow fadeInUp" data-wow-delay="0.1s">SEDDIK & Associés</h2>
+                                <p class="color-white wow fadeInUp" data-wow-delay="0.2s">Vidéos Presse de présentation du cabinet SEDDIK & Associés sur le journal télévisé</p>
+                                
+                                <div class="row">
 
+                                    <div class="col-md-4">
+                                            <div class="video-popup-icon position-relative">
+                                                    <div class="pulse1"></div>
+                                                    <div class="pulse2"></div>
+                                                    <a class="popup-video" href="http://www.youtube.com/watch?v=zhBkiw3QY9c"><i class="icofont icofont-play-alt-2"></i></a>
+                                                </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                            <div class="video-popup-icon position-relative">
+                                                    <div class="pulse1"></div>
+                                                    <div class="pulse2"></div>
+                                                    <a class="popup-video" href="http://www.youtube.com/watch?v=vHAMsmOxBSw"><i class="icofont icofont-play-alt-2"></i></a>
+                                                </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                            <div class="video-popup-icon position-relative">
+                                                    <div class="pulse1"></div>
+                                                    <div class="pulse2"></div>
+                                                    <a class="popup-video" href="http://www.youtube.com/watch?v=ge_vIQX3rOM"><i class="icofont icofont-play-alt-2"></i></a>
+                                                </div>
+                                    </div>
+                                </div>
+                                
+                                
+    
+                            </div>
+                        </div>
+                        <!--End Video Content-->
+                    </div>
+                    <!--End Row-->
+                </div>
+                <!--End Container-->
+            </section>
+            <!--End Demo Video Section-->
 
 
 
@@ -811,9 +894,12 @@
                             <div class="testimonial-single row">
                                 <div class="col-sm-3">
                                     <div class="client-info text-center wow fadeInUp" data-wow-delay="0.1s">
-                                        <img src="assets/images/client-1.gif" alt=""  style="border-radius:10px !important; padding:10px; height: auto !important;">
+                                        <a target="_blank" href="https://www.youtube.com/watch?v=zhBkiw3QY9c">
+                                            <img src="assets/images/client-1.gif" alt=""  style="border-radius:10px !important; padding:10px; height: auto !important;">
+                                            
                                         <h4 class="font-600">2M TV</h4>
                                         <p>Journal Télévisé marocain</p>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-sm-1">
@@ -833,9 +919,12 @@
                             <div class="testimonial-single row">
                                 <div class="col-sm-3">
                                     <div class="client-info text-center">
+                                    <a target="_blank" href="http://aujourdhui.ma/high-tech/rachid-seddik-seghir-genitax-ce-nest-quun-debut">
                                         <img src="assets/images/client-1.jpg" alt="" style="border-radius:10px !important; padding:10px; height: auto !important;">
-                                        <h4 class="font-600">Aujourd'hui le Maroc</h4>
+                                    
+                                    <h4 class="font-600">Aujourd'hui le Maroc</h4>
                                         <p>Journal marocain</p>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="col-sm-1">
@@ -855,9 +944,36 @@
                             <div class="testimonial-single row">
                                 <div class="col-sm-3">
                                     <div class="client-info text-center">
-                                        <img src="assets/images/client-3.jpg" alt="" style="border-radius:10px !important; padding:10px; height: auto !important;">
-                                        <h4 class="font-600">Medias 24</h4>
+                                    <a target="_blank" href="https://leconomiste.com/article/1023649-toute-une-bibliotheque-fiscale-en-un-clic">
+                                        <img src="assets/images/leconomiste.png" alt="" style="border-radius:10px !important; padding:10px; height: auto !important;">
+                                    
+                                        <h4 class="font-600">L'économiste</h4>
                                         <p>Journal économique marocain</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-1">
+                                    <div class="testimonial-border"></div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="client-comment">
+                                        <h5 class="oswald font-400">Témoignage L'économiste</h5>
+                                        <p>Toute une bibliothèque fiscale en un clic...Il paraît que c’est devenu l’«indispensable» des inspecteurs des impôts.</p>
+                                        <span><i class="icofont icofont-star"></i><i class="icofont icofont-star"></i><i class="icofont icofont-star"></i><i class="icofont icofont-star"></i><i class="icofont icofont-star"></i></span><span class="float-right"><i class="icofont icofont-quote-right"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--End Testimonial Single-->
+
+                            <!--Start Testimonial Single-->
+                            <div class="testimonial-single row">
+                                <div class="col-sm-3">
+                                    <div class="client-info text-center">
+                                        <a target="_blank" href="https://www.medias24.com/MAROC/Les-plus-de-Medias-24/174664-Le-cabinet-Seddik-lance-appli-gratuite-dediee-a-la-fiscalite-marocaine.html">
+                                        <img src="assets/images/client-3.jpg" alt="" style="border-radius:10px !important; padding:10px; height: auto !important;">
+
+                                        <h4 class="font-600">Medias 24</h4>
+                                        <p>Journal économique marocain</p></a>
                                     </div>
                                 </div>
                                 <div class="col-sm-1">
@@ -894,35 +1010,16 @@
                         <!--Start Video Content-->
                         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
                             <div class="video-content text-center">
-                                <h2 class="font-400 oswald text-uppercase color-white wow fadeInUp" data-wow-delay="0.1s">Vidéo</h2>
+                                <h2 class="font-400 oswald text-uppercase color-white wow fadeInUp" data-wow-delay="0.1s">GENITAX<span style="font-size:12px !important;">®</span> en Vidéo</h2>
                                 <p class="color-white wow fadeInUp" data-wow-delay="0.2s">Vidéo Presse de présentation de GENITAX® sur le journal télévisé 2M TV et RTM <br />- GeniTax® est une 1ère au Maroc -</p>
                                 
-                                <div class="row">
-
-                                    <div class="col-md-4">
+                                
                                             <div class="video-popup-icon position-relative">
                                                     <div class="pulse1"></div>
                                                     <div class="pulse2"></div>
                                                     <a class="popup-video" href="http://www.youtube.com/watch?v=zhBkiw3QY9c"><i class="icofont icofont-play-alt-2"></i></a>
                                                 </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                            <div class="video-popup-icon position-relative">
-                                                    <div class="pulse1"></div>
-                                                    <div class="pulse2"></div>
-                                                    <a class="popup-video" href="http://www.youtube.com/watch?v=vHAMsmOxBSw"><i class="icofont icofont-play-alt-2"></i></a>
-                                                </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                            <div class="video-popup-icon position-relative">
-                                                    <div class="pulse1"></div>
-                                                    <div class="pulse2"></div>
-                                                    <a class="popup-video" href="http://www.youtube.com/watch?v=ge_vIQX3rOM"><i class="icofont icofont-play-alt-2"></i></a>
-                                                </div>
-                                    </div>
-                                </div>
+                        
                                 
                                 
     
@@ -1020,7 +1117,7 @@
                         <div class="col-sm-3">
                             <div class="contact-info-single text-center wow fadeIn" data-wow-delay="0.3s">
                                 <i class="icofont icofont-social-google-map gradient-bg-1 color-white"></i>
-                                <p>158, Bd Zerktouni, Résidence Zerktouni<br>6ème étage, Maârif - Casablanca</p>
+                                <p>185, Bd Zerktouni, Résidence Zerktouni<br>6ème étage, Maârif - Casablanca</p>
                             </div>
                         </div>
                         <!--End Contact Info Single-->

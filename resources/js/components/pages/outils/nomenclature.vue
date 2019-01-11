@@ -14,9 +14,10 @@
             ></v-progress-circular>
         </div>
          <div v-else>
-            <div class="coefficient_box tahoma-font_all" v-for="item in nomenclatures" :key="item.id">
-                    <div class="coefficient_item">
-                        <strong>ACTIVITES: </strong>
+            <div class="coefficient_box tahoma-font_all" v-for="item in nomenclatures" :key="item.id" style="overflow:hidden;">
+                    <div class="coefficient_item text-uppercase" :style="{backgroundColor : outil_info.color}" style="color:white;font-size:22px;
+                            font-weight:200;
+                            font-family: 'Oswald' !important; padding:15px;">
                         {{item.activites}}
                     </div>
                     <div v-if="item.classe_3" class="coefficient_item">
@@ -65,7 +66,7 @@ export default {
 
 <style scoped>
 .coefficient_box{
-    padding: 20px;
+    padding: 0 0 20px;
     width: 80%;
     margin-top: 20px;
     border-radius: 5px;

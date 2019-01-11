@@ -66,11 +66,14 @@ export default {
     cursor: pointer;
       box-shadow: 0 5px 15px 0 rgba(37,44,97,0.15), 0 2px 4px 0 rgba(93,100,148,0.2);
     transition: all .3s ease-in;
+    font-weight:200;
+    font-size:16px;
     &:hover {
-        transform: scale(1.03);
+        transform: translateY(-5px);
     }
     img {
-        max-width: 50px;
+        margin-right:15px;
+        max-height: 50px;
     }
     &_title {
         margin-left: 10px;

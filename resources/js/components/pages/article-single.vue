@@ -1,11 +1,15 @@
 <template>
-    <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition" >
+    <v-dialog ref="dialog_article" class="dialog_article" v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition" >
                 <v-card>
                         <v-toolbar dark color="primary" class="article_dialog">
+                            <v-btn icon dark @click="$router.push('/')">
+                                <v-icon>home</v-icon>
+                            </v-btn>
                             <v-btn icon dark @click="$router.go(-1)" class="arrow_back_yellow">
                                 <v-icon>arrow_back</v-icon>
                             </v-btn>
-                            <v-toolbar-title v-if="selectedArticle">{{selectedArticle.name}} </v-toolbar-title>
+                            
+                            <v-toolbar-title v-if="selectedArticle && !articleNotFound" style="font-weight:200;">{{selectedArticle.name}} </v-toolbar-title>
                             <v-spacer></v-spacer>
                             
                             <v-btn-toggle class="article_switcher_toggle" v-if="!hideToggle && !loadingDialog" light v-model="toggle_html_type" @change="isSearchablebyId ? fetchArticleById() : fetchArticleByName ()" >
@@ -33,7 +37,7 @@
                            <app-social-sharing :title="selectedArticle ? selectedArticle.name : '' "></app-social-sharing>
                         </v-toolbar>
                             <div class="article-subheader">
-                                <p class="subheadline" v-if="selectedArticle && !articleNotFound" >{{selectedArticle.name}} </p>
+                                
                                  <span @click="copyToClipBoard()"><v-icon>file_copy</v-icon> copier l'article au Presse papier</span>
                             </div>
                             <div class="text-xs-center mt-5" v-if="articleNotFound">
@@ -46,9 +50,9 @@
                                 ></v-progress-circular>
                             </div>
                             <template v-else>
-                                 <h3 class="article_header tahoma-font"> {{getArticleHeader}}  : {{selectedArticle.num}} </h3>
-                               
-                                <div class="content_html tahoma-font_all" v-if="!articleNotFound" ref="contentHtml"  v-html="contentHTML"></div>
+                                 <h3 class="article_header tahoma-font"  v-if="!articleNotFound"> {{getArticleHeader}}  : {{selectedArticle.num}} </h3>
+
+                                <div id="article_content" class="content_html tahoma-font_all" @keypress="scroll()" v-if="!articleNotFound" ref="contentHtml"  v-html="contentHTML"></div>
                             </template>
                     </v-card>
             </v-dialog>
@@ -76,6 +80,15 @@ export default {
         } 
         else if(e.which == 8)  {
             this.fetchArticle('back');
+        } 
+        else if(e.which == 40)  {
+            console.log("dsds");
+            document.querySelector('.v-dialog--active').scrollTop += 20
+            document.querySelector('.dialog_article').scrollTop += 20
+        } 
+        else if(e.which == 38)  {
+            document.querySelector('.v-dialog--active').scrollTop -= 20
+            document.querySelector('.dialog_article').scrollTop -= 20
         } 
       } 
         
@@ -194,9 +207,15 @@ export default {
                     }
                      this.$router.push({name : "ArticleById", params : { id : result.data.article.id} , query : {category : this.$route.query.category}})
                      
+                 }).catch(()=> {
+                     this.articleNotFound = true;
                  }).then(()=>{
                      this.loadingDialog = false;
+                     this.articleNotFound = true;
                  })
+        },
+        scroll() {
+            console.log();
         } 
     },
    
@@ -222,10 +241,15 @@ export default {
     align-items: center;
     margin-right: 19px;
     cursor: pointer;
+    padding-top:65px;
 }
 .article_header {
     color: #1976d1;
-    padding: 40px;
+    text-transform:uppercase;
+    font-weight:200;
+    padding: 0 40px 40px;
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 26px;
 }
 .content_html {
     padding: 0 40px;

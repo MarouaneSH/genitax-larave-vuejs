@@ -1,6 +1,14 @@
 <template>
      <v-layout column align-center="">
+         <div class="text-xs-center btn_propose">
+                    <v-btn color="primary" style="font-weight: 200;
+    border-radius: 20px;
+    padding: 0px 20px;"><a href="mailto:contact@genitax.ma">Poser une question à la DGI ?</a></v-btn> 
+                 </div>
+
             <div class="text-xs-center w-100" v-if="loading">
+
+        
                     <v-progress-circular
                     indeterminate
                     color="primary"
@@ -18,9 +26,6 @@
                  </div>
                  
             </div>
-            <div class="text-xs-center btn_propose">
-                    <v-btn color="primary"><a href="mailto:contact@genitax.ma">Poser une question </a></v-btn> 
-                 </div>
       </v-layout>
 </template>
 
@@ -86,6 +91,7 @@ export default {
 }
 .card__content  {
     display: flex;
+    justify-content:center;
     flex-wrap: wrap;
     cursor: pointer;
     &_item {
@@ -95,16 +101,26 @@ export default {
         cursor: pointer;
         h3 {
         color: #2c4983;
-        font-size: 14px;
+        font-size: 18px;
         margin-top: 10px;
-        font-weight: 400;
+        font-weight: 200;
         }
         &_card {
-          padding: 25px 17px;
-           border-radius: 33px;
-           max-width: 150px;
+            height:150px;
+            width:150px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+           border-radius: 50%;
            margin: 0 auto;
            box-shadow: 0 5px 15px 0 rgba(37,44,97,0.15), 0 2px 4px 0 rgba(93,100,148,0.2);
+           transition: all .6s ease;
+
+           &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px 0 rgba(37,44,97,0.2), 0 2px 24px 0 rgba(93,100,148,0.2);
+            transition: all .2s ease;
+           }
    
         }
         img {

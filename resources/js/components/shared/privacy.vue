@@ -8,15 +8,12 @@
         <v-card>
 
             <v-card-text>
-                <div class="banner_immage" v-if="!displayPrivacy">
-                    <img src="/img/seddik.png" alt="">
-                </div>
-                <p v-else class="tahoma-font_all" v-html="contentHTML"></p>
+                <p class="tahoma-font_all" v-html="contentHTML"></p>
             </v-card-text>
 
             <v-divider></v-divider>
 
-            <v-card-actions v-if="displayPrivacy">
+            <v-card-actions>
             <v-spacer></v-spacer>
             <v-btn
                 color="primary"
@@ -34,9 +31,6 @@
 <script>
 export default {
     mounted(){
-        setTimeout(()=> {
-            this.displayPrivacy = true;
-        }, 3000)
         axios.get('/settings/name=policy').then((response)=>{
             this.contentHTML = response.data;
         })
@@ -45,7 +39,6 @@ export default {
         return {
             dialog : true,
             contentHTML : null,
-            displayPrivacy : false,
         }
     }
 }

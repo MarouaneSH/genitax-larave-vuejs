@@ -55,6 +55,6 @@ export default {
 
 <style scoped>
     .content_html {
-        padding: 30px;
+        padding: 120px 30px 30px;
     }
 </style>

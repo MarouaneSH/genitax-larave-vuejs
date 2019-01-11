@@ -210,6 +210,7 @@
                         dataType: 'json',
                         success: function (data) {
                             $("select[name=parent_id] option").remove()
+                            $("select[name=parent_id]").append(`<option value=""> Aucun </option>`);
                             data.forEach((el) => {
                                 $("select[name=parent_id]").append(`<option value="${el.id}">${el.titre} </option>`);
                             })
