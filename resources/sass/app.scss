@@ -455,3 +455,15 @@
 .v-toolbar{
   position:fixed;
 }
+
+.v-treeview-node__root {
+  height: auto;
+  min-height: 36px;
+}
+.v-treeview-node__content {
+  width: 95%;
+  .v-treeview-node__label{
+    word-break: break-all;
+    width: 95%;
+  }
+}

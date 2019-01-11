@@ -35,6 +35,7 @@
                          <h5 class="tree_header" v-if="type =='cgi'">{{selectedHeaderName}} </h5>
                          <h5 class="tree_header" v-else>Taxes Locales </h5>
                          <v-btn class="btn_summary" v-if="!openAll" @click="openAll = true" round dark  >VOIR SOMMAIRE</v-btn>
+                         <v-btn class="btn_summary" v-else @click="$router.push('/')" round dark  >CACHER SOMMAIRE</v-btn>
                     </div>
                     <v-treeview
                         ref="treeview"
