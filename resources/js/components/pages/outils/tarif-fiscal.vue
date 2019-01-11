@@ -40,6 +40,7 @@
 
           <v-dialog v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
                 <v-card>
+
                         <v-toolbar dark color="primary">
                             <v-btn icon dark @click="dialog = false">
                                 <v-icon>close</v-icon>
@@ -47,6 +48,7 @@
                             <v-toolbar-title v-if="selectedArticle">{{selectedArticle.name}} </v-toolbar-title>
                             <v-spacer></v-spacer>
                         </v-toolbar>
+                        <div style="height:80px"></div>
                             <div v-if="loadingDialog" class="text-xs-center">
                                 <v-progress-circular
                                     indeterminate
@@ -148,6 +150,6 @@ export default {
     padding : 20px;
 }
 .app_outils_header {
-   
+   padding: 20px;
 }
 </style>

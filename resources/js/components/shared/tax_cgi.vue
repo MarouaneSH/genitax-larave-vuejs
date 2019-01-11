@@ -2,11 +2,10 @@
     <v-layout column justify-center align-center xs12>
         <div class="box-gtax">
             <v-flex xs12 class="box-gtax__article">
-                    <h5> Nº Article</h5>
                     <div class="box-gtax__input">
                         <v-text-field
                             label="Solo"
-                            placeholder="..."
+                            placeholder="Aller à Nº Article.."
                             class="box-gtax__search"
                             solo
                             v-model="article"
@@ -15,7 +14,7 @@
                             append-icon="arrow_forward"
                             :loading="loadingArticle"
                         ></v-text-field>
-                        <div class="text-xs-center" v-if="articleNotFound">
+                        <div class="text-xs-center toast" v-if="articleNotFound">
                             Article non trouvé
                         </div>
                     </div>

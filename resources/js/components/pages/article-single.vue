@@ -5,7 +5,7 @@
                             <v-btn icon dark @click="$router.go(-1)" class="arrow_back_yellow">
                                 <v-icon>arrow_back</v-icon>
                             </v-btn>
-                            <v-toolbar-title v-if="selectedArticle">{{selectedArticle.name}} </v-toolbar-title>
+                            <v-toolbar-title v-if="selectedArticle" style="font-weight:200;">{{selectedArticle.name}} </v-toolbar-title>
                             <v-spacer></v-spacer>
                             
                             <v-btn-toggle class="article_switcher_toggle" v-if="!hideToggle && !loadingDialog" light v-model="toggle_html_type" @change="isSearchablebyId ? fetchArticleById() : fetchArticleByName ()" >
@@ -33,7 +33,7 @@
                            <app-social-sharing :title="selectedArticle ? selectedArticle.name : '' "></app-social-sharing>
                         </v-toolbar>
                             <div class="article-subheader">
-                                <p class="subheadline" v-if="selectedArticle && !articleNotFound" >{{selectedArticle.name}} </p>
+                                
                                  <span @click="copyToClipBoard()"><v-icon>file_copy</v-icon> copier l'article au Presse papier</span>
                             </div>
                             <div class="text-xs-center mt-5" v-if="articleNotFound">
@@ -222,10 +222,15 @@ export default {
     align-items: center;
     margin-right: 19px;
     cursor: pointer;
+    padding-top:65px;
 }
 .article_header {
     color: #1976d1;
-    padding: 40px;
+    text-transform:uppercase;
+    font-weight:200;
+    padding: 0 40px 40px;
+    font-family: 'Oswald', sans-serif !important;
+    font-size: 26px;
 }
 .content_html {
     padding: 0 40px;

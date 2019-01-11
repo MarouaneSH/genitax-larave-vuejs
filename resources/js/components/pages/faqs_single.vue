@@ -1,7 +1,7 @@
 <template>
     <div class="questions_wrapper">
         <div class="app_outils_header" :style="{backgroundColor : outil_info.color}">
-            <v-icon @click="$router.go(-1)" class="arrow__back">arrow_back</v-icon>
+            <v-icon @click="$router.go(-1)" class="arrow__back" style="margin:0 !important;">arrow_back</v-icon>
             <div class="app_outils_header_content" >
                 <img :src="'storage/'+outil_info.icon" alt="">
                 <div class="app_outils_header_title">{{outil_info.title}} </div>
