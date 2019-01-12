@@ -2,7 +2,8 @@
     <v-dialog ref="dialog_article" class="dialog_article" v-model="dialog" fullscreen hide-overlay transition="dialog-bottom-transition" >
                 <v-card>
                         <v-toolbar dark color="primary" class="article_dialog">
-                            <v-btn icon dark @click="$router.push('/')">
+                          
+                            <v-btn icon dark @click="returnHome()">
                                 <v-icon>home</v-icon>
                             </v-btn>
                             <v-btn icon dark @click="$router.go(-1)" class="arrow_back_yellow">
@@ -105,6 +106,17 @@ export default {
         }
     }, 
     methods : {
+        returnHome() {
+            if(this.$route.query) {
+                if(this.$route.query.category == "cgi") {
+                         this.$router.push('/');
+                } else {
+                     this.$router.push('/taxes');
+                }
+            }  else{
+                this.$router.push('/');
+            } 
+        },
         copyToClipBoard(){
              var dummy = document.createElement("input");
                 document.body.appendChild(dummy);

@@ -31,7 +31,8 @@ export default {
         const id = this.$route.params.id;
         this.loading = true;
         axios.get(`questions/${id}`).then((response)=> {
-            this.contentHTML = response.data.question.response;
+    
+            this.generateHtml(response.data.question.response);
             this.selectedQuestion = response.data.question.question;
             this.loading = false;
         })
@@ -45,7 +46,19 @@ export default {
         }
     },
     methods : {
-        
+        generateHtml(htmlContent) {
+            let html = document.createElement('div');
+            html.innerHTML = htmlContent;
+            Array.from(html.querySelectorAll("a")).forEach((e) => { 
+                if(e.href.includes("article")) {
+                  let article_num = e.href.split("/").reverse()[0];
+                  let category;
+                  category = "cgi";
+                  e.href = "#/article/"+article_num+"/"+ category;
+                }
+            })
+            this.contentHTML = html.innerHTML;
+        },
     },
     components : {
         appSocialSharing
