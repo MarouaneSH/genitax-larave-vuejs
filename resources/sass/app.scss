@@ -161,15 +161,18 @@
     background: white !important;
     box-shadow: 0 5px 15px 0 rgba(37,44,97,0.15), 0 2px 4px 0 rgba(93,100,148,0.2);
   }
+
+
+  
   &__toggle {
     background: white !important;
     box-shadow: none;
     border-radius: 20px;
-    padding: 0px 10px;
+    padding: 0px;
     flex-wrap: wrap;
     .v-btn {
       padding: 0 20px;
-      margin: 5px 0px;
+      margin: 0px;
       color: #4471cb !important;
     }
     .v-btn:hover {
