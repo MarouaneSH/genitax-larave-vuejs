@@ -80,10 +80,9 @@ export default {
             this.fetchArticle('next');
         } 
         else if(e.which == 8)  {
-            this.fetchArticle('back');
+            this.returnHome();
         } 
         else if(e.which == 40)  {
-            console.log("dsds");
             document.querySelector('.v-dialog--active').scrollTop += 20
             document.querySelector('.dialog_article').scrollTop += 20
         } 
@@ -93,6 +92,9 @@ export default {
         } 
       } 
         
+    },
+    beforeDestroy() {
+        document.onkeyup = null;
     },
     data() {
         return {
