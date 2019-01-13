@@ -28,7 +28,7 @@
 .search_input {
   .v-input__slot{
     border-radius: 50px !important;
-    padding: 0 29px !important;
+    padding: 0 15px !important;
     input::placeholder {
       color: #2c4983 !important;
     }
@@ -132,14 +132,14 @@
     align-items: center;
     width: 100%;
     .search_input {
-      max-width: 250px;
+      width: 200px;
       @media screen and (max-width : 990px) {
-          margin-top: 20px;
+          //margin-top: 0px;
       }
     }
     
     @media screen and (max-width : 600px) {
-       flex-direction: column;
+       //flex-direction: column;
     }
   }
   &__search {
@@ -257,6 +257,7 @@
 
 
 
+
 .article_switcher_toggle {
     background: #3e66b8 !important;
     box-shadow: none;
@@ -346,13 +347,21 @@
 
 
 #article_navigation {
+
+.v-input__control {
+  min-height: initial !important;
+}
+
   position: relative;
   .v-input__slot {
+    font-size: 13px;
     border-radius: 31px;
-    width: 118px;
-    padding-left: 48px;
+    width: 80px;
+    padding-left: 35px;
     text-align: center;
     margin-top: 4px;
+    padding-right: 0;
+    margin-right: 6px;
   }
   .v-input__icon i{
     background: #f2a200;
@@ -362,10 +371,10 @@
     padding: 4px;
   }
   .v-input__icon--prepend{
-    left: 20px;
+    left: 12px;
     z-index: 2;
     position: absolute;
-    top: 16px;
+    top: 8px;
   }
 }
 
@@ -489,13 +498,13 @@
 .box-gtax__input {
   margin-left: auto;
   @media screen and (max-width : 990px) {
-     margin: 20px auto;
+     //margin: 20px auto;
   }
 }
 
 .box-gtax__toggle {
   @media screen and (max-width : 990px) {
-    flex-direction: column;
+    //flex-direction: column;
  }
 }
 

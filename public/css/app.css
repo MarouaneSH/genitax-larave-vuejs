@@ -23,7 +23,7 @@
 
 .search_input .v-input__slot {
   border-radius: 50px !important;
-  padding: 0 29px !important;
+  padding: 0 15px !important;
 }
 
 .search_input .v-input__slot input::-webkit-input-placeholder {
@@ -163,22 +163,7 @@
 }
 
 .box-gtax__article .search_input {
-  max-width: 250px;
-}
-
-@media screen and (max-width: 990px) {
-  .box-gtax__article .search_input {
-    margin-top: 20px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .box-gtax__article {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
+  width: 200px;
 }
 
 .box-gtax__search .v-input__slot {
@@ -427,12 +412,19 @@
   position: relative;
 }
 
+#article_navigation .v-input__control {
+  min-height: initial !important;
+}
+
 #article_navigation .v-input__slot {
+  font-size: 13px;
   border-radius: 31px;
-  width: 118px;
-  padding-left: 48px;
+  width: 80px;
+  padding-left: 35px;
   text-align: center;
   margin-top: 4px;
+  padding-right: 0;
+  margin-right: 6px;
 }
 
 #article_navigation .v-input__icon i {
@@ -444,10 +436,10 @@
 }
 
 #article_navigation .v-input__icon--prepend {
-  left: 20px;
+  left: 12px;
   z-index: 2;
   position: absolute;
-  top: 16px;
+  top: 8px;
 }
 
 .treeview_header_wrapper {
@@ -600,21 +592,6 @@
 
 .box-gtax__input {
   margin-left: auto;
-}
-
-@media screen and (max-width: 990px) {
-  .box-gtax__input {
-    margin: 20px auto;
-  }
-}
-
-@media screen and (max-width: 990px) {
-  .box-gtax__toggle {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-  }
 }
 
 .search_faq {
