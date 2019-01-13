@@ -130,6 +130,14 @@
   &__article {
     display: flex;
     align-items: center;
+    width: 100%;
+    .search_input {
+      max-width: 250px;
+      @media screen and (max-width : 990px) {
+          margin-top: 20px;
+      }
+    }
+    
     @media screen and (max-width : 600px) {
        flex-direction: column;
     }
@@ -475,4 +483,34 @@
     word-break: break-all;
     width: 95%;
   }
+}
+
+
+.box-gtax__input {
+  margin-left: auto;
+  @media screen and (max-width : 990px) {
+     margin: 20px auto;
+  }
+}
+
+.box-gtax__toggle {
+  @media screen and (max-width : 990px) {
+    flex-direction: column;
+ }
+}
+
+.search_faq {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
+  
+  .search_input {
+    max-width: 250px;;
+  }
+
+  @media screen and (max-width : 990px) {
+    flex-direction: column;
+ }
 }

@@ -159,6 +159,17 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 100%;
+}
+
+.box-gtax__article .search_input {
+  max-width: 250px;
+}
+
+@media screen and (max-width: 990px) {
+  .box-gtax__article .search_input {
+    margin-top: 20px;
+  }
 }
 
 @media screen and (max-width: 600px) {
@@ -585,5 +596,51 @@
 .v-treeview-node__content .v-treeview-node__label {
   word-break: break-all;
   width: 95%;
+}
+
+.box-gtax__input {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 990px) {
+  .box-gtax__input {
+    margin: 20px auto;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .box-gtax__toggle {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.search_faq {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.search_faq .search_input {
+  max-width: 250px;
+}
+
+@media screen and (max-width: 990px) {
+  .search_faq {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 

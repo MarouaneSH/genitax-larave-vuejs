@@ -1,39 +1,44 @@
 <template>
-  <v-navigation-drawer  app class="app_drawer" width="350" v-model="drawer" >
-        <v-btn-toggle id="sidebar_toggle">
-              <v-btn to="/cgi" flat>
-                <img src="/img/1.png" alt="">
-                <h5>CGI</h5>
-                <p>Code Général des Impôts</p>
-              </v-btn>
-              <v-btn to="/taxes" flat>
-                 <img src="/img/2.png" alt="">
-                <h5>TAXES</h5>
-                <p>Locales</p>
-              </v-btn>
-              <v-btn to="/faqs" flat>
-                <img src="/img/4.png" alt="">
-                <h5>Q&A</h5>
-                <p>Réponses DGI</p>
-              </v-btn>
-              <v-btn  to="/outils" flat>
-                <img src="/img/5.png" alt="">
-                <h5>OUTILS</h5>
-                <p>Divers</p>
-              </v-btn>
-              <v-btn to="/infos" flat>
-                <img src="/img/3.png" alt="">
-                <h5>INFOS</h5>
-                <p>sur GeniTax</p>
-              </v-btn>
-      </v-btn-toggle>
-      <img src="/img/seddikk.png" class="seddik_brand">
-    </v-navigation-drawer>
+     <v-autocomplete
+        v-if="diplaySearch"
+        v-model="selectedItem"
+        style="font-weight:200"
+        :items="items"
+        :loading="isLoading"
+        hide-details
+
+         class="search_input"
+        :search-input.sync="search"
+        color="primary"
+        solo
+        :disable-resize-watcher="true"
+        :disable-route-watcher ="true"
+        :filter="filtred"
+        append-icon="search"
+        no-data-text="Aucun résultat trouvé"
+        item-text="titre"
+        :item-value="getItemValue"
+        @input.native="searchArticle"
+        label="Public APIs"
+        :placeholder="'Chercher ' + getLabelName + '...'"
+      >  
+
+       <template
+        slot="item"
+        slot-scope="{ item, tile }"
+      >
+        <template v-if='currentRoute == "cgi" ||currentRoute == "taxes"'> 
+          {{ item.titre }} 
+        </template>
+        <template v-else>
+           {{ item.question }} 
+        </template>
+      </template>
+      </v-autocomplete>
 </template>
-
 <script>
-
-  export default {
+import debounce from 'lodash/debounce'
+export default {
     data: () => ({
       descriptionLimit: 60,
       searchedItems: [],
@@ -48,7 +53,7 @@
       filtred(t) {
         return t;
       },
-      searchArticle : _.debounce(function(){
+    searchArticle: debounce(function(){
         this.isLoading = true
         if(!this.search) return;
         // Lazily load input items
@@ -137,5 +142,5 @@
         }
       }
     }
-  }
+}
 </script>

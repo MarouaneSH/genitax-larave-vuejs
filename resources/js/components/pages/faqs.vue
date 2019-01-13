@@ -1,10 +1,14 @@
 <template>
      <v-layout column align-center="">
-         <div class="text-xs-center btn_propose">
+         <div class="text-xs-center btn_propose search_faq">
+                   <app-search></app-search>
                     <v-btn color="primary" style="font-weight: 200;
-    border-radius: 20px;
-    padding: 0px 20px;"><a href="mailto:contact@genitax.ma">Poser une question à la DGI ?</a></v-btn> 
-                 </div>
+                        border-radius: 20px;
+                        padding: 0px 20px;">
+                        <a href="mailto:contact@genitax.ma">Poser une question à la DGI ?</a>
+                    </v-btn> 
+                     
+        </div>
 
             <div class="text-xs-center w-100" v-if="loading">
 
@@ -30,7 +34,11 @@
 </template>
 
 <script>
+import appSearch from '../shared/search';
 export default {
+    components : {
+        appSearch
+    },
     mounted() {
         this.loading = true;
         axios.get('/faqs').then((response)=> {

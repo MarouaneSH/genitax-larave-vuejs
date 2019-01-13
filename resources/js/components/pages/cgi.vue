@@ -6,9 +6,11 @@
 
 <script>
 import appTaxCgi from "../shared/tax_cgi"
+
 export default {
     components : {
-        appTaxCgi
+        appTaxCgi,
+        
     }
 }
 </script>

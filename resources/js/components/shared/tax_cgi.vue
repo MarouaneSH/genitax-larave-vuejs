@@ -2,6 +2,7 @@
     <v-layout column justify-center align-center xs12>
         <div class="box-gtax">
             <v-flex xs12 class="box-gtax__article">
+                    <app-search></app-search>
                     <div class="box-gtax__input" style="width:150px;">
                         <v-text-field
                             label="Solo"
@@ -74,12 +75,18 @@
 </template>
 
 <script>
+import appSearch from "./search";
+
+
 export default {
     props : {
         type : {
             required : true,
             default : "cgi",
         }
+    },
+    components : {
+      appSearch
     },
     mounted() {
         this.loadingTree = true;
