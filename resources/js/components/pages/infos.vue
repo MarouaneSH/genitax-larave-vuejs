@@ -2,10 +2,41 @@
         <div id="info_content">
             <img src="img/info.png" class="img_info" alt="">
             <div class="card__info tahoma-font_all">
-                <p><strong>Email : </strong> {{email}}  </p>
-                <p><strong>Téléphone : </strong> {{telephone}}  </p>
                 <div class="content_htmlS" v-html="contentHTML">
                 </div>
+                <div style="height:30px"></div>
+                <a  :href="'mailto:'+email" style="padding: 20px 50px;
+    background: white;
+    border-radius: 34px;
+    position: relative;"><strong style="position: absolute;
+    top: -20px;
+    background: #2c4983;
+    color: white;
+    box-shadow: 0 5px 5px 0px rgba(0,0,0,0.2);
+    left: -20px;
+    font-family: 'Oswald' !important;
+    width: 66px;
+    border-radius: 20px;
+    font-weight: 200;
+    padding: 10px;">E-mail</strong> {{email}}  </a> <br />
+
+                <div style="height:65px"></div>
+    <a :href="'tel:'+telephone" style="padding: 20px 50px;
+    background: white;
+    border-radius: 34px;
+    position: relative;"><strong style="position: absolute;
+    top: -20px;
+    background: #2c4983;
+    color: white;
+    box-shadow: 0 5px 5px 0px rgba(0,0,0,0.2);
+    left: -20px;
+    font-family: 'Oswald' !important;
+    width: 80px;
+    border-radius: 20px;
+    font-weight: 200;
+    padding: 10px;">Téléphone</strong> {{telephone}}  </a> <br />
+<div style="height:70px"></div>
+                <img src="img/tax-firm2017.jpg" width="120">
             </div>
         </div>
 </template>

@@ -2,10 +2,10 @@
     <v-layout column justify-center align-center xs12>
         <div class="box-gtax">
             <v-flex xs12 class="box-gtax__article">
-                    <div class="box-gtax__input">
+                    <div class="box-gtax__input" style="width:150px;">
                         <v-text-field
                             label="Solo"
-                            placeholder="Aller à Nº Article.."
+                            placeholder="Nº Article..."
                             class="box-gtax__search"
                             solo
                             v-model="article"
@@ -19,7 +19,6 @@
                         </div>
                     </div>
             </v-flex>
-           
         </div>
          <v-flex xs12 class="box-gtax__toggle_wrapper" v-if="headerCategories.length">
                     <v-btn-toggle dark v-model="toggle_header" class="box-gtax__toggle" @change="fetch_categories">

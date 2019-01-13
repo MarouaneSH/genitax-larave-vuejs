@@ -4,6 +4,7 @@
       <v-autocomplete
         v-if="diplaySearch"
         v-model="selectedItem"
+        style="font-weight:200"
         :items="items"
         :loading="isLoading"
          class="search_input"
@@ -14,12 +15,12 @@
         :disable-route-watcher ="true"
         :filter="filtred"
         append-icon="search"
-        :no-data-text="'Aucun ' + getLabelName + ' trouvé'"
+        no-data-text="Aucun résultat trouvé"
         item-text="titre"
         :item-value="getItemValue"
         @input.native="searchArticle"
         label="Public APIs"
-        :placeholder="'Chercher ' + getLabelName"
+        :placeholder="'Chercher ' + getLabelName + '...'"
       >  
 
        <template

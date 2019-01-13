@@ -20,6 +20,8 @@
                             font-family: 'Oswald' !important; padding:15px;">
                         {{item.activites}}
                     </div>
+
+                    <div style="padding:20px;">
                     <div v-if="item.classe_3" class="coefficient_item">
                         <strong>CLASSE 3 (10%) </strong>
                         {{item.classe_3}}
@@ -31,6 +33,7 @@
                     <div v-if="item.classe_1" class="coefficient_item">
                         <strong>CLASSE 1 (10%) </strong>
                         {{item.classe_1}}
+                    </div>
                     </div>
                 </div>
         </div>

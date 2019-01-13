@@ -2,7 +2,7 @@
         <div class="social_sharing_container">
             <div class="share_icon_wrapper">
                 <v-icon @click.native="test()" class="share_icon">share</v-icon>
-                <span>Partager</span>
+                <span class="">Partager</span>
             </div>
             <social-sharing :url="url"
                             :title="title"
@@ -70,8 +70,8 @@ export default {
 }
 
 .share_icon {
-    font-size: 34px;
-    margin: 0 15px;
+    font-size: 22px;
+    margin-left: 5px;
     cursor: pointer;
 }
 

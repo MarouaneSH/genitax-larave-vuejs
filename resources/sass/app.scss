@@ -66,7 +66,8 @@
       height: auto;
       flex-direction: column;
       /* word-break: break-all; */
-      padding: 20px 10px;
+      padding: 10px 4px;
+      font-weight:200;
       white-space: normal;
       color: white;
       opacity: 1;
@@ -243,6 +244,7 @@
     background: #e8a410;
     border-radius: 100%;
     padding: 5px;
+    margin-right:8px;
 }
 
 
@@ -251,23 +253,23 @@
     background: #3e66b8 !important;
     box-shadow: none;
     border-radius: 20px;
-    padding: 0px 10px;
+    padding: 0px;
     flex-wrap: nowrap;
     .v-btn {
-      padding: 0 20px;
-      margin: 5px 0px;
+      //padding: 0 20px;
+      //margin: 5px 0px;
     }
     .v-btn--active:before, .v-btn:focus:before, .v-btn:hover:before {
       background-color: #4471cb !important;
       border-radius: 20px;
-      padding: 0 20px;
+      //padding: 0 20px;
       opacity: 1;
       box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
     }
     h6 {
-      font-size: 14px;
+      font-size: 12px;
       color: white;
-      font-weight: 500;
+      font-weight: 200;
     }
   }
 
@@ -339,7 +341,7 @@
   position: relative;
   .v-input__slot {
     border-radius: 31px;
-    width: 129px;
+    width: 118px;
     padding-left: 48px;
     text-align: center;
     margin-top: 4px;
@@ -381,12 +383,16 @@
       height: auto !important;
       flex-wrap: wrap;
       justify-content: center;
+
+      .v-toolbar__title {
+      display:none;
+      }
   }
   .social_sharing_wrapper {
       margin: 20px 0;
   }
   .arrow_back_yellow {
-      margin-right: auto !important;
+      margin: 0 !important;
   }
 
   .box-gtax__toggle {
