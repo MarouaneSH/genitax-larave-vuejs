@@ -20,8 +20,9 @@
         :item-value="getItemValue"
         @input.native="searchArticle"
         label="Public APIs"
-        :placeholder="'Chercher ' + getLabelName + '...'"
+        placeholder="Recherche mot clé..."
       >  
+
 
        <template
         slot="item"
