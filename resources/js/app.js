@@ -17,8 +17,8 @@ Vue.use(VueRouter);
 Vue.use(Vuetify)
 Vue.use(Vuex)
 
-window.axios.defaults.baseURL ="http://genitax.test/api";
-// window.axios.defaults.baseURL ="http://genitax.ma/api";
+// window.axios.defaults.baseURL ="http://genitax.test/api";
+window.axios.defaults.baseURL ="http://genitax.ma/api";
 
 const router = new VueRouter({
     routes
