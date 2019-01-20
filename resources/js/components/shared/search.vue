@@ -28,7 +28,7 @@
         slot="item"
         slot-scope="{ item, tile }"
       >
-        <template v-if='currentRoute == "cgi" ||currentRoute == "taxes"'> 
+        <template v-if='currentRoute == "cgi" ||currentRoute == "taxes" || currentRoute == "tarif-fiscal"'> 
           {{ item.titre }} 
         </template>
         <template v-else>
@@ -69,6 +69,16 @@ export default {
               })
               .finally(() => (this.isLoading = false))
         } 
+        else if(this.currentRoute =="tarif-fiscal") {
+              axios.get("outils/tarifs_fiscal/search/query="+ this.search )
+              .then(res => {
+                this.searchedItems = res.data.search_result
+              })
+              .catch(err => {
+                console.log(err)
+              })
+              .finally(() => (this.isLoading = false))
+        }
         else {
              axios.get("faqs/questions/query="+ this.search)
               .then(res => {
@@ -97,7 +107,16 @@ export default {
 
               return Object.assign({}, article, { Description })
             })
-          } else {
+          } else if(this.currentRoute == "tarif-fiscal")  {
+            return this.searchedItems.map(article => {
+              const Description = article.titre.length > this.descriptionLimit
+                ? article.titre.slice(0, this.descriptionLimit) + '...'
+                : article.titre
+
+              return Object.assign({}, article, { Description })
+            })
+          }
+          else {
               return this.searchedItems.map(article => {
               const Description = article.question.length > this.descriptionLimit
                 ? article.question.slice(0, this.descriptionLimit) + '...'
@@ -113,7 +132,7 @@ export default {
         this.searchedItems = [];
         this.currentRoute = route.toLowerCase();;
 
-        return route == "CGI" || route == "TAXES" || route == "faqs" || route == "faqs_single";
+        return route == "CGI" || route == "TAXES" || route == "faqs" || route == "faqs_single" || route=="tarif-fiscal";
       },
       getItemValue() {
         if(this.currentRoute == "cgi" || this.currentRoute == "taxes") {
@@ -137,7 +156,11 @@ export default {
         if(this.currentRoute == "cgi" || this.currentRoute == "taxes") {
            this.$router.push({ name: 'ArticleById', params: { id: val } , query : {category : this.currentRoute} })
            this.selectedItem = null;
-        } else {
+        } 
+        else if(this.currentRoute == "tarif-fiscal") {
+            this.$emit('openArticle',val);
+        }
+        else {
             this.$router.push({name: "faqs_question" , params : {id : val }})
             this.selectedItem = null;
         }

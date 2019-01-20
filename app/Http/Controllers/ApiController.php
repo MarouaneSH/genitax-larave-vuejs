@@ -287,5 +287,26 @@ class ApiController extends Controller
         $articles = OutilsTarifsFiscalArticle::where("id",$id);
         return response()->json(["article" => $articles->first()]);
     }
+
+    public function tarifFiscal_category_article($id) {
+        $articles = OutilsTarifsFiscalCategory::where("id",$id)->first();
+        $title = OutilsTarifsFiscalCategory::where("id",$id)->first()->titre;
+        $articles = OutilsTarifsFiscalCategory::where("id",$id)->first()->articles;
+        return response()->json(["article" => $articles->first() , "titre"=> $title]);
+    }
+
+    public function searchOutilsTarifFiscal($query) {
+
+        $matching_category = OutilsTarifsFiscalCategory::search($query)->get()->pluck("id");
+        $matching_articles = OutilsTarifsFiscalArticle::search($query)->get()->pluck("categorie_id");
+        $all_matching = $matching_category->merge($matching_articles);
+
+        $articles = OutilsTarifsFiscalCategory::whereIn("id", $all_matching->unique())
+                    ->with("articles:id,categorie_id")
+                    ->whereHas('articles')
+                    ->get();
+    
+       return response()->json(["search_result" => $articles]);
+    }
     
 }

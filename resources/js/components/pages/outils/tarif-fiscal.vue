@@ -6,6 +6,7 @@
                 <img :src="'storage/'+outil_info.icon" alt="">
                 <div class="app_outils_header_title">{{outil_info.title}} </div>
             </div>
+            <app-search @openArticle="openArticle"></app-search>
         </div>
         <div class="treeview_wrapper_fiscal">
                     <v-treeview
@@ -16,6 +17,7 @@
                         activatable
                         item-text="titre"
                         item-key="id"
+                        open-on-click
                         class="grey lighten-5"
                         transition>
                         <template slot="prepend" slot-scope="{ item, open,  leaf }" >
@@ -64,8 +66,15 @@
 </template>
 
 <script>
+
+import appSearch from "../../shared/search";
+
+
 export default {
     props : ["icon","color","title"],
+    components : {
+        appSearch
+    },
     mounted() {
         this.loading = true;
         axios.get("outils/tarif-fiscal").then((response)=> {
@@ -99,6 +108,19 @@ export default {
             });
 
             return  _this.selected;
+        },
+        openArticle(val) {
+            this.selectedArticle = {
+                id : val 
+            };
+            
+            this.dialog = true;
+            this.loadingDialog = true;
+            axios.get(`outils/tarif-fiscal/category/article=${this.selectedArticle.id}`).then((result)=> {
+                this.contentHTML = result.data.article.contenu_html;
+                this.selectedArticle.name = result.data.titre;
+                this.loadingDialog = false;
+            })
         },
          openDialog() {
             this.dialog = true;

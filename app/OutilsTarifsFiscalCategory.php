@@ -3,10 +3,30 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use ScoutElastic\Searchable;
 
 class OutilsTarifsFiscalCategory extends Model
 {
+
+
+  use Searchable;
+
+   protected $indexConfigurator = TarifCategoryIndexConfigurator::class;
+
+   public $timestamps = null;
+
+    // protected $table = 'outils_mytable';
+
+   protected $mapping = [
+        'properties' => [
+            'titre' => [
+                'type' => 'text',
+                'analyzer' => 'english',
+            ],
+        ]
+    ];
+
+
     public function parent()
     {
         return $this->belongsTo('App\OutilsTarifsFiscalCategory', 'parent_id');

@@ -46,5 +46,9 @@ Route::get("outils/coefficients","ApiController@coefficients");
 Route::get("outils/nomenclatures","ApiController@nomenclatures");
 Route::get("outils/tarif-fiscal","ApiController@tarifFiscal");
 Route::get("outils/tarif-fiscal/article={id}","ApiController@tarifFiscal_artilce");
+Route::get("outils/tarif-fiscal/category/article={id}","ApiController@tarifFiscal_category_article");
+
+
+Route::get("outils/tarifs_fiscal/search/query={query}","ApiController@searchOutilsTarifFiscal");
 
 
